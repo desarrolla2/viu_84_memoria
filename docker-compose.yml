@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+    latex:
+        build: .
+        volumes:
+            - ./:/data
+            - ./fonts:/usr/share/fonts/truetype
+            - ./compile.sh:/usr/local/bin/compile.sh
+        working_dir: /data/src
+        command: [ "/bin/bash", "/usr/local/bin/compile.sh" ]
