@@ -1,0 +1,241 @@
+\documentclass[12pt,a4paper]{report}
+%\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2.75cm,right=2.6cm,top=3.5cm,bottom=3.5cm]{geometry}
+
+
+
+\usepackage{titletoc}
+% Keywords command
+
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Palabras clave:\hspace{0.3cm}}} #1
+}
+
+
+
+
+\usepackage[table]{xcolor}
+\definecolor{naranja}{HTML}{E65113}
+\usepackage[shortlabels]{enumitem}
+\definecolor{slcolor}{HTML}{E65113}
+\newcommand{\headlinecolor}{\color{slcolor}}
+\usepackage{titlesec}
+
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{-10pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------COMANDOS PARA EL TIPO DE LETRA---------------------------%
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\titleformat{\chapter}[hang]{\vspace{-3cm}\headlinecolor\Huge\bfseries}{\thechapter.\hsp}{20pt}{\Huge\bfseries}
+
+%\titleformat{\section}[hang]{\Large\bfseries}{}{20pt}{\Large\bfseries}
+
+\titleformat{\subsection}[hang]{\normalsize\bfseries}{}{20pt}{\large\bfseries}
+\titleformat{\appendix}[hang]{\vspace{-3cm}\headlinecolor\Huge\bfseries}{\thechapter.\hsp}{20pt}{\Huge\bfseries}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------COMANDOS PARA TABLAS  E IMAGENES ---------------------%
+\usepackage{tikz}
+\usepackage{tabularx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-----------------COMANDOS PARA CABECERAS Y PIE DE PAGINA -----------------%
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\fancypagestyle{plain}{%
+  \renewcommand{\headrulewidth}{0pt}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{{\scriptsize\thepage\ de \pageref{LastPage} | Título del TFT}}
+\fancyhead[L]{\tikz[remember picture,overlay]\node[opacity=0.4] at (-3mm, 10mm){\includegraphics[scale=0.18]{./Images/image3.png}};}
+\fancyheadoffset{0pt}
+}
+
+\pagestyle{plain}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%-------------------+++++++++--INICIO DEL DOCUMENTO--+++++++++---------------------------%%%%%
+
+\begin{document}
+
+
+
+%------------------XXXX++++++ INICIO DE PORTADA  ++++++XXXXX-----------------%
+\begin{titlepage}
+
+\newgeometry{left=2.5cm, bottom=3cm, top=2cm, right=2.5cm}
+
+\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (73.6mm, -124.25mm){\includegraphics{./Images/Picture_TitlePage.jpg}};
+
+{\fontfamily{phv}\selectfont
+\fontsize{25}{10.4}\fontseries{b}\selectfont
+\vspace{14cm}
+\textbf{Título del TFT}
+
+\bigskip
+
+\fontsize{12}{12}\selectfont
+\fontseries{m}\selectfont
+\vspace{5cm}
+\centering
+\begin{tabularx}{1\textwidth} { 
+  || >{\raggedright}X 
+  || >{\centering}X 
+  || >{\raggedleft\arraybackslash}X || }
+ Titulación:\\XXXX\\ 
+ & Alumno/a: Apellido Apellido, Nombre\\DNI: XXXX 
+ & Convocatoria: \\
+ Curso Académico\\ 20XX-20XX 
+  & Director/a del TFT: XXXX   
+  & PRIMERA O SEGUNDA  \\
+\end{tabularx}
+ }
+\end{titlepage}
+%--------------------XXXX++++++ FIN DE PORTADA  ++++++XXXXX-----------------%
+\tableofcontents	
+\addcontentsline{toc}{chapter}{\listfigurename}
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoffigures
+\listoftables
+
+\begin{abstract}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\vspace{0.5cm}
+
+\keywords{primero, segundo, tercero}
+\end{abstract}
+\newpage
+\section*{Agradecimientos}\label{sec:agradecimientos}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+	
+
+\chapter{Capítulo primero}\label{cap:cap1}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\section{Apartado}\label{sec:apartado}
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{center}
+{\textbf{\headlinecolor{Destacado duis aute irure dolor\\ 
+in reprehenderit in voluptate velit esse\\ 
+cillum dolore eu fugiat}}}
+\end{center}
+
+labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{./Images/image5.png}
+\caption{\headlinecolor{\underline{Nombre de la gráfica 1}}}
+
+\label{fig:fig1}
+
+\end{center}
+\end{figure}
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{./Images/image6.png}
+\caption{\headlinecolor{\underline{Nombre de la gráfica 2}}}
+
+\label{fig:fig2}
+
+\end{center}
+\end{figure}
+
+\begin{table}[ht] 
+\centering
+\caption{\headlinecolor{\underline{Nombre del Cuadro}}}
+\label{tab:my_label}
+\begin{tabular}{|c|c|c|} \hline
+\rowcolor{naranja}
+\multicolumn{3}{|c|}{\textbf{}} \\ \hline
+Lorem ipsum & Lorem ipsum & Lorem ipsum \\ \hline
+Lorem ipsum & Lorem ipsum & Lorem ipsum \\ \hline
+Lorem ipsum & Lorem ipsum & Lorem ipsum \\ \hline
+Lorem ipsum & Lorem ipsum & Lorem ipsum \\ \hline
+Lorem ipsum & Lorem ipsum & Lorem ipsum \\ \hline
+Lorem ipsum & Lorem ipsum & Lorem ipsum \\ \hline
+\end{tabular}
+\end{table}
+
+\chapter{Prueba capítulo}\label{cap:cap2}
+
+\section{Prueba sección}\label{sec:sec2.1}
+
+
+\begin{enumerate}[label=\bfseries\headlinecolor\arabic*.]
+\item Primer elemento.
+\item Segundo elemento
+\item Tercer elemento.
+\begin{enumerate}[label=\alph*)]
+\item Primer subelemento.
+\item Segundo subelemento.
+\begin{itemize}[label=$\bullet$]
+\item Primer punto.
+\item Segundo punto.
+\end{itemize}
+
+\end{enumerate}
+
+\end{enumerate}
+
+%\includegraphics[scale=0.2]{./Images/image3.png}
+
+\chapter{Capítulo tercero}\label{cap:cap3}
+
+
+
+\LaTeX{} \cite{latex2e} is a set of macros built atop \TeX{} \cite{texbook}.
+
+\appendix
+\chapter{Anexo I: Ejemplo de anexo}\label{cap:anexo1}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\chapter{Anexo II: Otro ejemplo de anexo}\label{cap:anexo2}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\bibliographystyle{plain}
+%\bibliographystyle{alpha}
+\bibliography{Bibliografia_TFT.bib}
+
+
+
+\end{document}

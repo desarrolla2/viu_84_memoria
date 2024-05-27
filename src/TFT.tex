@@ -23,13 +23,15 @@
 \usepackage{tabularx}
 % Allow reference last page of document
 \usepackage{lastpage}
-% Allow advanded tools for headers and footers.
+% Allow advanded tools for headers and footers
 \usepackage{fancyhdr}
+% Allow insert notes
+\usepackage{todonotes}
+
 
 % Set margins
 \usepackage[top=3.5cm,bottom=3.5cm,left=2.75cm,right=2.75cm,]{geometry}
 \usepackage[T1]{fontenc}
-\pagestyle{plain}
 
 % Set headers and footers
 \fancypagestyle{plain}{%
@@ -43,6 +45,9 @@
     \fancyheadoffset{0pt}
 }
 
+\titleformat{\chapter}[hang]
+{\normalfont\Huge\bfseries}{\thechapter.}{20pt}{\Huge}
+
 \pagestyle{plain}
 
 \begin{document}
@@ -51,24 +56,17 @@
     \input{./cover/cover}
 %    \include{./cover/table}
 
+    \todo[inline]{@TODO: Agregar tabla con información principal}
 
-
-\tableofcontents
+    \tableofcontents
     \addcontentsline{toc}{chapter}{\listfigurename}
     \addcontentsline{toc}{chapter}{\listtablename}
     \listoffigures
-    \listoftables
+% Abstract
+    \input{./abstract/abstract}
 
 % Dedication
     \input{./dedication/dedication}
-
-% Abstract
-    \providecommand{\keywords}[1]
-    {
-        \small
-        \textbf{\textit{keywords :\hspace{0.3cm}}} #1
-    }
-    \input{./abstract/abstract}
 
 %% Chapters
     \include{./chapter/chapter_1}

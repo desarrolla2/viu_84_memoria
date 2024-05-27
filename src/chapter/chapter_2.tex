@@ -1,12 +1,19 @@
-\chapter*{2. Marco teórico}\label{ch:chapter_2}
-\section*{Código limpio}
+\chapter{Marco teórico}\label{ch:chapter_2}
+\todo[inline]{@Marlene: colocas definiciones en las secciones pero no las referencias de esas definiciones
+No estoy segura pero me parece que las secciones también van numeradas. Chequear el formato
+También debes relacionar cada seccion con tu trabajo
+Código limpio y arquitectura limpia pueden ir en una sola seccion
+Si colocas una figura, debes referenciarla en el texto y explicarla}
+
+
+\section{Código limpio}
 \subsection*{Introducción histórica}
 El concepto de Código Limpio ha sido fundamental en la programación de software desde los primeros días del desarrollo
 de software, pero fue articulado y popularizado con gran efecto por Robert C. Martin en su libro Clean Code: A Handbook
 of Agile Software Craftsmanship (Martin,2008).
 
 Este libro se convirtió en una guía esencial para muchos desarrolladores al enfatizar la importancia de escribir código
-que no sólo funcione, sino que también sea fácil de entender, modificar y mantener.
+que no solo funcione, sino que también sea fácil de entender, modificar y mantener.
 
 \subsection*{Definición}
 Código limpio es aquel que es fácil de entender y fácil de modificar.
@@ -18,7 +25,8 @@ Se caracteriza por su simplicidad, la ausencia de duplicación, la expresión cl
 la atención a los detalles a nivel de código.
 Contiene los tests, no contiene errores y, lo más importante, revela claramente su diseño y propósito.
 
-\section*{Arquitectura limpia}
+
+\section{Arquitectura limpia}
 \subsection*{Introducción histórica}
 En el ámbito del desarrollo de software, la estructuración eficiente de la arquitectura de un sistema
 es crucial para determinar su eficiencia, escalabilidad y mantenibilidad a largo plazo.
@@ -33,7 +41,8 @@ diversos componentes del software.
 La arquitectura limpia es un estilo de diseño de software que
 organiza el sistema de manera que sea independiente de frameworks, UI, bases de datos y cualquier otra agencia externa.
 
-// @TODO, insertar figura
+\todo[inline]{@TODO: Insertar figura}
+\todo[inline]{@Marlene: hay que referenciar en el texto la figura. Te falta colocar la referencia}
 
 Representación de las comunicaciones entre capas en una arquitectura limpia.
 
@@ -42,9 +51,10 @@ claramente definidas y depende solo de las capas más internas.
 Esto se logra mediante el principio de Inversión de dependencias, lo que significa que los detalles dependen de las
 abstracciones y no al contrario.
 
-Aunque existen diferentes implementaciones de una arquitectura limpia, cada una con sus características intrínsecas
-, en este proyecto hemos decidido implementar una versión en 3 capas.
+Aunque existen diferentes implementaciones de una arquitectura limpia, cada una con sus características intrínsecas, en
+este proyecto hemos decidido implementar una versión en 3 capas.
 
+\todo[inline]{@Marlene: mencionales. Aparecen 4 a continuación, por qué?}
 \subsubsection*{Dominio}
 Es el corazón del modelo de negocio de la aplicación y encapsula la
 lógica y las reglas del negocio. Esta capa es fundamentalmente
@@ -70,7 +80,10 @@ preocuparse por los detalles de implementación de la plataforma o los elementos
 Es responsable de mostrar la información al usuario y de interpretar los
 comandos del usuario para que la aplicación pueda entenderlos y actuar en consecuencia.
 
-\section*{Procesamiento de lenguaje natural (NLP)}
+\todo[inline]{@Marlene: queda mejor si lo redactas como parrafo y no siguiendo ese estilo}
+
+
+\section{Procesamiento de lenguaje natural}
 \subsection*{Introducción histórica}
 El Procesamiento de Lenguaje Natural o Natural Language Processing (NLP) es un campo que se sitúa en la
 intersección de la informática, la inteligencia artificial y la lingüística.
@@ -103,7 +116,8 @@ traducción automática entre idiomas, la generación de respuestas automáticas
 , la extracción de información relevante de textos, el análisis de sentimientos, el reconocimiento de voz, y
 la síntesis de habla, entre otros.
 
-\section*{Modelos de lenguaje de gran escala (LLMs)}
+
+\section{Modelos de lenguaje de gran escala (LLMs)}
 \subsection*{Introducción histórica}
 La historia de los LLMs comienza con los primeros modelos estadísticos de lenguaje en
 la década de 1980, que utilizaban métodos simples como los modelos de Markov y n-gramas para predecir la probabilidad
@@ -125,6 +139,8 @@ Transformer por Vaswani et al. Esta arquitectura introdujo el mecanismo
 de atención, que permite a los modelos ponderar diferentes partes de la entrada de texto de manera dinámica,
 mejorando la capacidad de los modelos para manejar secuencias de texto largas y complejas (Vaswani et al., 2017).
 
+\todo[inline]{@Marlene: Transformers términos en inglés van en itálicas}
+
 BERT, desarrollado por Google en 2018, y GPT, desarrollado por OpenAI, son ejemplos de
 cómo los Transformers han sido adaptados para crear modelos que
 no solo entienden el contexto de una palabra en función de su posición en una frase, sino en todo
@@ -144,6 +160,10 @@ otorga la capacidad de generar respuestas, completar textos,
 traducir entre idiomas, resumir información y responder preguntas con un alto grado de precisión y relevancia.
 
 \subsection*{Principales modelos}
+
+\todo[inline]
+{@Marlene: puedes hacer un resumen de estos modelos. Creo que no hace falta que coloques los código de ejemplos. Quizás
+para un anexo}
 \subsubsection*{OpenAI GPT}
 ChatGPT es un avanzado modelo de lenguaje desarrollado por OpenAI,
 basado en la arquitectura GPT (Generative Pre-trained Transformer).
