@@ -25,9 +25,12 @@
 \usepackage{lastpage}
 % Allow advanded tools for headers and footers
 \usepackage{fancyhdr}
+% Allow references in APA style
+\usepackage[style=apa, backend=biber]{biblatex}
+\bibliography{bibliography}
+
 % Allow insert notes
 \usepackage{todonotes}
-
 
 % Set margins
 \usepackage[top=3.5cm,bottom=3.5cm,left=2.75cm,right=2.75cm,]{geometry}
@@ -45,6 +48,7 @@
     \fancyheadoffset{0pt}
 }
 
+% Set chatper title format
 \titleformat{\chapter}[hang]
 {\normalfont\Huge\bfseries}{\thechapter.}{20pt}{\Huge}
 
@@ -54,9 +58,7 @@
 
 % cover
     \input{./cover/cover}
-%    \include{./cover/table}
-
-    \todo[inline]{@TODO: Agregar tabla con información principal}
+    \include{./cover/table}
 
     \tableofcontents
     \addcontentsline{toc}{chapter}{\listfigurename}
@@ -71,14 +73,13 @@
 %% Chapters
     \include{./chapter/chapter_1}
     \include{./chapter/chapter_2}
-%    \include{./chapter/chapter3.tex}
+%    \include{./chapter/chapter_3}
 
 %% Anexos
 %    \appendix
 %    \include{./appendix/appendix_1.tex}
 %    \include{./appendix/appendix_2.tex}
 
-    \bibliographystyle{plain}
-    \bibliography{./bibliography}
+    \printbibliography
 
 \end{document}

@@ -1,5 +1,5 @@
 run:
-	mkdir -p output/chapter
+	mkdir -p output/chapter output/cover
 	docker-compose up --build latex
 
 clean:
