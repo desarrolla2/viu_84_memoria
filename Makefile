@@ -4,4 +4,4 @@ run:
 clean:
 	rm -rf output/*
 
-.PHONY: build run
+.PHONY: clean run
