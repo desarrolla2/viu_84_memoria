@@ -11,6 +11,6 @@ RUN apt-get update && apt-get install -y \
     fontconfig \
     && fc-cache -fv
 
-WORKDIR /data/src
+WORKDIR /data
 
 CMD ["compile.sh"]

@@ -25,8 +25,6 @@
 \usepackage{lastpage}
 % Allow advanded tools for headers and footers
 \usepackage{fancyhdr}
-% Allow references in APA style
-\usepackage[style=apa, backend=biber]{biblatex}
 
 % Allow insert notes
 \usepackage{todonotes}
@@ -108,6 +106,7 @@
 %    \include{./appendix/appendix_1.tex}
 %    \include{./appendix/appendix_2.tex}
 
-    \printbibliography
+    \bibliographystyle{plain}
+    \bibliography{TFT}
 
 \end{document}

@@ -7,5 +7,5 @@ services:
             - ./:/data
             - ./fonts:/usr/share/fonts/truetype
             - ./compile.sh:/usr/local/bin/compile.sh
-        working_dir: /data/src
+        working_dir: /data
         command: [ "/bin/bash", "/usr/local/bin/compile.sh" ]

@@ -1,8 +1,8 @@
-run:
-	mkdir -p output/chapter output/cover
+build:
 	docker-compose up --build latex
 
 clean:
 	rm -rf output/*
 
-.PHONY: clean run
+
+.PHONY: clean build

@@ -1,1 +1,7 @@
-/output/
+*.toc
+*.pdf
+*.log
+*.lof
+*.aux
+*.bbl
+*.blg

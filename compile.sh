@@ -3,14 +3,9 @@
 # Nombre del archivo sin extensión
 TARGET=TFT
 
-# Crear la carpeta de salida si no existe
-mkdir -p /data/output
+xelatex ${TARGET}.tex
 
-xelatex -output-directory=/data/output /data/src/${TARGET}.tex
+bibtex ${TARGET}
 
-bibtex /data/output/${TARGET}
-
-xelatex -output-directory=/data/output /data/src/${TARGET}.tex
-xelatex -output-directory=/data/output /data/src/${TARGET}.tex
-
-chmod -R 777 /data/output
+xelatex ${TARGET}.tex
+xelatex ${TARGET}.tex
