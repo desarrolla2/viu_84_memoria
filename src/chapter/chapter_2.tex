@@ -22,7 +22,7 @@ Según Robert C. Martin, el código limpio puede ser leído y mejorado por un
 desarrollador que no sea su autor original con un mínimo esfuerzo necesario.
 
 Se caracteriza por su simplicidad, la ausencia de duplicación, la expresión clara de la intención del desarrollador, y
-la atención a los detalles a nivel de código.
+la atención a los detalles en el nivel de código.
 Contiene los tests, no contiene errores y, lo más importante, revela claramente su diseño y propósito.
 
 
@@ -59,8 +59,9 @@ este proyecto hemos decidido implementar una versión en 3 capas.
 \todo[inline]{@Marlene: mencionales. Aparecen 4 a continuación, por qué?}
 \subsubsection*{Dominio}
 Es el corazón del modelo de negocio de la aplicación y encapsula la
-lógica y las reglas del negocio. Esta capa es fundamentalmente
-agnóstica respecto a la aplicación de tecnologías externas y se
+lógica y las reglas del negocio.
+
+Esta capa es fundamentalmente agnóstica respecto a la aplicación de tecnologías externas y se
 centra exclusivamente en cómo se comporta el negocio bajo diferentes condiciones y reglas.
 
 Contiene entidades, objetos de valor, y dominios de servicio que representan y operan sobre los
@@ -92,22 +93,24 @@ El Procesamiento de Lenguaje Natural o Natural Language Processing (NLP) es un c
 intersección de la informática, la inteligencia artificial y la lingüística.
 
 Se dedica al desarrollo de algoritmos y sistemas que permiten a las computadoras entender, interpretar y generar
-lenguaje humano de una manera útil y significativa. La historia del NLP comienza en la década de 1950, marcada
-por el trabajo pionero de Alan Turing y su famoso
+lenguaje humano de una manera útil y significativa.
+La historia del NLP comienza en la década de 1950, marcada por el trabajo pionero de Alan Turing y su famoso
 test de Turing, que planteaba la cuestión de si una máquina puede emular el lenguaje humano de manera convincente
 (Turing, 1950).
 
 En los años 60 y 70, el enfoque inicial en la traducción automática
 , como los esfuerzos del proyecto Georgetown, mostró tanto promesas como limitaciones significativas, lo que llevó a un
-reajuste en las expectativas y métodos del campo (Hutchins, 2003). Con la introducción de la inteligencia
-artificial (IA) en la década de 1980, surgieron métodos basados primero en reglas y luego en modelos
-estadísticos, culminando con el desarrollo de modelos de aprendizaje automático en la década de 1990 (Manning y Schütze
-, 1999).
+reajuste en las expectativas y métodos del campo (Hutchins, 2003).
+Con la introducción de la inteligencia artificial (IA) en la década de 1980, surgieron métodos basados primero en reglas
+y luego en modelos
+estadísticos, culminando con el desarrollo de modelos de aprendizaje automático en la década de 1990 (Manning y Schütze,
+1999).
 
 El verdadero cambio paradigmático llegó con el advenimiento de las redes neuronales y el aprendizaje profundo
-en la década de 2010. Este período vio la creación de modelos de lenguaje avanzados, como BERT y GPT
-, que han revolucionado la capacidad de las máquinas para procesar el lenguaje con un grado de sutileza y profundidad
-sin precedentes (Devlin et al., 2019; Brown et al., 2020).
+en la década de 2010.
+Este período vio la creación de modelos de lenguaje avanzados, como BERT y GPT, que han revolucionado la capacidad de
+las máquinas para procesar el lenguaje con un grado de sutileza y profundidad sin precedentes (Devlin et al., 2019;
+Brown et al., 2020).
 
 \subsection{Definición}
 El NLP es un campo que combina técnicas de la informática, la inteligencia artificial y la lingüística computacional con
@@ -125,23 +128,25 @@ la síntesis de habla, entre otros.
 \subsection{Introducción histórica}
 La historia de los LLMs comienza con los primeros modelos estadísticos de lenguaje en
 la década de 1980, que utilizaban métodos simples como los modelos de Markov y n-gramas para predecir la probabilidad
-de secuencias de palabras (Jelinek, 1997). Estos métodos, aunque efectivos para algunas tareas básicas,
-estaban limitados por su incapacidad para capturar contextos más largos
-y por su dependencia de grandes corpus de texto para entrenamiento.
+de secuencias de palabras (Jelinek, 1997).
+Estos métodos, aunque efectivos para algunas tareas básicas, estaban limitados por su incapacidad para capturar contextos
+más largos y por su dependencia de grandes corpus de texto para entrenamiento.
 
 En la década de 2000, con el advenimiento de modelos más sofisticados como los modelos ocultos de Markov
 y especialmente las redes neuronales, comenzó a vislumbrarse el
-potencial de los modelos de lenguaje más complejos. Sin embargo, no fue hasta la introducción de las redes neuronales
-recurrentes (RNN) y, más tarde, las redes neuronales de memoria a largo plazo (LSTM)
-que los investigadores pudieron abordar el problema del "desvanecimiento
-del gradiente" y mejorar significativamente la capacidad de los
+potencial de los modelos de lenguaje más complejos.
+Sin embargo, no fue hasta la introducción de las redes neuronales recurrentes (RNN) y, más tarde, las redes neuronales
+de memoria a largo plazo (LSTM)
+que los investigadores pudieron abordar el problema del ''desvanecimiento del gradiente''
+y mejorar significativamente la capacidad de los
 modelos para aprender dependencias a largo plazo en el texto (Hochreiter Schmidhuber, 1997).
 
 \subsubsection*{La revolución de los transformers}
 El verdadero cambio paradigmático llegó en 2017 con el desarrollo de la arquitectura
-Transformer por Vaswani et al. Esta arquitectura introdujo el mecanismo
-de atención, que permite a los modelos ponderar diferentes partes de la entrada de texto de manera dinámica,
-mejorando la capacidad de los modelos para manejar secuencias de texto largas y complejas (Vaswani et al., 2017).
+Transformer por Vaswani et al.
+Esta arquitectura introdujo el mecanismo de atención, que permite a los modelos ponderar diferentes partes de la entrada
+de texto de manera dinámica, mejorando la capacidad de los modelos para manejar secuencias de texto largas y complejas (
+Vaswani et al., 2017).
 
 \todo[inline]{@Marlene: Transformers términos en inglés van en itálicas}
 
@@ -172,13 +177,13 @@ para un anexo}
 ChatGPT es un avanzado modelo de lenguaje desarrollado por OpenAI,
 basado en la arquitectura GPT (Generative Pre-trained Transformer).
 
-Es uno de los modelos más reconocidos en la actualidad. Aunque es un modelo privado, OpenAI ofrece
-acceso a través de una API de pago que incluye una capa gratuita limitada.
+Es uno de los modelos más reconocidos en la actualidad.
+Aunque es un modelo privado, OpenAI ofrece acceso a través de una API de pago que incluye una capa gratuita limitada.
 
 ChatGPT ofrece varios modelos, cada uno con un esquema de precios que varía según
-su complejidad. Una de las principales ventajas de este servicio
-es que proporciona una solución integral "plug-and-play",
-es decir, no requiere instalación ni configuración adicional por parte del usuario.
+su complejidad.
+Una de las principales ventajas de este servicio es que proporciona una solución integral "plug-and-play", es decir, no
+requiere instalación ni configuración adicional por parte del usuario.
 
 A continuación un ejemplo de una llamada a esta API.
 

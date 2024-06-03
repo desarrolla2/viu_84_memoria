@@ -27,7 +27,6 @@
 \usepackage{fancyhdr}
 % Allow references in APA style
 \usepackage[style=apa, backend=biber]{biblatex}
-\bibliography{bibliography}
 
 % Allow insert notes
 \usepackage{todonotes}
@@ -48,9 +47,28 @@
     \fancyheadoffset{0pt}
 }
 
-% Set chatper title format
+% Define fonts
+\setmainfont{Montserrat}
+\newfontfamily\chapterfont{Oswald}
+\newfontfamily\sectionfont{Oswald}
+
+% Define colors
+\definecolor{color_orange}{HTML}{E65113}
+\definecolor{color_dark_grey_1}{HTML}{626262}
+\definecolor{color_dark_grey_2}{HTML}{717171}
+
+% chapter style format
 \titleformat{\chapter}[hang]
-{\normalfont\Huge\bfseries}{\thechapter.}{20pt}{\Huge}
+{\chapterfont\Huge\bfseries\color{color_orange}}
+{\thechapter}{1em}{}
+
+% section style format
+\titleformat{\section}[hang]
+{\sectionfont\Large\bfseries\color{color_dark_grey_1}}
+{\thesection}{1em}{}
+
+% subsection style format
+\titleformat{\subsection}{\sectionfont\large\bfseries\color{color_dark_grey_2}}{\thesubsection}{1em}{}
 
 \pagestyle{plain}
 
@@ -73,7 +91,9 @@
 %% Chapters
     \include{./chapter/chapter_1}
     \include{./chapter/chapter_2}
-%    \include{./chapter/chapter_3}
+    \include{./chapter/chapter_3}
+    \include{./chapter/chapter_4}
+    \include{./chapter/chapter_5}
 
 %% Anexos
 %    \appendix
