@@ -1,65 +1,59 @@
 \chapter{Marco teórico}\label{ch:chapter_2}
 
-\colorbox{color_highlight}
-{@TODO: @marlene: colocas definiciones en las secciones pero no las referencias de esas definiciones
-También debes relacionar cada seccion con tu trabajo Código limpio y arquitectura limpia pueden ir en una sola seccion
-Si colocas una figura, debes referenciarla en el texto y explicarla}
-
 
 \section{Código limpio}
 
 \subsection{Introducción histórica}
 El concepto de Código Limpio ha sido fundamental en la programación de software desde los primeros días del desarrollo
-de software, pero fue articulado y popularizado con gran efecto por Robert C. Martin en su libro~\cite{book_martin_2008}
+de software, pero fue articulado y popularizado con gran efecto por Robert C. Martin en su libro~
+\cite{book_clean_code_martin_2008}
 
 Este libro se convirtió en una guía esencial para muchos desarrolladores al enfatizar la importancia de escribir código
 que no solo funcione, sino que también sea fácil de entender, modificar y mantener.
 
 \subsection{Definición}
-Código limpio es aquel que es fácil de entender y fácil de modificar.
-Es elegante, eficiente y hace exactamente lo que se espera que haga.
-Según Robert C. Martin, el código limpio puede ser leído y mejorado por un
-desarrollador que no sea su autor original con un mínimo esfuerzo necesario.
+El código limpio es aquel que es fácil de entender y fácil de modificar y hace exactamente lo que se espera que haga.
+Según Robert C. Martin, el código limpio puede ser leído y mejorado por un desarrollador que no sea su autor original
+con un mínimo esfuerzo necesario.
 
-Se caracteriza por su simplicidad, la ausencia de duplicación, la expresión clara de la intención del desarrollador, y
+Se caracteriza por su simplicidad, la ausencia de duplicación, la expresión clara de la intención del desarrollador y
 la atención a los detalles en el nivel de código.
-Contiene los tests, no contiene errores y, lo más importante, revela claramente su diseño y propósito.
 
 
 \section{Arquitectura limpia}
 
 \subsection{Introducción histórica}
-En el ámbito del desarrollo de software, la estructuración eficiente de la arquitectura de un sistema
-es crucial para determinar su eficiencia, escalabilidad y mantenibilidad a largo plazo.
+En el ámbito del desarrollo de software, la arquitectura de un sistema es crucial para determinar su escalabilidad y
+mantenibilidad a largo plazo.
 
-Una de las metodologías que ha cobrado relevancia en este contexto es la Arquitectura Limpia,
-un enfoque sistemático para el diseño de software promovido por
-Robert C. Martin.
-En su libro Clean Architecture: A Craftsman\'
-s Guide to Software Structure and Design (Martin, 2017), Martin presenta un marco de trabajo que prioriza la separación
-de preocupaciones y la independencia de los diversos componentes del software.
+Una de las metodologías que ha cobrado relevancia en este contexto son las ``arquitecturas limpias'', un enfoque para el
+diseño de software promovido por Robert C. Martin en su libro Clean Architecture: A Craftsman`s Guide to Software
+Structure and Design~\cite{book_clean_code_martin_2017}
 
 \subsection{Definición}
-La arquitectura limpia es un estilo de diseño de software que
-organiza el sistema de manera que sea independiente de frameworks, UI, bases de datos y cualquier otra agencia externa.
+La arquitectura limpia es un estilo de diseño de software que organiza el sistema de manera que sea independiente de:
 
-\colorbox{color_highlight}{@TODO: Insertar figura}
-\colorbox{color_highlight}{@TODO: @marlene: hay que referenciar en el texto la figura. Te falta colocar la referencia}
+\begin{itemize}
+    \item frameworks
+    \item interfaces
+    \item bases de datos
+    \item apis
+\end{itemize}
 
-Representación de las comunicaciones entre capas en una arquitectura limpia.
-
-La esencia de esta arquitectura radica en su diagrama concéntrico de capas, donde cada capa tiene responsabilidades
-claramente definidas y depende solo de las capas más internas.
-Esto se logra mediante el principio de Inversión de dependencias, lo que significa que los detalles dependen de las
+La esencia de esta arquitectura radica en su diagrama de capas, donde cada capa tiene responsabilidades claramente
+definidas y depende solo de las capas más internas.
+Esto se logra mediante el principio de inversión de dependencias, lo que significa que los detalles dependen de las
 abstracciones y no al contrario.
 
-Aunque existen diferentes implementaciones de una arquitectura limpia, cada una con sus características intrínsecas, en
+Aunque existen diferentes implementaciones de ``arquitectura limpia'', cada una con sus características intrínsecas, en
 este proyecto hemos decidido implementar una versión en 3 capas.
+
+Representación de las comunicaciones entre capas en una arquitectura limpia.
+\colorbox{color_highlight}{@TODO: Insertar figura}
 
 \colorbox{color_highlight}{@TODO: @marlene: mencionales. Aparecen 4 a continuación, por qué?}
 \subsubsection*{Dominio}
-Es el corazón del modelo de negocio de la aplicación y encapsula la
-lógica y las reglas del negocio.
+Es el corazón del modelo de negocio de la aplicación y encapsula la lógica y las reglas del negocio.
 
 Esta capa es fundamentalmente agnóstica respecto a la aplicación de tecnologías externas y se
 centra exclusivamente en cómo se comporta el negocio bajo diferentes condiciones y reglas.
