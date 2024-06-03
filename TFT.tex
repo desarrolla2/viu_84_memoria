@@ -26,9 +26,6 @@
 % Allow advanded tools for headers and footers
 \usepackage{fancyhdr}
 
-% Allow insert notes
-\usepackage{todonotes}
-
 % Set margins
 \usepackage[top=3.5cm,bottom=3.5cm,left=2.75cm,right=2.75cm,]{geometry}
 \usepackage[T1]{fontenc}
@@ -41,7 +38,7 @@
     %\fancyfoot[R]{{ Sistema de extracción automática de información de documentos | \scriptsize\thepage\ de
     %\pageref{LastPage}}}
     \fancyfoot[R]
-    {{\scriptsize Sistema de extracción automática de información de documentos | \thepage\ de \pageref{LastPage}}}
+    {{\scriptsize Sistema de extracción automática de información de documentos | \thepage\ de~\pageref{LastPage}}}
     \fancyhead[L]
     {\tikz[remember picture,overlay]\node[opacity=0.4] at (-3mm, 10mm){\includegraphics[scale=0.18]{./images/header}};}
     \fancyheadoffset{0pt}
@@ -65,6 +62,7 @@
 \definecolor{color_orange}{HTML}{E65113}
 \definecolor{color_dark_grey_1}{HTML}{626262}
 \definecolor{color_dark_grey_2}{HTML}{717171}
+\definecolor{color_highlight}{HTML}{FFFF00}
 \color{color_dark_grey_2}
 
 % chapter style format
@@ -78,7 +76,20 @@
 {\thesection}{1em}{}
 
 % subsection style format
-\titleformat{\subsection}{\sectionfont\large\bfseries\color{color_dark_grey_2}}{\thesubsection}{1em}{}
+\titleformat{\subsection}[hang]
+{\sectionfont\large\bfseries\color{color_dark_grey_2}}{\thesubsection}{1em}{}
+
+% appendix style format
+\titleformat{\appendix}[hang]
+{\appendixfont\Huge\bfseries\color{color_orange}}
+{\theappendix}{1em}{}
+
+% prevent word breaking
+\usepackage[none]{hyphenat}
+\usepackage{microtype}
+
+\usepackage{caption}
+\captionsetup{belowskip=20pt,aboveskip=20pt}
 
 \pagestyle{plain}
 
@@ -99,6 +110,9 @@
     \input{./dedication/dedication}
 
 %% Chapters
+
+
+    \part{Trabajo de fin de grado}\label{part:tfg}
     \include{./chapter/chapter_1}
     \include{./chapter/chapter_2}
     \include{./chapter/chapter_3}
@@ -106,9 +120,12 @@
     \include{./chapter/chapter_5}
 
 %% Anexos
-%    \appendix
-%    \include{./appendix/appendix_1.tex}
-%    \include{./appendix/appendix_2.tex}
+
+
+    \part{Apéndices}\label{part:appendix}
+    \appendix
+    \include{./appendix/appendix_1}
+    \include{./appendix/appendix_2}
 
     \bibliographystyle{plain}
     \bibliography{TFT}
