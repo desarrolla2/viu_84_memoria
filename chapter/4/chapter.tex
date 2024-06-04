@@ -1,67 +1,112 @@
 \chapter{Desarrollo}\label{ch:chapter_4}
 
-\begin{comment}
-    En este apartado se describe detalladamente el proceso de implementación y desarrollo de tu proyecto. En esta
-    sección, se proporciona información sobre cómo se han llevado a cabo las etapas de diseño, programación, pruebas y
-    evaluación de tu solución. A continuación, se presentan algunos elementos típicos que se incluyen en el apartado de
-    desarrollo:
 
-    Diseño del sistema: Describe el diseño de tu sistema o solución informática. Explica la arquitectura general, los
-    componentes principales y las interacciones entre ellos. Puedes utilizar diagramas, esquemas o modelos para ilustrar
-    visualmente el diseño del sistema.
+\section{Diseño del sistema}
 
-    Tecnologías utilizadas: Indica las tecnologías específicas que has utilizado en tu desarrollo, como lenguajes de
-    programación, frameworks, librerías, sistemas operativos, bases de datos, herramientas de desarrollo, entre otros.
-    Describe cómo se han aplicado estas tecnologías en tu proyecto.
+En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
+PDF y genera objetos que contienen la información más importante de los mismos.
+En la figura~\ref{fig:chapter_1.specific} vimos que se va a incluir también el desarollo de dos interfaces, una web
+y una de línea de comandos.
 
-    Desarrollo de software: Explica el proceso de desarrollo de software que has seguido. Puedes mencionar cómo se ha
-    realizado la planificación, el seguimiento y la gestión del proyecto. Detalla las etapas de análisis, diseño,
-    implementación y pruebas del software.
+En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el \textit{Reader}
+y el \textit{Generator}
 
-    Implementación y programación: Describe cómo has implementado tu solución informática.. Proporciona ejemplos de
-    código relevante para ilustrar las características principales de tu implementación.
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.overview}
+        \caption{Esquema de los componentes principales}
+        \label{fig:chapter_4.overview}
+    \end{center}
+\end{figure}
 
-    Pruebas y evaluación: Detalla las pruebas realizadas para verificar el correcto funcionamiento de tu solución.
-    Explica los casos de prueba utilizados, los resultados obtenidos y cómo se han abordado los problemas o errores
-    identificados. Si has realizado pruebas de rendimiento, seguridad u otros aspectos, también inclúyelos en esta
-    sección.
+\subsection*{Componente \textit{Generator}}
 
-    Iteraciones y mejoras: Si has realizado iteraciones o mejoras en el proceso de desarrollo, menciona los cambios
-    realizados y las razones detrás de ellos.
+Este componente sirve como el motor inicial en el proceso, encargado de convertir documentos de cualquier formato a
+texto plano.
 
-    Consideraciones técnicas: Si hay consideraciones técnicas importantes relacionadas con tu desarrollo, como
-    requisitos de hardware o restricciones de recursos, menciónalas en esta sección. Explica cómo has abordado estos
-    desafíos técnicos y cómo han influido en el desarrollo de tu proyecto.
+Se compone de tres conjuntos de elementos y un orquestador al que llamaremos \textit{Engine} responsable de la
+coordinación de las operaciones.
 
-\end{comment}
+Diagrama UML del componente generator.
 
+\subsubsection*{Preprocesadores}
+Los preprocesadores preparan el documento original para facilitar su conversión a texto.
+En esta implementación no se ha desarrollado ningún preprocesador.
 
-\section{Descripción del proyecto}
-
-Hemos creado una solución tecnológica con dos interfaces: una web y una de línea de comandos, que recibe documentos
-en formato PDF y extrae de ellos la información que contienen.
+Comunicación del Engine con los preprocesadores definidos.
 
 
-\section{Alcance}
+\subsubsection*{Procesadores}
+Actúan como el núcleo del Generator, donde se realiza la conversión efectiva del documento a texto. Funcionan mediante
+un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento en cuestión,
+seleccionando el más adecuado para llevar a cabo la tarea.
 
-El software que hemos desarrollado hasta ahora sirve como una base conceptual y prototipo inicial.
-Se ha desarrollado una herramienta que es capaz de procesar datos de contratos de los siguientes tipos:
+Este enfoque modular y competitivo asegura que el procesamiento del texto sea no solo eficiente, sino también
+extremadamente flexible, adaptándose a las variaciones en la naturaleza de los documentos procesados.
 
-\begin{enumerate}
-    \item Contrato de arrendamiento de vivienda entre particulares
-    \item Contrato de compraventa de vehículo entre particulares
-\end{enumerate}
+
+Comunicación del Engine con los procesadores definidos.
+
+En la actual implementación, hemos desarrollado un único procesador especializado en transformar documentos PDF a
+texto. Este procesador utiliza la utilidad de línea de comandos `pdftotext` para llevar a cabo la conversión (Glyph \&
+Cog, 2023).
+
+\subsubsection*{Postprocesadores}
+Estos componentes perfeccionan el texto generado, eliminando errores como caracteres no UTF-8 y espacios en blanco
+innecesarios, lo que mejora significativamente la calidad del texto resultante. En esta implementación, se han
+desarrollado varios post-procesadores:
+
+\begin{itemize}
+    \item
+    Word Limit PostProcessor: Se detectó que los elementos de interés, como nombres, documentos de identidad y fechas de
+    contratos, típicamente aparecen en las primeras páginas. Este procesador limita el análisis a las primeras N
+    palabras del documento.
+    \item UTF8 PostProcessor: Implementado tras detectar caracteres no UTF-8 en algunos documentos, este post-procesador
+    elimina dichos caracteres.
+    \item Character Replace PostProcessor: Desarrollado para eliminar caracteres específicos que complicaba las pruebas.
+\end{itemize}
+
+\subsubsection*{Engine}
+Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
+aplicación. Coordina el flujo entre los pre-procesadores, procesadores y post-procesadores para asegurar que el
+documento sea procesado de manera correcta.
+
+\subsection*{Reader}
+El componente Reader juega un papel crucial en el proceso de interpretación y procesamiento del texto plano obtenido a
+partir de la salida del componente Generator anterior..
+
+Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo un mecanismo competitivo
+similar al del componente Generator. En este sistema, los procesadores compiten entre sí para determinar cuál es el más
+adecuado para analizar y extraer la información estructurada necesaria del texto.
+
+Diagrama UML del componente Reader.
+
+\subsubsection*{Procesadores}
+Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo del documento
+específico..
+
+Una vez seleccionado, el procesador elegido procede a ejecutar una serie de tareas que incluyen la identificación y
+extracción de entidades clave. En esta implementación, se han desarrollado los siguientes procesadores:
+
+\begin{itemize}
+    \item Residential Lease Processor: Evalúa si el documento se trata de un contrato de alquiler de vivienda entre
+    particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
+    arrendadores, los arrendatarios y la fecha del contrato.
+    \item Vehicle Sale And Purchase Processor: Evalúa si el documento se trata de un contrato de compraventa de
+    vehículos
+    entre particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
+    compradores y vendedores y la fecha de la transacción.
+\end{itemize}
+
+\subsubsection*{Engine}
+Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
+aplicación, en este caso únicamente los procesadores.
 
 
 \section{Tecnologías utilizadas}
-El proyecto hace uso de una variedad de tecnologías modernas para asegurar un desarrollo eficiente,
-una implementación robusta y una experiencia de usuario óptima.
-\colorbox{color_highlight}{@TODO: @marlene:} cómo lo evaluaste?
 
-A continuación, se describen las principales tecnologías utilizadas en
-el proyecto, categorizadas en distintas áreas según su propósito y aplicación.
-
-\colorbox{color_highlight}{@TODO: @marlene:} colocar referencias
+A continuación, se describen las principales tecnologías utilizadas en el proyecto, categorizadas en distintas áreas
+según su propósito y aplicación.
 
 \subsection*{Backend}
 
@@ -240,137 +285,6 @@ mandar el prompt que usaste?
 
 
 \section{Arquitectura del sistema}
-Se pretende diseñar un sistema basado en dos componentes cada uno de los cuales es fácilmente extensible, permitiéndole
-añadir funcionalidades específicas para cada caso de uso.
-
-Hemos diseñado el sistema con dos componentes principales, el Generator y el Reader.
-
-\colorbox{color_highlight}{@TODO: @marlene:} recuerda referenciar y explicar las figuras
-
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxfvsrqaa0z4oog6ioupbhm9di1ks0uugteour8yll1z9polcxzput4la1osaqqlp61xyowlcejwkesovongxvd1rop2gxft}
-    \caption{}
-    \label{fig:ad_4nxfvsrqaa0z4oog6ioupbhm9di1ks0uugteour8yll1z9polcxzput4la1osaqqlp61xyowlcejwkesovongxvd1rop2gxft}
-\end{figure}
-
-Esquema de la arquitectura del sistema con sus principales componentes.
-
-Esta estructura no solo promueve la eficiencia y adaptabilidad, sino que también asegura la calidad y mantenibilidad del
-código, permitiendo que el sistema se ajuste y evolucione según las necesidades futuras.
-
-\subsection*{Generator}
-Este componente sirve como el motor inicial en el proceso, encargado de convertir documentos de cualquier formato a
-texto plano. Se compone de tres elementos específicos y un orquestador que coordina la secuencia de operaciones.
-
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxcpbcugaqoykyq7hbpnr9p7_uswyuzipkcqvfkgc1fhoclp9cwrzu6zkoszpxi3zqsthvvftxotwhksqawgubuwqffg5gxn}
-    \caption{}
-    \label{fig:ad_4nxcpbcugaqoykyq7hbpnr9p7_uswyuzipkcqvfkgc1fhoclp9cwrzu6zkoszpxi3zqsthvvftxotwhksqawgubuwqffg5gxn}
-\end{figure}
-
-Diagrama UML del componente generator.
-
-\subsubsection*{Preprocesadores}
-Estos componentes ajustan el documento original para facilitar su análisis. Realizan modificaciones como el ajuste de
-contraste para optimizar la efectividad del reconocimiento óptico de caracteres (OCR), mejorando la legibilidad del
-texto.
-
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxccemzz1bxsroksvslihdkre9_b2-yqr2hu4hmvwfblvicw_lzbshudm5upl70uk6mxjhlpzvaa8b79oba_npzrpimoggwd}
-    \caption{}
-    \label{fig:ad_4nxccemzz1bxsroksvslihdkre9_b2-yqr2hu4hmvwfblvicw_lzbshudm5upl70uk6mxjhlpzvaa8b79oba_npzrpimoggwd}
-\end{figure}
-
-Comunicación del Engine con los pre procesadores definidos.
-
-En esta implementación no se ha desarrollado ningún Pre-procesador.
-
-\subsubsection*{Procesadores}
-Actúan como el núcleo del Generator, donde se realiza la conversión efectiva del documento a texto. Funcionan mediante
-un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento en cuestión,
-seleccionando el más adecuado para llevar a cabo la tarea.
-
-Este enfoque modular y competitivo asegura que el procesamiento del texto sea no solo eficiente, sino también
-extremadamente flexible, adaptándose a las variaciones en la naturaleza de los documentos procesados.
-
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxflatsoejeb4h5hddo8a4otwjmcaznrikw1gvyzmtafloyas7kuglrhwlolub-qvwzl1ckw6ugltisracet07luw4uskwmx}
-    \caption{}
-    \label{fig:ad_4nxflatsoejeb4h5hddo8a4otwjmcaznrikw1gvyzmtafloyas7kuglrhwlolub-qvwzl1ckw6ugltisracet07luw4uskwmx}
-\end{figure}
-
-Comunicación del Engine con los procesadores definidos.
-
-En la actual implementación, hemos desarrollado un único procesador especializado en transformar documentos PDF a
-texto. Este procesador utiliza la utilidad de línea de comandos `pdftotext` para llevar a cabo la conversión (Glyph \&
-Cog, 2023).
-
-\subsubsection*{Postprocesadores}
-Estos componentes perfeccionan el texto generado, eliminando errores como caracteres no UTF-8 y espacios en blanco
-innecesarios, lo que mejora significativamente la calidad del texto resultante. En esta implementación, se han
-desarrollado varios post-procesadores:
-
-\begin{itemize}
-    \item
-    Word Limit PostProcessor: Se detectó que los elementos de interés, como nombres, documentos de identidad y fechas de
-    contratos, típicamente aparecen en las primeras páginas. Este procesador limita el análisis a las primeras N
-    palabras del documento.
-    \item UTF8 PostProcessor: Implementado tras detectar caracteres no UTF-8 en algunos documentos, este post-procesador
-    elimina dichos caracteres.
-    \item Character Replace PostProcessor: Desarrollado para eliminar caracteres específicos que complicaba las pruebas.
-\end{itemize}
-
-\subsubsection*{Engine}
-Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
-aplicación. Coordina el flujo entre los pre-procesadores, procesadores y post-procesadores para asegurar que el
-documento sea procesado de manera correcta.
-
-\subsection*{Reader}
-El componente Reader juega un papel crucial en el proceso de interpretación y procesamiento del texto plano obtenido a
-partir de la salida del componente Generator anterior..
-
-Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo un mecanismo competitivo
-similar al del componente Generator. En este sistema, los procesadores compiten entre sí para determinar cuál es el más
-adecuado para analizar y extraer la información estructurada necesaria del texto.
-
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxcg3r2qv9xc3mw0lynfkpfwfmxpbrpvfhfpr7-3idtd0eopjq9nsbhnvqcgq5hz9hwcy4jam9vqvffwys6jvo_a20paqxml}
-    \caption{}
-    \label{fig:ad_4nxcg3r2qv9xc3mw0lynfkpfwfmxpbrpvfhfpr7-3idtd0eopjq9nsbhnvqcgq5hz9hwcy4jam9vqvffwys6jvo_a20paqxml}
-\end{figure}
-
-Diagrama UML del componente Reader.
-
-\subsubsection*{Procesadores}
-Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo del documento
-específico..
-
-Una vez seleccionado, el procesador elegido procede a ejecutar una serie de tareas que incluyen la identificación y
-extracción de entidades clave. En esta implementación, se han desarrollado los siguientes procesadores:
-
-\begin{itemize}
-    \item Residential Lease Processor: Evalúa si el documento se trata de un contrato de alquiler de vivienda entre
-    particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
-    arrendadores, los arrendatarios y la fecha del contrato.
-    \item Vehicle Sale And Purchase Processor: Evalúa si el documento se trata de un contrato de compraventa de
-    vehículos
-    entre particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
-    compradores y vendedores y la fecha de la transacción.
-\end{itemize}
-
-\subsubsection*{Engine}
-Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
-aplicación, en este caso únicamente los procesadores.
 
 \section*{Pruebas}
 Las pruebas en este proyecto son fundamentales para asegurar que la tecnología funciona conforme a las expectativas y
@@ -406,13 +320,6 @@ Dado que la entrada del sistema acepta documentos en formato PDF, se desarrolló
 documento Markdown en PDF. Este script utiliza plantillas LaTeX para introducir variabilidad en el formato de los
 documentos, asegurando una mayor robustez en las pruebas del sistema.
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxecxswzqiymihljxkmhkqchczjiqhus6eig0e_yq0a6yb2hktidggwooz_rykz6geygyfckw5z2v-cib6abuod5vrhxfggw}
-    \caption{}
-    \label{fig:ad_4nxecxswzqiymihljxkmhkqchczjiqhus6eig0e_yq0a6yb2hktidggwooz_rykz6geygyfckw5z2v-cib6abuod5vrhxfggw}
-\end{figure}
 
 Este enfoque en la creación del conjunto de datos de prueba garantiza que el sistema pueda ser evaluado de manera
 exhaustiva y precisa, cubriendo diversos escenarios y tipos de documentos relevantes para la tecnología desarrollada.
@@ -431,13 +338,6 @@ métodos. Estas pruebas son cruciales para asegurar que cada parte del código f
 
 Se utilizan frameworks de pruebas, como PHPUnit, para automatizar estas pruebas y hacerlas repetibles y confiables.
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxf9wl5tpdrrtr3bqpnmamma-tjdxo4hakx3gbtkr7xbxwuphltuchx5wkg5qz1sviw7hdopfifg-etui-spj9crpegapnd0}
-    \caption{}
-    \label{fig:ad_4nxf9wl5tpdrrtr3bqpnmamma-tjdxo4hakx3gbtkr7xbxwuphltuchx5wkg5qz1sviw7hdopfifg-etui-spj9crpegapnd0}
-\end{figure}
 
 Pruebas unitarias ejecutadas desde un entorno de desarrollo integrado
 
@@ -445,13 +345,6 @@ Pruebas unitarias ejecutadas desde un entorno de desarrollo integrado
 Las pruebas funcionales evalúan el sistema desde el punto de vista del usuario final, verificando que las
 funcionalidades del software se comportan como se espera cuando se integran varios componentes.
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxdjm3roncapqpcqzlpzzayuchtishsa3qakfjkye76hnjfezwpd02lbc5ipmjkrhfaqwtwmte-fc_rb67mnqawk_ylrrbdp}
-    \caption{}
-    \label{fig:ad_4nxdjm3roncapqpcqzlpzzayuchtishsa3qakfjkye76hnjfezwpd02lbc5ipmjkrhfaqwtwmte-fc_rb67mnqawk_ylrrbdp}
-\end{figure}
 
 Pruebas funcionales ejecutadas desde la línea de comandos
 
@@ -463,13 +356,6 @@ automática de los test en un servidor de integración continua, cada vez que se
 En este proyecto, hemos implementado la integración continua utilizando GitHub Actions, un servicio de automatización
 que permite crear flujos de trabajo personalizados para compilar, probar y desplegar código directamente desde GitHub.
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxdvwcz-hxwpamvogmkpwsiwmslmhgbyffk5opiurddtpas2hrsdbgqev6iyg4zlpo67ljzpo0_bovbcxojsomq7dt3vxdvv}
-    \caption{}
-    \label{fig:ad_4nxdvwcz-hxwpamvogmkpwsiwmslmhgbyffk5opiurddtpas2hrsdbgqev6iyg4zlpo67ljzpo0_bovbcxojsomq7dt3vxdvv}
-\end{figure}
 
 Pruebas de Integración continua realizada en GitHub actions.
 
@@ -482,13 +368,6 @@ correcto funcionamiento de la tecnología.
 La interfaz de línea de comandos es una herramienta para desarrolladores y administradores del sistema. Permite ejecutar
 comandos y scripts de manera directa, facilitando la automatización de tareas y la integración con otros sistemas.
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxfdnwjsbh2gjzl1fmziayn8lryh5kzvpjg_3lhrv86rpzq87figcfwvjn3ilyfhdd3auhqjpie927ftvvbjujd4ezcsa-qi}
-    \caption{}
-    \label{fig:ad_4nxfdnwjsbh2gjzl1fmziayn8lryh5kzvpjg_3lhrv86rpzq87figcfwvjn3ilyfhdd3auhqjpie927ftvvbjujd4ezcsa-qi}
-\end{figure}
 
 Ejecución de la aplicación a través de la línea de comandos
 
@@ -510,13 +389,6 @@ Para este proyecto hemos desarrollado una interfaz con las siguientes caracterí
     utilizar y retroalimentación inmediata a las acciones del usuario.
 \end{itemize}
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxc3kwvjbdgjf8jxg_-9pf51kwcykrlcqlvr_28ejlb2jbbztkj9huiri-dti7x79w8xg3u_md1fyt0-q_gnmefljxbffub8}
-    \caption{}
-    \label{fig:ad_4nxc3kwvjbdgjf8jxg_-9pf51kwcykrlcqlvr_28ejlb2jbbztkj9huiri-dti7x79w8xg3u_md1fyt0-q_gnmefljxbffub8}
-\end{figure}
 
 Ejecución de la aplicación a través de la interfaz web.
 
@@ -549,14 +421,6 @@ Además de los logs que almacena symfony por defecto, se han configurado 3 canal
 
 Un canal es la forma en la que monolog, agrupa un conjunto de información para poderla filtrar y procesar adecuadamente.
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxe5wisb55id7sbqcwbvoijqjbf3civblmuqf2gzkgnf2kauncps-gmu7iae0ck9ftwme-orgudhewur7els5nwraevj38i0}
-    \caption{}
-    \label{fig:ad_4nxe5wisb55id7sbqcwbvoijqjbf3civblmuqf2gzkgnf2kauncps-gmu7iae0ck9ftwme-orgudhewur7els5nwraevj38i0}
-\end{figure}
-
 Canal además se registra en dos ficheros diferentes
 
 \begin{itemize}
@@ -578,13 +442,6 @@ Un sistema compuesto por Elasticsearch, Logstash y Kibana (ELK) es una solución
 permite una monitorización más avanzada de los mismos. Está indicado en entornos de producción, donde la monitorización
 de logs sea una tarea importante..
 
-\begin{figure}
-    \centering
-    \includegraphics
-    {./chapter/4/images/ad_4nxfpsnvodkc7h22x01w50v3bkprgygytiefngbdo_5-klldgxdain9x4rosk0987vpy0mkcu0gyf_art6d6y0vaw5ux1zclk}
-    \caption{}
-    \label{fig:ad_4nxfpsnvodkc7h22x01w50v3bkprgygytiefngbdo_5-klldgxdain9x4rosk0987vpy0mkcu0gyf_art6d6y0vaw5ux1zclk}
-\end{figure}
 
 Monitorización de logs a través de un sistema ELK
 

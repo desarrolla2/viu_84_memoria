@@ -1,23 +1,43 @@
 \chapter{Metodología}\label{ch:chapter_3}
 
-\begin{comment}
-    Describe de manera clara el método/metodología empleado para cumplir los objetivos. Los métodos, procedimientos,
-    materiales y equipos utilizados deben describirse con suficiente precisión y detalle como para que el trabajo sea
-    reproducible por otros profesionales del área. Deben mencionarse las razones por las cuales fue seleccionada la
-    metodología empleada y las limitaciones en la aplicación de la metodología en caso de existir.
 
-    Puede incluir métodos de desarrollo de software, técnicas de análisis de datos, algoritmos, metodologías ágiles,
-    diseño de experimentos, entre otros. Describe cómo utilizarás estos métodos para abordar tu problema de
-    investigación o alcanzar tus objetivos.
-\end{comment}
+\section{Programación extrema}
 
-\colorbox{color_highlight}{@TODO: @marlene:}  debe haber un capitulo explicando la metodología
+La Programación Extrema o \textit{extreme programming} (XP) es una metodología ágil de desarrollo de software que se
+enfoca en mejorar la calidad del software y la capacidad de respuesta a las necesidades cambiantes del cliente.
+Introducida por Kent Beck en el libro \textit{Extreme Programming Explained: Embrace Change}~\cite{book_beck_1999},
+XP promueve la colaboración intensa entre los desarrolladores y los clientes, ciclos de
+desarrollo cortos y frecuentes, y la entrega continua de pequeñas mejoras.
 
-Nuestro proyecto se ha desarrollado utilizando la metodología Extreme
-Programming (XP), una metodología ágil que enfatiza la adaptabilidad y la colaboración del equipo (Beck, 2000).
+Una de las principales ventajas de XP es su capacidad para adaptarse rápidamente a los cambios en los requisitos del
+cliente, lo que facilita que el producto final satisfaga las necesidades del negocio.
 
-Hemos adoptado prácticas como la integración continua y el desarrollo orientado a pruebas para mejorar la
-calidad del código y la respuesta a los cambios (Fowler \& Foemmel, 2006).
 
-Hemos gestionado el flujo de trabajo utilizando un tablero Kanban en GitHub Projects, lo que ha permitido un seguimiento
-visual y eficiente del progreso (Anderson, 2010).
+\section{Desarrollo dirigido por pruebas}
+
+El desarrollo dirigido por pruebas o \textit{test driven development} (TDD) es una práctica de desarrollo de software.
+Este enfoque fue popularizado por Kent Beck, uno de los pioneros de las metodologías ágiles, en su libro
+\textit{Test Driven Development: By Example}~\cite{book_beck_2003}.
+TDD se basa en ciclos cortos de desarrollo donde se escribe una prueba, se implementa el código necesario para pasar la
+prueba y luego se refactoriza el código para mejorar su estructura sin cambiar su comportamiento.
+
+
+\section{Kanban}
+Es un método de gestión de proyectos y flujo de trabajo que se originó en la industria manufacturera japonesa,
+específicamente en Toyota, como una forma de mejorar la eficiencia de la producción~\cite{book_anderson_2010}.
+El término significa ``tarjeta visual` en japonés, y el método se basa en el uso de tarjetas visuales para
+representar tareas en un tablero, permitiendo a los equipos ver el estado del trabajo en progreso de un
+vistazo.
+
+Kanban promueve la mejora continua, la flexibilidad y la eficiencia, ayudando a los equipos a gestionar el flujo de
+trabajo y a identificar cuellos de botella rápidamente.
+
+En la figura~\ref{fig:chapter_3.kanban} aparece el tablero kanban utilizado en el desarrollo de este proyecto.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/3/images/chapter_3.kanban}
+        \caption{Captura de pantalla del tablero kanban del proyecto}
+        \label{fig:chapter_3.kanban}
+    \end{center}
+\end{figure}

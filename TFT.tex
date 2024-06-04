@@ -1,53 +1,52 @@
 \documentclass[11pt,a4paper]{report}
 
-\title{Sistema de extracción automática de información de documentos}
+\title{Sistema de extracción de información de documentos}
 \author{Daniel González Cerviño}
 \date{\today}
 
-% Configure languaje and codification
+% Configure language and codification
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
 \selectlanguage{spanish}
 
-% Image manipulation
-\usepackage{graphicx}
-\usepackage{tikz}
-% Allow title personalization
-\usepackage{titlesec}
-% Allow use TrueType and Open Type fonts
+% Set margins
+\usepackage[top=3.5cm,bottom=3.5cm,left=2.75cm,right=2.75cm]{geometry}
+
+% Fonts
 \usepackage{fontspec}
 \usepackage{lmodern}
-% Allow use font colors
-\usepackage{xcolor}
-% Allow tables with 100% width
-\usepackage{tabularx}
-% Allow reference last page of document
-\usepackage{lastpage}
-% Allow advanded tools for headers and footers
-\usepackage{fancyhdr}
-
-% Set margins
-\usepackage[top=3.5cm,bottom=3.5cm,left=2.75cm,right=2.75cm,]{geometry}
-\usepackage[T1]{fontenc}
-
-% Set headers and footers
-\fancypagestyle{plain}{
-    \renewcommand{\headrulewidth}{0pt}
-    \fancyhead{}
-    \fancyfoot{}
-    %\fancyfoot[R]{{ Sistema de extracción automática de información de documentos | \scriptsize\thepage\ de
-    %\pageref{LastPage}}}
-    \fancyfoot[R]
-    {{\scriptsize Sistema de extracción automática de información de documentos | \thepage\ de~\pageref{LastPage}}}
-    \fancyhead[L]
-    {\tikz[remember picture,overlay]\node[opacity=0.4] at (-3mm, 10mm){\includegraphics[scale=0.18]{./images/header}};}
-    \fancyheadoffset{0pt}
-}
-
-% Define fonts
 \setmainfont{Montserrat}
 \newfontfamily\chapterfont{Oswald}
 \newfontfamily\sectionfont{Oswald}
+
+% Font colors
+\usepackage{xcolor}
+\definecolor{color_orange}{HTML}{E65113}
+\definecolor{color_dark_grey_1}{HTML}{626262}
+\definecolor{color_dark_grey_2}{HTML}{717171}
+\definecolor{color_highlight}{HTML}{FFFF00}
+\color{color_dark_grey_2}
+
+% Chapter style format
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+{\chapterfont\Huge\bfseries\color{color_orange}}
+{\thechapter}{1em}{}
+
+% Section style format
+\titleformat{\section}[hang]
+{\sectionfont\Large\bfseries\color{color_dark_grey_1}}
+{\thesection}{1em}{}
+
+% Subsection style format
+\titleformat{\subsection}[hang]
+{\sectionfont\large\bfseries\color{color_dark_grey_2}}{\thesubsection}{1em}{}
+
+% Appendix style format
+\titleformat{\appendix}[hang]
+{\appendixfont\Huge\bfseries\color{color_orange}}
+{\theappendix}{1em}{}
 
 % Set interline spacing
 \usepackage{setspace}
@@ -57,69 +56,65 @@
 \usepackage{parskip}
 \setlength{\parskip}{1em}
 
-% Define colors
-\usepackage{color}
-\definecolor{color_orange}{HTML}{E65113}
-\definecolor{color_dark_grey_1}{HTML}{626262}
-\definecolor{color_dark_grey_2}{HTML}{717171}
-\definecolor{color_highlight}{HTML}{FFFF00}
-\color{color_dark_grey_2}
-
-% chapter style format
-\titleformat{\chapter}[hang]
-{\chapterfont\Huge\bfseries\color{color_orange}}
-{\thechapter}{1em}{}
-
-% section style format
-\titleformat{\section}[hang]
-{\sectionfont\Large\bfseries\color{color_dark_grey_1}}
-{\thesection}{1em}{}
-
-% subsection style format
-\titleformat{\subsection}[hang]
-{\sectionfont\large\bfseries\color{color_dark_grey_2}}{\thesubsection}{1em}{}
-
-% appendix style format
-\titleformat{\appendix}[hang]
-{\appendixfont\Huge\bfseries\color{color_orange}}
-{\theappendix}{1em}{}
-
-% prevent word breaking
+% Prevent word breaking
 \usepackage[none]{hyphenat}
 \usepackage{microtype}
 
+% Image manipulation
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Allow tables with 100% width
+\usepackage{tabularx}
+
+% Set headers and footers
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\fancypagestyle{plain}{
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead{}
+    \fancyfoot{}
+    \fancyfoot[R]{{\scriptsize \thepage\ de~\pageref{LastPage}}}
+    \fancyfoot[L]{Sistema de extracción de información de documentos}
+    \fancyhead[L]
+    {\tikz[remember picture,overlay]\node[opacity=0.4] at (-3mm, 10mm){\includegraphics[scale=0.18]{./images/header}};}
+    \fancyheadoffset{0pt}
+}
+
+% Configure captions
 \usepackage{caption}
 \captionsetup{belowskip=20pt,aboveskip=20pt}
 
-% list configuration
+% List configuration
 \usepackage{enumitem}
 \setlist[enumerate,1]{left=20pt, noitemsep}
 \setlist[itemize,1]{left=20pt, noitemsep}
 
-% allow comments
+% Allow comments
 \usepackage{comment}
+
 \pagestyle{plain}
 
 \begin{document}
 
-% cover
-    \input{./cover/cover}
+    % Cover
+    \include{./cover/cover}
     \include{./cover/table}
 
+    % Table of contents
     \tableofcontents
     \addcontentsline{toc}{chapter}{\listfigurename}
     \addcontentsline{toc}{chapter}{\listtablename}
     \listoffigures
-% Abstract
-    \input{./abstract/abstract}
+    \listoftables
 
-% Dedication
-    \input{./dedication/dedication}
+    % Abstract
+    %\input{./abstract/abstract}
 
-%% Chapters
+    % Dedication
+    %\input{./dedication/dedication}
 
-
-    \part{Trabajo de fin de grado}\label{part:tfg}
+    %% Chapters
     \include{chapter/1/chapter}
     \include{chapter/2/chapter}
     \include{chapter/3/chapter}
@@ -127,15 +122,13 @@
     \include{chapter/5/chapter}
     \include{chapter/6/chapter}
 
-%% Anexos
 
-
-    \part{Apéndices}\label{part:appendix}
+    %% Appendix
     \appendix
     \include{./appendix/appendix_1}
-    \include{./appendix/appendix_2}
+    %\include{./appendix/appendix_2}
 
-    \bibliographystyle{plain}
+    \bibliographystyle{unsrt}
     \bibliography{TFT}
 
 \end{document}
