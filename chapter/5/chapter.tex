@@ -1,52 +1,117 @@
-\chapter{Conclusiones}\label{ch:chapter_5}
+\chapter{Resultados}\label{ch:chapter_4}
 
 
-Este apartado resume los hallazgos, los logros y las implicaciones de tu trabajo.
-A continuación, se presentan algunos elementos típicos que se deben incluir:
+\section{Descripción de la solución}
+El sistema desarrollado consta de una arquitectura basada en dos componentes principales: Generator y Reader.
 
-Recapitulación de los objetivos: Repasa brevemente los objetivos establecidos al comienzo del y evalúa en qué medida se
-han logrado.
+Ambos componentes están diseñados para ser fácilmente extensibles, mediante un sistema en el que se pueden registrar
+nuevos preprocesadores, procesadores y postprocesadores, para cumplir con los requisitos de casos de uso específicos.
 
-Destaca los principales resultados y contribuciones de tu proyecto.
+\subsection{Componente Generator}
+El componente Generator se encarga de convertir documentos en diferentes formatos a texto plano.
+En esta implementación, se desarrolló un procesador especializado que utiliza la herramienta pdftotext para transformar
+documentos PDF en texto.
 
-Síntesis de los resultados: Resume los resultados más importantes y relevantes obtenidos durante el desarrollo.
+La arquitectura modular del Generator permite la inclusión de nuevos preprocesadores y postprocesadores para ajustar y
+perfeccionar el texto generado.
 
-Implicaciones y relevancia: Discute las implicaciones de tus resultados y su relevancia para el campo
-de la ingeniería informática.
-Explica cómo tus hallazgos contribuyen al conocimiento existente o tienen aplicaciones prácticas.
-Destaca el valor y la importancia de tu trabajo.
+\subsection{Componente Generator}
+El componente Reader interpreta y extrae la información estructurada del texto generado por el Generator.
 
-Reflexión sobre el proceso de desarrollo: Realiza una reflexión sobre el proceso de desarrollo de tu proyecto y evalúa
-su eficacia.
-Identifica las fortalezas y las limitaciones de tu enfoque y ofrece recomendaciones para futuros proyectos similares.
-Describe cualquier desafío o dificultad que hayas enfrentado durante el desarrollo y cómo los has abordado.
+Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo un mecanismo competitivo
+similar al del componente Generator.
+Los procesadores compiten entre sí para determinar cuál es el más adecuado para analizar y extraer la información
+necesaria del texto.
 
-Cumplimiento de los requisitos y objetivos: Evalúa en qué medida tu solución cumple con los requisitos y objetivos
-establecidos al inicio de tu proyecto.
-Destaca los aspectos en los que has logrado cumplir plenamente los requisitos y aquellos en los que has encontrado
-limitaciones o mejoras potenciales.
+En esta implementación, se desarrollaron dos procesadores que consumen la api pública de OpenAI, para extraer la
+información de dos tipos de contratos diferentes: contratos de arrendamiento entre particulares y contratos de
+compraventa de vehículos entre particulares.
 
-Lecciones aprendidas: Comparte las lecciones aprendidas durante tu trabajo y desarrollo.
-Destaca las habilidades y conocimientos adquiridos, así como los aspectos que te han permitido crecer como ingeniero
-informático.
-Reflexiona sobre los desafíos, los éxitos y los obstáculos superados durante el proyecto.
+\subsection{Interfaces de Usuario}
+Para interactuar con el sistema, se han desarrollado dos interfaces:
 
-Trabajo futuro: Proporciona sugerencias y recomendaciones para futuros trabajos o investigaciones en el campo.
-Identifica áreas que requieren una mayor exploración, mejoras adicionales o extensiones de tu trabajo actual.
-
-Las conclusiones deben ser claras, concisas y basadas en los resultados y la evidencia presentada en tu trabajo.
-Evita introducir nueva información en esta sección y enfócate en
-resumir los aspectos más destacados y significativos de tu trabajo.
+\begin{itemize}
+    \item Interfaz de Línea de Comandos: Esta herramienta está dirigida a desarrolladores y
+    administradores del sistema, permitiendo ejecutar comandos y scripts directamente.
 
 
-\section{Iteraciones y mejoras}
- \colorbox{color_highlight}{@TODO:}
+    \item Interfaz Web: Presenta un área donde los usuarios pueden
+    arrastrar y soltar documentos para su análisis y muestra una representación en formato JSON de la información
+    extraída.
+\end{itemize}
 
-Si has realizado iteraciones o mejoras en el proceso de desarrollo, menciona los cambios realizados y las razones detrás
-de ellos.
+
+\section{Pruebas y análisis de los resultados}
+
+\colorbox{color_highlight} {@TODO: }
+explicar de nuevo que seha desarrollado una test suite de pruebas unitarias, y
+completar indicando el porcentaje de acierto para las pruebas manuales.
+
+Resultados cuantitativos: Presenta los resultados numéricos o medibles de tu
+proyecto.
+Esto puede incluir métricas de rendimiento, tiempos de respuesta, velocidad de procesamiento, eficiencia,
+precisión, entre otros.
+Utiliza tablas, gráficos u otros medios visuales para mostrar claramente los datos recopilados.
+
+Resultados cualitativos: Si tu proyecto implica evaluaciones subjetivas o cualitativas, como la usabilidad, la
+experiencia del usuario o la calidad percibida,describe los resultados obtenidos a través de encuestas, entrevistas o
+pruebas de usabilidad.
+
+Pruebas y resultados funcionales: se presentan los resultados de las pruebas realizadas para verificar el correcto
+funcionamiento de la solución.
+
+Muestra cómo se han llevado a cabo las pruebas y los casos de prueba utilizados.
+Destaca los resultados obtenidos en términos de la funcionalidad y el cumplimiento de los requisitos establecidos.
+
+Casos de estudio o resultados específicos: Si has realizado estudios de casos específicos o evaluaciones particulares,
+describe los resultados obtenidos y su relevancia para tu proyecto.
+Puedes incluir ejemplos concretos de cómo la solución informática ha sido aplicada en situaciones reales y los
+resultados obtenidos en cada caso.
+
+Validación y pruebas: Explica cómo se han validado y evaluado los resultados de tu proyecto.
+Si has realizado pruebas, verifica que se cumplan los requisitos establecidos y describe cómo se ha llevado a cabo la
+evaluación.
+Si se han utilizado conjuntos de datos de prueba o casos de uso específicos, menciónalos en esta sección.
+
+Comparación con resultados esperados: Compara tus resultados con los objetivos
+y las expectativas establecidos en la introducción de tu trabajo.
+Destaca si has logrado alcanzar tus metas y si los resultados obtenidos son consistentes con las hipótesis o
+predicciones iniciales.
+Si hay desviaciones o discrepancias, explícalas y proporciona posibles explicaciones.
+
+Análisis de los resultados: Realiza un análisis de los resultados obtenidos y su relevancia para tu proyecto.
 
 
-\section{Rubrica}
- \colorbox{color_highlight}{@TODO:}
-Revisar al rubrica.
+\section{Rendimiento}
 
+// @TODO: Rendimiento y eficiencia: evaluación del rendimiento y la eficiencia de la solución informática.
+Muestra los resultados obtenidos en términos de tiempos de respuesta,velocidad de procesamiento, uso de recursos,
+escalabilidad, entre otros aspectos relevantes para tu proyecto.
+Compara los resultados con los objetivos establecidos.
+
+
+\section{Calidad del código}
+
+// @TODO, Calidad del código y mantenibilidad:
+Evalúa la calidad del código desarrollado y la mantenibilidad de la solución.
+
+
+\section{Limitaciones}
+
+// @TODO, Limitaciones y posibles mejoras: Menciona las limitaciones o restricciones
+que puedan haber afectado sus resultados.
+Esto puede incluir limitaciones en los datos, en los métodos utilizados o en la implementación del proyecto.
+También puedes sugerir posibles mejoras o áreas de investigación futuras basadas en las limitaciones identificadas.
+
+
+\section{Coste}
+// @TODO,
+
+
+\section{Posibles mejoras}
+
+\subsection{OCR}
+\colorbox{color_highlight}{@TODO:}
+
+\subsection{Nuevos Readers}
+// @TODO:

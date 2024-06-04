@@ -4,5 +4,4 @@ build:
 clean:
 	rm -rf output/*
 
-
 .PHONY: clean build

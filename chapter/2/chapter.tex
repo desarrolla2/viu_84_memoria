@@ -47,46 +47,40 @@ Esto se logra mediante el principio de inversión de dependencias, lo que signif
 abstracciones y no al contrario.
 
 Existen diferentes implementaciones de ``arquitectura limpia'', cada una con sus características intrínsecas, en este
-proyecto hemos decidido implementar una versión de 3 capas.
+proyecto hemos decidido implementar la versión en tres capas que aparece en la figura~\ref{fig:chapter_2.clean_architecture}.
 
-\begin{figure}[ht]
+\begin{figure}
     \begin{center}
-        \includegraphics[width=\textwidth]{chapter/2/images/chapter_2.clean_architecture}
+        \includegraphics[width=0.5\textwidth]{chapter/2/images/chapter_2.clean_architecture}
         \caption{Esquema de una arquitectura limpia}
         \label{fig:chapter_2.clean_architecture}
     \end{center}
 \end{figure}
 
-Representación de las comunicaciones entre capas en una arquitectura limpia.
-\colorbox{color_highlight}{@TODO: Insertar figura}
-
-\colorbox{color_highlight}{@TODO: @marlene: mencionales. Aparecen 4 a continuación, por qué?}
-\subsubsection*{Dominio}
-Es el corazón del modelo de negocio de la aplicación y encapsula la lógica y las reglas del negocio.
-
-Esta capa es fundamentalmente agnóstica respecto a la aplicación de tecnologías externas y se
-centra exclusivamente en cómo se comporta el negocio bajo diferentes condiciones y reglas.
-
-Contiene entidades, objetos de valor, y dominios de servicio que representan y operan sobre los
+La capa más interior se denomina \textbf{capa de dominio} y es el corazón del modelo de negocio de la aplicación y
+encapsula la lógica y las reglas del negocio.
+Esta capa es fundamentalmente agnóstica respecto a tecnologías externas y se centra exclusivamente en definir los
 conceptos fundamentales del negocio.
+Algunos de los elementos que puede contener son:
+\begin{enumerate}
+    \item entidades
+    \item objetos de valor
+    \item servicios de dominio
+    \item abstracciones
+\end{enumerate}
 
-Esta capa debe ser autocontenida y fácilmente testable, aislada de influencias externas como bases de
-datos o interfaces de usuario.
+Esta capa debe ser autocontenida y fácilmente testable, aislada de tecnologías externas como bases de datos o
+interfaces de usuario.
 
-\subsubsection*{Aplicación}
-La capa de aplicación actúa como un mediador entre la capa de presentación y la capa de dominio, coordinando
-las operaciones de alto nivel que involucran múltiples aspectos del dominio.
+La capa que aparece a continuación es la \textbf{capa de aplicación}.
+La capa de aplicación actúa como un mediador entre la capa exterior y la capa de dominio, coordinando las operaciones
+de alto nivel que involucran múltiples aspectos del dominio.
 
-\subsubsection*{Infraestructura}
-La capa de infraestructura proporciona las capacidades tecnológicas necesarias para que las capas de
-aplicación y dominio puedan realizar sus funciones sin tener que
-preocuparse por los detalles de implementación de la plataforma o los elementos externos.
-
-\subsubsection*{Presentación}
-Es responsable de mostrar la información al usuario y de interpretar los
-comandos del usuario para que la aplicación pueda entenderlos y actuar en consecuencia.
-
-\colorbox{color_highlight}{@TODO: @marlene: queda mejor si lo redactas como parrafo y no siguiendo ese estilo}
+La capa más exterior se denomina \textbf{capa de infraestructura}.
+La capa de infraestructura proporciona las capacidades tecnológicas necesarias para que la capa de dominio puedan
+realizar sus funciones sin tener que preocuparse por los detalles de implementación.
+Toda la comunicación o interacción con elementos externos a la aplicación deben estar contenidos dentro de la capa de
+infraestructura.
 
 
 \section{Procesamiento de lenguaje natural}
@@ -176,8 +170,8 @@ traducir entre idiomas, resumir información y responder preguntas con un alto g
 
 \colorbox{color_highlight}
 {@TODO: @marlene: puedes hacer un resumen de estos modelos. Creo que no hace falta que coloques los código de ejemplos.
-Quizás
-para un anexo}
+Quizás para un anexo}
+
 \subsubsection*{OpenAI GPT}
 ChatGPT es un avanzado modelo de lenguaje desarrollado por OpenAI,
 basado en la arquitectura GPT (Generative Pre-trained Transformer).
