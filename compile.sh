@@ -8,4 +8,3 @@ xelatex ${TARGET}.tex
 bibtex ${TARGET}
 
 xelatex ${TARGET}.tex
-xelatex ${TARGET}.tex

@@ -31,7 +31,8 @@ diseño de software promovido por Robert C. Martin en su libro Clean Architectur
 Structure and Design~\cite{book_clean_code_martin_2017}
 
 \subsection{Definición}
-La arquitectura limpia es un estilo de diseño de software que organiza el sistema de manera que sea independiente de:
+La arquitectura limpia es un estilo de diseño que organiza el sistema de manera que sea independiente de los diferentes
+elementos a los que considera detalles de implementación y que son intercambiables unos por otros:
 
 \begin{itemize}
     \item frameworks
@@ -40,13 +41,21 @@ La arquitectura limpia es un estilo de diseño de software que organiza el siste
     \item apis
 \end{itemize}
 
-La esencia de esta arquitectura radica en su diagrama de capas, donde cada capa tiene responsabilidades claramente
+La esencia de esta arquitectura radica en su diagrama de capas, donde cada capa tiene una responsabilidad claramente
 definidas y depende solo de las capas más internas.
 Esto se logra mediante el principio de inversión de dependencias, lo que significa que los detalles dependen de las
 abstracciones y no al contrario.
 
-Aunque existen diferentes implementaciones de ``arquitectura limpia'', cada una con sus características intrínsecas, en
-este proyecto hemos decidido implementar una versión en 3 capas.
+Existen diferentes implementaciones de ``arquitectura limpia'', cada una con sus características intrínsecas, en este
+proyecto hemos decidido implementar una versión de 3 capas.
+
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{chapter/2/images/chapter_2.clean_architecture}
+        \caption{Esquema de una arquitectura limpia}
+        \label{fig:chapter_2.clean_architecture}
+    \end{center}
+\end{figure}
 
 Representación de las comunicaciones entre capas en una arquitectura limpia.
 \colorbox{color_highlight}{@TODO: Insertar figura}
