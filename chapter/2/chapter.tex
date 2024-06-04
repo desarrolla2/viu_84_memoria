@@ -3,15 +3,14 @@
 
 \section{Código limpio}
 
-\subsection{Introducción histórica}
+\subsection*{Introducción histórica}
 El concepto de Código Limpio ha sido fundamental en la programación de software desde los primeros días del desarrollo
-de software, pero fue articulado y popularizado con gran efecto por Robert C. Martin en su libro~
-\cite{book_clean_code_martin_2008}
+de software, pero fue articulado y popularizado con gran efecto por Robert C. Martin en su libro~\cite{book_martin_2008}
 
 Este libro se convirtió en una guía esencial para muchos desarrolladores al enfatizar la importancia de escribir código
 que no solo funcione, sino que también sea fácil de entender, modificar y mantener.
 
-\subsection{Definición}
+\subsection*{Definición}
 El código limpio es aquel que es fácil de entender y fácil de modificar y hace exactamente lo que se espera que haga.
 Según Robert C. Martin, el código limpio puede ser leído y mejorado por un desarrollador que no sea su autor original
 con un mínimo esfuerzo necesario.
@@ -22,15 +21,15 @@ la atención a los detalles en el nivel de código.
 
 \section{Arquitectura limpia}
 
-\subsection{Introducción histórica}
+\subsection*{Introducción histórica}
 En el ámbito del desarrollo de software, la arquitectura de un sistema es crucial para determinar su escalabilidad y
 mantenibilidad a largo plazo.
 
 Una de las metodologías que ha cobrado relevancia en este contexto son las ``arquitecturas limpias'', un enfoque para el
 diseño de software promovido por Robert C. Martin en su libro Clean Architecture: A Craftsman`s Guide to Software
-Structure and Design~\cite{book_clean_code_martin_2017}
+Structure and Design~\cite{book_martin_2017}
 
-\subsection{Definición}
+\subsection*{Definición}
 La arquitectura limpia es un estilo de diseño que organiza el sistema de manera que sea independiente de los diferentes
 elementos a los que considera detalles de implementación y que son intercambiables unos por otros:
 
@@ -85,125 +84,91 @@ infraestructura.
 
 \section{Procesamiento de lenguaje natural}
 
-\subsection{Introducción histórica}
-El Procesamiento de Lenguaje Natural o Natural Language Processing (NLP) es un campo que se sitúa en la
+\subsection*{Introducción histórica}
+El Procesamiento de Lenguaje Natural o \textit{Natural Language Processing} (NLP) es un campo que se sitúa en la
 intersección de la informática, la inteligencia artificial y la lingüística.
 
-Se dedica al desarrollo de algoritmos y sistemas que permiten a las computadoras entender, interpretar y generar
-lenguaje humano de una manera útil y significativa.
+Se dedica al desarrollo de sistemas que permiten a las computadoras entender, interpretar y generar lenguaje humano de
+una manera útil y significativa.
 La historia del NLP comienza en la década de 1950, marcada por el trabajo pionero de Alan Turing y su famoso
 test de Turing, que planteaba la cuestión de si una máquina puede emular el lenguaje humano de manera convincente
-(Turing, 1950).
+~\cite{article_touring_1950}.
 
-En los años 60 y 70, el enfoque inicial en la traducción automática
-, como los esfuerzos del proyecto Georgetown, mostró tanto promesas como limitaciones significativas, lo que llevó a un
-reajuste en las expectativas y métodos del campo (Hutchins, 2003).
+En los años 60 y 70, el enfoque inicial estaba en la traducción automática, como los esfuerzos del proyecto
+Georgetown~\cite{techreport_georgetown_1964}, mostró tanto promesas como limitaciones significativas, lo
+que llevó a un reajuste en las expectativas~\cite{article_hutchins_2003}.
+
 Con la introducción de la inteligencia artificial (IA) en la década de 1980, surgieron métodos basados primero en reglas
-y luego en modelos
-estadísticos, culminando con el desarrollo de modelos de aprendizaje automático en la década de 1990 (Manning y Schütze,
-1999).
+y luego en modelos estadísticos, culminando con el desarrollo de
+modelos de aprendizaje automático~\cite{article_manning_1999} en la década de 1990.
 
-El verdadero cambio paradigmático llegó con el advenimiento de las redes neuronales y el aprendizaje profundo
-en la década de 2010.
-Este período vio la creación de modelos de lenguaje avanzados, como BERT y GPT, que han revolucionado la capacidad de
-las máquinas para procesar el lenguaje con un grado de sutileza y profundidad sin precedentes (Devlin et al., 2019;
-Brown et al., 2020).
+El verdadero cambio paradigmático llegó con el advenimiento de las redes neuronales y el aprendizaje profundo en la
+década de 2010.
+Este período vio la creación de modelos de lenguaje avanzados~\cite{article_devlin_2019}, que han revolucionado la
+capacidad de las máquinas para procesar el lenguaje con un grado de sutileza y profundidad sin precedentes.
 
-\subsection{Definición}
+\subsection*{Definición}
+
 El NLP es un campo que combina técnicas de la informática, la inteligencia artificial y la lingüística computacional con
-el objetivo de permitir que las máquinas entiendan, interpreten
-, manipulen y generen lenguaje humano de manera efectiva y eficiente.
+el objetivo de permitir que las máquinas entiendan, interpreten, manipulen y generen lenguaje humano de manera efectiva
+y eficiente.
 
 El NLP utiliza algoritmos y modelos matemáticos para abordar diversas tareas relacionadas con el lenguaje, tales como la
-traducción automática entre idiomas, la generación de respuestas automáticas
-, la extracción de información relevante de textos, el análisis de sentimientos, el reconocimiento de voz, y
-la síntesis de habla, entre otros.
+traducción automática entre idiomas, la generación de respuestas automáticas, la extracción de información relevante de
+textos, el análisis de sentimientos, el reconocimiento de voz, y la síntesis de habla, entre otros.
 
 
-\section{Modelos de lenguaje de gran escala (LLMs)}
+\section{Modelos de lenguaje de gran escala}
 
-\subsection{Introducción histórica}
-La historia de los LLMs comienza con los primeros modelos estadísticos de lenguaje en
-la década de 1980, que utilizaban métodos simples como los modelos de Markov y n-gramas para predecir la probabilidad
-de secuencias de palabras (Jelinek, 1997).
+\subsection*{Introducción histórica}
+La historia de los Modelos de lenguaje de gran escala o \textit{Large Language Models} (LLMs) comienza con los
+primeros modelos estadísticos de lenguaje en la década de 1980, que utilizaban métodos simples como los modelos de
+Markov y n-gramas para predecir la probabilidad de secuencias de palabras~\cite{article_jelinek_1997}.
+
 Estos métodos, aunque efectivos para algunas tareas básicas, estaban limitados por su incapacidad para capturar
-contextos
-más largos y por su dependencia de grandes corpus de texto para entrenamiento.
+contextos más largos y por su dependencia de grandes corpus de texto para entrenamiento.
 
-En la década de 2000, con el advenimiento de modelos más sofisticados como los modelos ocultos de Markov
-y especialmente las redes neuronales, comenzó a vislumbrarse el
-potencial de los modelos de lenguaje más complejos.
-Sin embargo, no fue hasta la introducción de las redes neuronales recurrentes (RNN) y, más tarde, las redes neuronales
-de memoria a largo plazo (LSTM)
-que los investigadores pudieron abordar el problema del ''desvanecimiento del gradiente''
-y mejorar significativamente la capacidad de los
-modelos para aprender dependencias a largo plazo en el texto (Hochreiter Schmidhuber, 1997).
+En la década de 2000, con el advenimiento de modelos más sofisticados como los modelos ocultos de Markov y especialmente
+las redes neuronales, comenzó a vislumbrarse el potencial de los modelos de lenguaje más complejos.
 
-\subsubsection*{La revolución de los transformers}
-El verdadero cambio paradigmático llegó en 2017 con el desarrollo de la arquitectura
-Transformer por Vaswani et al.
+Sin embargo, no fue hasta la introducción de las redes neuronales recurrentes o \textit{recurrent neural networks} (RNN)
+y, más tarde, las redes neuronales de memoria a largo plazo o \textit{long-term memory neural networks} (LSTM) que
+los investigadores pudieron abordar el problema del ``desvanecimiento del gradiente'' y mejorar significativamente la
+capacidad de los modelos para aprender dependencias a largo plazo en el texto~\cite{article_hochreiter_1997}.
+
+El verdadero cambio paradigmático llegó en 2017 con el desarrollo de la arquitectura \textit{Transformer}
+~\cite{article_vaswani_2017}.
 Esta arquitectura introdujo el mecanismo de atención, que permite a los modelos ponderar diferentes partes de la entrada
-de texto de manera dinámica, mejorando la capacidad de los modelos para manejar secuencias de texto largas y complejas (
-Vaswani et al., 2017).
+de texto de manera dinámica, mejorando la capacidad de los modelos para manejar secuencias de texto largas y complejas.
 
-\colorbox{color_highlight}{@TODO: @marlene Transformers términos en inglés van en itálicas}
+\subsection*{Principales modelos}
 
-BERT, desarrollado por Google en 2018, y GPT, desarrollado por OpenAI, son ejemplos de
-cómo los Transformers han sido adaptados para crear modelos que
-no solo entienden el contexto de una palabra en función de su posición en una frase, sino en todo
-el texto, permitiendo un entendimiento contextual mucho más rico (Devlin et al., 2019; Radford et al., 2018).
-
-\subsection{Definición}
-Los Modelos de Lenguaje de Gran Escala (LLMs) son sistemas
-avanzados de inteligencia artificial diseñados para entender, generar y
-manipular el lenguaje humano de manera coherente y contextualizada. Estos
-modelos son entrenados en vastos conjuntos de datos textuales que abarcan una amplia variedad de temas, lo que les
-permite desarrollar un conocimiento extenso sobre el lenguaje y sus usos prácticos.
-
-Funcionan principalmente a través de técnicas de aprendizaje
-profundo, especialmente usando arquitecturas como las de Transformers,
-que permiten a los modelos captar relaciones complejas y contextos a largo plazo dentro de los textos. Este enfoque les
-otorga la capacidad de generar respuestas, completar textos,
-traducir entre idiomas, resumir información y responder preguntas con un alto grado de precisión y relevancia.
-
-\subsection{Principales modelos}
-
-\colorbox{color_highlight}
-{@TODO: @marlene: puedes hacer un resumen de estos modelos. Creo que no hace falta que coloques los código de ejemplos.
-Quizás para un anexo}
-
-\subsubsection*{OpenAI GPT}
-ChatGPT es un avanzado modelo de lenguaje desarrollado por OpenAI,
-basado en la arquitectura GPT (Generative Pre-trained Transformer).
-
+\subsubsection*{GPT}
+GPT o \textit{Generative Pre-trained Transformer} es un avanzado modelo de lenguaje desarrollado por OpenAI
+~\cite{article_brown_2020}.
 Es uno de los modelos más reconocidos en la actualidad.
 Aunque es un modelo privado, OpenAI ofrece acceso a través de una API de pago que incluye una capa gratuita limitada.
+GPT ofrece varios modelos, cada uno con un esquema de precios que varía según su complejidad.
+Una de las principales ventajas de este servicio es que proporciona una solución integral \textit{plug-and-play}, es
+decir, no requiere instalación ni configuración adicional por parte del usuario.
 
-ChatGPT ofrece varios modelos, cada uno con un esquema de precios que varía según
-su complejidad.
-Una de las principales ventajas de este servicio es que proporciona una solución integral "plug-and-play", es decir, no
-requiere instalación ni configuración adicional por parte del usuario.
-
-A continuación un ejemplo de una llamada a esta API.
-
+\subsubsection*{BERT}
+BERT, desarrollado por Google~\cite{article_devlin_2019}, es un modelo de lenguaje basado en la arquitectura
+\textit{Transformer} que se entrenó utilizando un gran corpus de texto en una manera bidireccional, lo que le permite
+entender el contexto de una palabra basada en todas sus apariciones en un texto.
 
 \subsubsection*{Hugging Face's Transformers}
-Hugging Face's Transformers
-es una biblioteca de procesamiento de lenguaje natural (NLP) que simplifica el uso de modelos de aprendizaje profundo
-basados en la arquitectura Transformer.
 
-Esta biblioteca ofrece una amplia variedad de modelos pre entrenados desarrollados por la comunidad
-para fines específicos, además de la posibilidad de entrenar modelos personalizados.
+\textit{Hugging Face's Transformers} es una biblioteca de NLP~\cite{article_wolf_2020} que simplifica el uso de modelos
+de aprendizaje profundo basados en la arquitectura \textit{Transformer}.
 
+Esta biblioteca ofrece una amplia variedad de modelos preentrenados y libres desarrollados por la comunidad para fines
+específicos, además de la posibilidad de entrenar modelos personalizados.
 
-Sin embargo, los modelos disponibles en Hugging Face suelen ser menos potentes que los modelos más
-avanzados disponibles a través de plataformas como ChatGPT. ChatGPT ofrece
-modelos con capacidades superiores, lo que puede ser una
-consideración importante dependiendo de los requisitos específicos del proyecto.
+En contraposición, los modelos disponibles en Hugging Face suelen ser menos potentes que los modelos más disponibles a
+través de plataformas como GPT de Open AI~\cite{url_chat_gtp_vs_hugging_face_2024}.
 
 \subsubsection*{Otros}
-Además de OpenAI y Hugging Face, existen varias otras plataformas que ofrecen modelos de lenguaje
-grande (LLM) para desarrolladores interesados en incorporar capacidades
-avanzadas de procesamiento de lenguaje natural en sus aplicaciones. Entre
-estas plataformas destacan Google AI, Facebook AI, NVIDIA NeMo y Microsoft AI, entre otras cada una con sus propios
-enfoques y modelos distintivos.
+
+Además de los descritos existen muchas otras plataformas que ofrecen modelos LLM para desarrolladores interesados en
+incorporar capacidades avanzadas de procesamiento de lenguaje natural en sus aplicaciones.

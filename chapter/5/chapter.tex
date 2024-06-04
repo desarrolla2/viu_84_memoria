@@ -1,4 +1,4 @@
-\chapter{Resultados}\label{ch:chapter_4}
+\chapter{Resultados}\label{ch:chapter_5}
 
 
 \section{Descripción de la solución}
@@ -7,7 +7,7 @@ El sistema desarrollado consta de una arquitectura basada en dos componentes pri
 Ambos componentes están diseñados para ser fácilmente extensibles, mediante un sistema en el que se pueden registrar
 nuevos preprocesadores, procesadores y postprocesadores, para cumplir con los requisitos de casos de uso específicos.
 
-\subsection{Componente Generator}
+\subsection*{Componente Generator}
 El componente Generator se encarga de convertir documentos en diferentes formatos a texto plano.
 En esta implementación, se desarrolló un procesador especializado que utiliza la herramienta pdftotext para transformar
 documentos PDF en texto.
@@ -15,7 +15,7 @@ documentos PDF en texto.
 La arquitectura modular del Generator permite la inclusión de nuevos preprocesadores y postprocesadores para ajustar y
 perfeccionar el texto generado.
 
-\subsection{Componente Generator}
+\subsection*{Componente Generator}
 El componente Reader interpreta y extrae la información estructurada del texto generado por el Generator.
 
 Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo un mecanismo competitivo
@@ -27,7 +27,7 @@ En esta implementación, se desarrollaron dos procesadores que consumen la api p
 información de dos tipos de contratos diferentes: contratos de arrendamiento entre particulares y contratos de
 compraventa de vehículos entre particulares.
 
-\subsection{Interfaces de Usuario}
+\subsection*{Interfaces de Usuario}
 Para interactuar con el sistema, se han desarrollado dos interfaces:
 
 \begin{itemize}
@@ -110,8 +110,8 @@ También puedes sugerir posibles mejoras o áreas de investigación futuras basa
 
 \section{Posibles mejoras}
 
-\subsection{OCR}
+\subsection*{OCR}
 \colorbox{color_highlight}{@TODO:}
 
-\subsection{Nuevos Readers}
+\subsection*{Nuevos Readers}
 // @TODO:
