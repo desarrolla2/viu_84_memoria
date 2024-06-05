@@ -1,0 +1,181 @@
+\section{Tecnologías utilizadas}
+
+A continuación, se describen las principales tecnologías utilizadas en el proyecto, categorizadas en distintas áreas
+según su propósito y aplicación.
+
+\subsection*{Servidor}
+
+Las tecnologías de servidor o \textit{backend} son aquellas que se ejecutan en un servidor gestionado por la propia
+organización.
+Habitualmente se ocupan de la lógica de negocio y la persistencia de datos.
+
+\begin{itemize}
+    \item \textbf{PHP} es un lenguaje de scripting de propósito general que está especialmente diseñado para el
+    desarrollo web ~\cite{https://www.php.net/}.
+    \item \textbf{Symfony} es un \textit{framework} PHP ampliamente utilizado para desarrollar aplicaciones web.
+    Ofrece una arquitectura robusta y flexible, que facilita el desarrollo de aplicaciones mantenibles y escalables
+    ~\cite{https://symfony.com/}.
+    \item \textbf{Twig} es un motor de plantillas para PHP, utilizado principalmente en proyectos basados en
+    Symfony ~\cite{https://twig.symfony.com/}.
+    Un sistema de plantillas permite separar la capa de presentación de la capa de negocio.
+\end{itemize}
+
+Mientras que PHP es el lenguaje de programación principal de este proyecto, Symfony y Twig se encuentran en la capa
+de infraestructura, como parte de diferentes componentes o de las interfaces.
+
+\subsection*{Frontend}
+
+HTML5
+
+Es el estándar de marcado para crear páginas web.
+HTML5 introduce nuevas funcionalidades como elementos semánticos y multimedia, mejorando la accesibilidad y la
+interoperabilidad de las páginas web.
+
+CSS3
+
+Es la tecnología de estilos para el diseño visual.
+CSS3 permite aplicar estilos complejos y responsivos a los elementos HTML, mejorando la presentación y la experiencia
+del usuario.
+
+JavaScript
+
+Es el lenguaje de programación para la interactividad del lado del cliente.
+JavaScript permite crear experiencias de usuario dinámicas y responsivas, manejando eventos y actualizando el contenido
+de la página sin recargar.
+
+Bootstrap
+
+Es un framework de front-end que facilita el diseño de sitios y aplicaciones web
+responsivas y móviles.
+Bootstrap proporciona una colección de componentes CSS
+y JavaScript predefinidos que aceleran el desarrollo de interfaces de usuario atractivas.
+
+Font Awesome
+
+Es una biblioteca de iconos vectoriales y herramientas que proporciona una amplia gama de
+iconos escalables y personalizables para su uso en proyectos web.
+Facilita la inclusión de iconos de alta calidad sin depender de imágenes.
+
+\subsection*{Gestión de dependencias}
+
+Composer
+
+Es una herramienta de gestión de dependencias para PHP, que
+permite declarar las bibliotecas de las que depende tu proyecto
+y las gestiona.
+Composer asegura que las versiones correctas de las bibliotecas se instalen y mantengan actualizadas.
+
+\subsection*{Control de versiones}
+
+Git
+
+Es un sistema de control de versiones distribuido, diseñado para manejar todo, desde proyectos
+pequeños hasta muy grandes con rapidez y eficiencia.
+Git permite a los desarrolladores colaborar de manera efectiva, rastreando cambios y gestionando ramas y fusiones.
+
+
+GitHub
+
+GitHub es una plataforma de hospedaje de repositorios Git.
+Proporciona herramientas para la colaboración, la revisión de código y la gestión de proyectos, facilitando el trabajo
+en equipo y la integración continua.
+
+\subsection*{Automatización}
+
+Make
+
+Make es una herramienta de automatización de tareas que utiliza archivos Makefile para definir y ejecutar tareas de
+construcción y gestión de proyectos.
+Facilita la automatización de tareas repetitivas y la configuración del entorno de desarrollo.
+
+\subsection*{Pruebas}
+
+PHPUnit
+
+PHPUnit es un marco de pruebas unitarias para PHP. Permite a los desarrolladores escribir y ejecutar pruebas
+automatizadas
+para asegurar que el código se comporta como se espera, facilitando el desarrollo de software de alta calidad.
+
+GitHub Actions
+
+Es una plataforma de integración continua que permite automatizar flujos de trabajo directamente desde GitHub.
+GitHub Actions facilita la configuración de pipelines de CI/CD, ejecutando pruebas y despliegues automáticamente con
+cada cambio en el repositorio.
+
+\subsection*{Contenerización}
+
+Docker
+
+Docker es una plataforma que permite desarrollar, enviar y ejecutar aplicaciones dentro de
+contenedores.
+Proporciona un entorno consistente para el desarrollo, pruebas y despliegue, asegurando que las aplicaciones funcionen
+de manera idéntica en diferentes entornos.
+
+Docker Compose
+
+Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker multi-contenedor.
+Permite orquestar varios servicios que componen una aplicación, facilitando
+la configuración y gestión de entornos de desarrollo complejos.
+
+\subsection*{Logs}
+
+Monolog
+
+Monolog es una biblioteca de logging para PHP. Permite enviar registros a varios destinos, como archivos, bases de datos
+y servicios de terceros, facilitando la monitorización y depuración de aplicaciones.
+
+Elastic Search
+
+Elasticsearch es un motor de búsqueda y análisis de texto completo basado en Lucene.
+Permite almacenar, buscar y analizar grandes volúmenes de datos en tiempo real.
+
+Logstash
+
+Logstash es una herramienta de procesamiento de datos que ingesta, transforma y envía datos a varios
+destinos.
+Es parte del paquete Elasticsearch, Logstash, Kibana (ELK) y facilita la recolección y procesamiento de logs.
+
+Kibana
+
+Kibana es una herramienta de visualización de datos que trabaja en conjunto con Elasticsearch.
+Permite a los usuarios crear gráficos y dashboards interactivos para visualizar y analizar los datos de logs almacenados
+en Elasticsearch.
+
+\subsection*{Componente Generator}
+
+Pdf to text
+
+Pdf to Text es una herramienta que convierte documentos PDF en texto plano.
+Permite extraer el contenido textual de archivos PDF, lo cual es útil para la posterior manipulación y análisis de
+datos.
+
+\subsection*{Componente Reader}
+
+Symfony HttpClient
+
+Symfony HttpClient es un cliente HTTP flexible y eficiente para PHP. Permite realizar solicitudes HTTP a servicios
+externos, manejar respuestas y gestionar errores de manera sencilla y eficaz.
+
+Symfony Cache
+
+Symfony Cache es un componente de Symfony que proporciona una implementación robusta y flexible para el almacenamiento
+en caché.
+Permite mejorar el rendimiento de la aplicación mediante el almacenamiento temporal de datos, reduciendo la carga en los
+recursos externos.
+
+API Open AI
+
+La API de OpenAI proporciona acceso a modelos avanzados de procesamiento de lenguaje natural.
+Permite integrar capacidades de IA en la aplicación, como la generación de texto y el análisis de datos, mejorando las
+funcionalidades y experiencias del usuario.
+
+
+\colorbox{color_highlight}{@TODO: @marlene:}
+En cuanto a los datos, los generaste manual. No hay forma de generar datos sintéticos? Se podrían generar 100 o 1000
+documentos? Sino, hay que justificarlo bien.
+
+\colorbox{color_highlight}{@TODO: @marlene:}
+Vale, veo que si usas el LLM de chatgpt. Eso es algo que no me había quedado claro de la memoria. Sin embargo, aún no
+tengo del todo claro qué generas a partir del PDF que recibes. Puedes ejecutar tu herramienta con un contrato? Estás
+usando el LLM para extraer los datos del contenido del PDF? Otra pregunta, qué modelo de chatgpt estás usando? Y puedes
+mandar el prompt que usaste?
