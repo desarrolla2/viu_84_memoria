@@ -90,8 +90,9 @@
 \setlist[enumerate,1]{left=20pt, noitemsep}
 \setlist[itemize,1]{left=20pt, noitemsep}
 
-% Allow comments
-\usepackage{comment}
+% Bibliography Configuration
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{TFT.bib}
 
 \pagestyle{plain}
 
@@ -126,9 +127,8 @@
     %% Appendix
     \appendix
     \include{./appendix/appendix_1}
-    %\include{./appendix/appendix_2}
+    \include{./appendix/appendix_2}
 
-    \bibliographystyle{unsrt}
-    \bibliography{TFT}
+    \printbibliography
 
 \end{document}

@@ -1,101 +1,198 @@
-\section{Diseño del sistema}
+\section{Tecnologías utilizadas}
 
-En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
-PDF y genera objetos que contienen la información más importante de los mismos.
-En la figura~\ref{fig:chapter_1.specific_b} vimos que se va a incluir también el desarollo de dos interfaces, una web
-y una de línea de comandos.
+A continuación, se describen las principales tecnologías utilizadas en el proyecto, categorizadas en distintas áreas
+según su propósito y aplicación.
 
-En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el \textit{Reader}
-y el \textit{Generator}
+\subsection*{Servidor}
 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.overview}
-        \caption{Esquema de los componentes principales}
-        \label{fig:chapter_4.overview}
-    \end{center}
-\end{figure}
+Las tecnologías de servidor o \textit{backend} son aquellas que se ejecutan en un servidor gestionado por la propia
+organización.
+Habitualmente se ocupan de la lógica de negocio y la persistencia de datos.
+
+\begin{itemize}
+    \item \textbf{PHP} es un lenguaje de scripting de propósito general que está especialmente diseñado para el
+    desarrollo web ~\cite{https://www.php.net/}.
+    \item \textbf{Symfony} es un \textit{framework} PHP ampliamente utilizado para desarrollar aplicaciones web.
+    Ofrece una arquitectura robusta y flexible, que facilita el desarrollo de aplicaciones mantenibles y escalables
+    ~\cite{https://symfony.com/}.
+    \item \textbf{Twig} es un motor de plantillas para PHP, utilizado principalmente en proyectos basados en
+    Symfony ~\cite{https://twig.symfony.com/}.
+    Un sistema de plantillas permite separar la capa de presentación de la capa de negocio.
+\end{itemize}
+
+Hemos utilizado PHP como lenguaje principal para desarrollar nuestro sistema.
+Symfony se utiliza en la parte de infraestructura, incluida la interfaz web, para la que también hemos usado Twig.
+
+\subsection*{Cliente}
+
+Las tecnologías de cliente o \textit{frontend} son aquellas que se ejecutan en el navegador del usuario de una
+aplicación web.
+El \textit{frontend} se encarga de la presentación y la experiencia del usuario.
+
+\begin{itemize}
+    \item \textbf{HTML} es el lenguaje de marcado para crear páginas web.
+    HTML introduce nuevas funcionalidades como elementos semánticos y multimedia, mejorando la accesibilidad y la
+    interoperabilidad de las páginas web~\cite{https://www.w3.org/TR/html5/}.
+    \item \textbf{CSS} es la tecnología de estilos para el diseño visual de páginas web.
+    CSS permite aplicar estilos complejos y responsivos a los elementos HTML, mejorando la presentación y la
+    experiencia del usuario~\cite{https://www.w3.org/Style/CSS/}.
+    \item \textbf{JavaScript} es el lenguaje de programación para la interactividad del lado del cliente.
+    JavaScript permite crear experiencias de usuario dinámicas, manejando eventos y actualizando el contenido de la
+    página sin recargar~\cite{https://www.ecma-international.org/publications-and-standards/standards/ecma-262/}.
+    \item \textbf{Bootstrap} es un framework de \textit{frontend} que facilita el diseño de sitios y aplicaciones web
+    responsivas y móviles.
+    Bootstrap proporciona una colección de componentes CSS y JavaScript predefinidos que aceleran el desarrollo de
+    interfaces de usuario ~\cite{https://getbootstrap.com/}.
+    \item \textbf{Font Awesome} es una biblioteca de iconos vectoriales y herramientas que proporciona una amplia
+    gama de iconos escalables y personalizables para su uso en proyectos web.
+    Facilita la inclusión de iconos de alta calidad sin depender de imágenes ~\cite{https://fontawesome.com/}.
+\end{itemize}
+
+HTML, CSS y Javascript, son tecnologías de uso necesario en el desarrollo web.
+Nosotros las hemos utilizado para el desarrollo de la interfaz web.
+Además, hemos usado Bootstrap para realizar un prototipado rápido y finalmente hemos utilizado Font Awesome para obtener
+iconos y logos.
+
+\colorbox{color_highlight}{@TODO: INSERTAR REFERENCIA}
+
+\subsection*{Gestión de dependencias}
+
+La gestión de dependencias es un aspecto crucial en el desarrollo de software.
+Se encarga de administrar las bibliotecas y paquetes que un proyecto necesita para funcionar correctamente.
+
+\begin{itemize}
+    \item \textbf{Composer}
+    es una herramienta de gestión de dependencias para PHP, que permite declarar en un fichero las bibliotecas de las
+    que depende el proyecto y asegura que las versiones correctas de las bibliotecas se instalen y mantengan
+    actualizadas ~\cite{https://getcomposer.org/doc/}.
+\end{itemize}
+
+En este proyecto hemos utilizado composer para instalar todas las librerías PHP necesarias, principalmente Symfony y
+algunos de sus componentes.
+
+\subsection*{Control de versiones}
+
+El control de versiones es una práctica en el desarrollo de software que permite rastrear y gestionar los cambios
+realizados en el código fuente a lo largo del tiempo.
+
+\begin{itemize}
+    \item \textbf{Git}
+    es un sistema de control de versiones distribuido, diseñado para manejar desde proyectos pequeños hasta muy grandes
+    con rapidez y eficiencia.
+    Git permite a los desarrolladores colaborar de manera efectiva, rastreando cambios y gestionando ramas y fusiones
+    ~\cite{https://git-scm.com/doc}.
+    \item \textbf{GitHub} es una plataforma de hospedaje de repositorios Git.
+    Proporciona herramientas para la colaboración, la revisión de código y la gestión de proyectos, facilitando el
+    trabajo en equipo ~\cite{https://docs.github.com/}.
+\end{itemize}
+
+\colorbox{color_highlight}{@TODO: para qué sirve}
+
+\subsection*{Automatización}
+
+La automatización en el desarrollo de software se refiere al uso de herramientas y scripts para ejecutar tareas
+repetitivas de manera automática, sin intervención manual
+
+\begin{itemize}
+    \item \textbf{Make}
+    es una herramienta de automatización de tareas que utiliza archivos Makefile para definir y ejecutar tareas de
+    construcción y gestión de proyectos.
+    Facilita la automatización de tareas repetitivas y la configuración del entorno de desarrollo
+    ~\cite{https://www.gnu.org/software/make/manual/}.
+\end{itemize}
+
+\colorbox{color_highlight}{@TODO: para qué sirve}
+
+\subsection*{Pruebas}
+
+Las pruebas en el desarrollo de software son un proceso fundamental para garantizar la calidad y funcionalidad de una
+aplicación.
+Consisten en la ejecución de diversos tipos de evaluaciones, como pruebas unitarias, de integración y de sistema, para
+identificar y corregir errores.
+
+\begin{itemize}
+    \item \textbf{PHPUnit} es un marco de pruebas unitarias para PHP. Permite a los desarrolladores escribir y
+    ejecutar pruebas automatizadas para asegurar que el código se comporta como se espera, facilitando el desarrollo de
+    software de alta calidad ~\cite{https://phpunit.de/manual/current/en/}.
+    \item \textbf{GitHub Actions} es una plataforma de integración continua que permite automatizar flujos de
+    trabajo directamente desde GitHub.
+    GitHub Actions facilita la configuración de pipelines de CI/CD, ejecutando pruebas y despliegues automáticamente con
+    cada cambio en el repositorio ~\cite{https://docs.github.com/en/actions}.
+\end{itemize}
+
+\colorbox{color_highlight}{@TODO: para qué sirve}
+
+\subsection*{Contenerización}
+
+La contenerización es una técnica de virtualización en sistema operativo que permite empaquetar aplicaciones y
+sus dependencias en contenedores aislados.
+Estos contenedores aseguran que las aplicaciones se ejecuten de manera consistente en cualquier entorno,
+independientemente de las configuraciones del sistema subyacente.
+
+\begin{itemize}
+    \item \textbf{Docker} es una plataforma que permite desarrollar, enviar y ejecutar aplicaciones dentro de
+    contenedores.
+    Proporciona un entorno consistente para el desarrollo, pruebas y despliegue, asegurando que las aplicaciones
+    funcionen de manera idéntica en diferentes entornos ~\cite{https://docs.docker.com/}.
+    \item \textbf{Docker Compose} es una herramienta para definir y ejecutar aplicaciones Docker multi-contenedor.
+    Permite orquestar varios servicios que componen una aplicación, facilitando la configuración y gestión de entornos
+    de desarrollo complejos ~\cite{https://docs.docker.com/compose/}.
+\end{itemize}
+
+\colorbox{color_highlight}{@TODO: para qué sirve}
+
+\subsection*{Registros}
+Los registros o \textit{logs} contienen información de eventos que ocurren en un sistema, son utilizados para
+monitorear, diagnosticar y solucionar problemas.
+Capturan información vital sobre el funcionamiento de aplicaciones, servidores y otros componentes, proporcionando un
+historial que pueda ser analizado.
+
+\begin{itemize}
+    \item \textbf{Monolog} es una biblioteca de \textit{logs} para PHP. Permite enviar registros a varios destinos, como
+    archivos, bases de datos y servicios de terceros, facilitando la monitorización y depuración de aplicaciones
+    ~\cite{https://github.com/Seldaek/monolog}.
+    \item \textbf{Elastic Search} es un motor de búsqueda y análisis de texto completo basado en Lucene.
+    Permite almacenar, buscar y analizar grandes volúmenes de datos en tiempo real
+    ~\cite{https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html}.
+    \item \textbf{Logstash} es una herramienta de procesamiento de datos que ingesta, transforma y envía datos a varios
+    destinos ~\cite{https://www.elastic.co/guide/en/logstash/current/index.html}.
+    \item \textbf{Kibana} es una herramienta de visualización de datos que trabaja en conjunto con Elasticsearch.
+    Permite a los usuarios crear gráficos y dashboards interactivos para visualizar y analizar los datos de logs
+    almacenados en Elasticsearch ~\cite{https://www.elastic.co/guide/en/kibana/current/index.html}.
+\end{itemize}
+
+\colorbox{color_highlight}{@TODO: para qué sirve}
 
 \subsection*{Componente \textit{Generator}}
 
-Este componente sirve como el motor inicial en el proceso, encargado de convertir documentos de cualquier formato a
-texto plano.
-
-Se compone de tres conjuntos de elementos y un orquestador al que llamaremos \textit{Engine} responsable de la
-coordinación de las operaciones.
-
-Diagrama UML del componente generator.
-
-\subsubsection*{Preprocesadores}
-Los preprocesadores preparan el documento original para facilitar su conversión a texto.
-En esta implementación no se ha desarrollado ningún preprocesador.
-
-Comunicación del Engine con los preprocesadores definidos.
-
-
-\subsubsection*{Procesadores}
-Actúan como el núcleo del Generator, donde se realiza la conversión efectiva del documento a texto. Funcionan mediante
-un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento en cuestión,
-seleccionando el más adecuado para llevar a cabo la tarea.
-
-Este enfoque modular y competitivo asegura que el procesamiento del texto sea no solo eficiente, sino también
-extremadamente flexible, adaptándose a las variaciones en la naturaleza de los documentos procesados.
-
-
-Comunicación del Engine con los procesadores definidos.
-
-En la actual implementación, hemos desarrollado un único procesador especializado en transformar documentos PDF a
-texto. Este procesador utiliza la utilidad de línea de comandos `pdftotext` para llevar a cabo la conversión (Glyph \&
-Cog, 2023).
-
-\subsubsection*{Postprocesadores}
-Estos componentes perfeccionan el texto generado, eliminando errores como caracteres no UTF-8 y espacios en blanco
-innecesarios, lo que mejora significativamente la calidad del texto resultante. En esta implementación, se han
-desarrollado varios post-procesadores:
+El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:generator_component} de la sección anterior.
 
 \begin{itemize}
-    \item
-    Word Limit PostProcessor: Se detectó que los elementos de interés, como nombres, documentos de identidad y fechas de
-    contratos, típicamente aparecen en las primeras páginas. Este procesador limita el análisis a las primeras N
-    palabras del documento.
-    \item UTF8 PostProcessor: Implementado tras detectar caracteres no UTF-8 en algunos documentos, este post-procesador
-    elimina dichos caracteres.
-    \item Character Replace PostProcessor: Desarrollado para eliminar caracteres específicos que complicaba las pruebas.
+    \item \textbf{Pdf to Text} es una herramienta que convierte documentos PDF en texto plano.
+    Permite extraer el contenido textual de archivos PDF, lo cual es útil para la posterior manipulación y análisis de
+    datos ~\cite{https://www.xpdfreader.com/pdftotext-man.html}.
 \end{itemize}
 
-\subsubsection*{Engine}
-Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
-aplicación. Coordina el flujo entre los pre-procesadores, procesadores y post-procesadores para asegurar que el
-documento sea procesado de manera correcta.
+\colorbox{color_highlight}{@TODO: para qué sirve}
 
-\subsection*{Reader}
-El componente Reader juega un papel crucial en el proceso de interpretación y procesamiento del texto plano obtenido a
-partir de la salida del componente Generator anterior..
+\subsection*{Componente Reader}
 
-Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo un mecanismo competitivo
-similar al del componente Generator. En este sistema, los procesadores compiten entre sí para determinar cuál es el más
-adecuado para analizar y extraer la información estructurada necesaria del texto.
-
-Diagrama UML del componente Reader.
-
-\subsubsection*{Procesadores}
-Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo del documento
-específico..
-
-Una vez seleccionado, el procesador elegido procede a ejecutar una serie de tareas que incluyen la identificación y
-extracción de entidades clave. En esta implementación, se han desarrollado los siguientes procesadores:
+El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:reader_component} de la sección anterior.
 
 \begin{itemize}
-    \item Residential Lease Processor: Evalúa si el documento se trata de un contrato de alquiler de vivienda entre
-    particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
-    arrendadores, los arrendatarios y la fecha del contrato.
-    \item Vehicle Sale And Purchase Processor: Evalúa si el documento se trata de un contrato de compraventa de
-    vehículos
-    entre particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
-    compradores y vendedores y la fecha de la transacción.
+    \item \textbf{Symfony HttpClient} es un cliente HTTP flexible y eficiente para PHP. Permite realizar solicitudes
+    HTTP a servicios externos, manejar respuestas y gestionar errores de manera sencilla y eficaz
+    ~\cite{https://symfony.com/doc/current/http_client.html}.
+    \item \textbf{Symfony Cache} es un componente de Symfony que proporciona una implementación robusta y flexible
+    para el almacenamiento en caché ~\cite{https://symfony.com/doc/current/components/cache.html}.
+    Permite mejorar el rendimiento de la aplicación mediante el almacenamiento temporal de datos, reduciendo la carga en
+    los recursos externos.
+    \item \textbf{ChatGPT API} proporciona acceso a modelos avanzados de procesamiento de lenguaje natural.
+    Permite integrar capacidades de IA en la aplicación, como la generación de texto y el análisis de datos, mejorando
+    las funcionalidades y experiencias del usuario ~\cite{https://platform.openai.com/docs/api-reference/chat}.
 \end{itemize}
 
-\subsubsection*{Engine}
-Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
-aplicación, en este caso únicamente los procesadores.
+\colorbox{color_highlight}{@TODO: para qué sirve}
+
+
 

@@ -1,9 +1,12 @@
 *.aux
 *.bbl
+*.bcf
 *.blg
 *.lof
-*.lot
 *.log
+*.lot
+*.out
 *.pdf
+*.run.xml
 *.toc
 /TFT.pdf

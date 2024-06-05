@@ -5,7 +5,7 @@ TARGET=TFT
 
 xelatex ${TARGET}.tex
 
-bibtex ${TARGET}
+biber ${TARGET}
 
 xelatex ${TARGET}.tex
 #xelatex ${TARGET}.tex
