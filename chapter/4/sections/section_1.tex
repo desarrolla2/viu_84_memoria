@@ -1,11 +1,11 @@
 \section{Diseño del sistema}
 
-En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
+En la figura \ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
 PDF y genera objetos que contienen la información más importante de los mismos.
-En la figura~\ref{fig:chapter_1.specific_b} vimos que se va a incluir también el desarollo de dos interfaces, una web
+En la figura \ref{fig:chapter_1.specific_b} vimos que se va a incluir también el desarollo de dos interfaces, una web
 y una de línea de comandos.
 
-En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el \textit{Reader}
+En la figura \ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el \textit{Reader}
 y el \textit{Generator}
 
 \begin{figure}[ht]
@@ -16,7 +16,7 @@ y el \textit{Generator}
     \end{center}
 \end{figure}
 
-\subsection*{Componente \textit{Generator}}\label{subsec:generator_component}
+\subsection*{Componente \textit{Generator}}\label{subsec:chapter_4.generator_component}
 
 Este componente sirve como el motor inicial en el proceso, encargado de convertir documentos de cualquier formato a
 texto plano.
@@ -68,7 +68,7 @@ Este es el orquestador del componente, encargado de hacer las llamadas a los dem
 aplicación. Coordina el flujo entre los pre-procesadores, procesadores y post-procesadores para asegurar que el
 documento sea procesado de manera correcta.
 
-\subsection*{Componente \textit{Reader}}\label{subsec:reader_component}
+\subsection*{Componente \textit{Reader}}\label{subsec:chapter_4.reader_component}
 El componente Reader juega un papel crucial en el proceso de interpretación y procesamiento del texto plano obtenido a
 partir de la salida del componente Generator anterior..
 

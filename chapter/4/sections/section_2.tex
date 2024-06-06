@@ -20,7 +20,7 @@ Habitualmente se ocupan de la lógica de negocio y la persistencia de datos.
     Un sistema de plantillas permite separar la capa de presentación de la capa de negocio.
 \end{itemize}
 
-Hemos utilizado PHP como lenguaje principal para desarrollar nuestro sistema.
+Hemos utilizado \textbf{PHP} como lenguaje principal para desarrollar nuestro sistema.
 Symfony se utiliza en la parte de infraestructura, incluida la interfaz web, para la que también hemos usado Twig.
 
 \subsection*{Cliente}
@@ -48,12 +48,11 @@ El \textit{frontend} se encarga de la presentación y la experiencia del usuario
     Facilita la inclusión de iconos de alta calidad sin depender de imágenes ~\cite{https://fontawesome.com/}.
 \end{itemize}
 
-HTML, CSS y Javascript, son tecnologías de uso necesario en el desarrollo web.
-Nosotros las hemos utilizado para el desarrollo de la interfaz web.
-Además, hemos usado Bootstrap para realizar un prototipado rápido y finalmente hemos utilizado Font Awesome para obtener
-iconos y logos.
-
+Hemos utilizado \textbf{HTML}, \textbf{CSS} y \textbf{JavaScript} para el desarrollo de la interfaz web.
 \colorbox{color_highlight}{@TODO: INSERTAR REFERENCIA}
+Además, hemos usado \textbf{Bootstrap} para realizar un prototipado rápido y finalmente hemos utilizado
+\textbf{Font Awesome} para la representación de iconos y logos.
+
 
 \subsection*{Gestión de dependencias}
 
@@ -67,8 +66,8 @@ Se encarga de administrar las bibliotecas y paquetes que un proyecto necesita pa
     actualizadas ~\cite{https://getcomposer.org/doc/}.
 \end{itemize}
 
-En este proyecto hemos utilizado composer para instalar todas las librerías PHP necesarias, principalmente Symfony y
-algunos de sus componentes.
+Hemos utilizado  \textbf{Composer} para instalar todas las librerías  \textbf{PHP} necesarias, principalmente
+\textbf{Symfony} y algunos de sus componentes.
 
 \subsection*{Control de versiones}
 
@@ -82,11 +81,13 @@ realizados en el código fuente a lo largo del tiempo.
     Git permite a los desarrolladores colaborar de manera efectiva, rastreando cambios y gestionando ramas y fusiones
     ~\cite{https://git-scm.com/doc}.
     \item \textbf{GitHub} es una plataforma de hospedaje de repositorios Git.
-    Proporciona herramientas para la colaboración, la revisión de código y la gestión de proyectos, facilitando el
-    trabajo en equipo ~\cite{https://docs.github.com/}.
+    Proporciona herramientas para la colaboración, la revisión de código y facilitando el trabajo en equipo
+    ~\cite{https://docs.github.com/}.
 \end{itemize}
 
-\colorbox{color_highlight}{@TODO: para qué sirve}
+Hemos utilizado \textbf{Git} para gestionar las versiones del código, siguiendo el patrón de crear una nueva rama para
+cada nueva característica y fusionarla a la rama principal, cuando esta está completada.
+Además, hemos enlazado con el sistema de gestión de proyectos a través de los mensajes de cada commit.
 
 \subsection*{Automatización}
 
@@ -101,7 +102,8 @@ repetitivas de manera automática, sin intervención manual
     ~\cite{https://www.gnu.org/software/make/manual/}.
 \end{itemize}
 
-\colorbox{color_highlight}{@TODO: para qué sirve}
+Hemos usado \textbf{Make} para automatizar las tareas más comunes como son la construcción o el inicio de los
+contenedores de docker, pero también para tener acceso directo a tareas que resultaban repetitivas.
 
 \subsection*{Pruebas}
 
@@ -115,12 +117,17 @@ identificar y corregir errores.
     ejecutar pruebas automatizadas para asegurar que el código se comporta como se espera, facilitando el desarrollo de
     software de alta calidad ~\cite{https://phpunit.de/manual/current/en/}.
     \item \textbf{GitHub Actions} es una plataforma de integración continua que permite automatizar flujos de
-    trabajo directamente desde GitHub.
-    GitHub Actions facilita la configuración de pipelines de CI/CD, ejecutando pruebas y despliegues automáticamente con
-    cada cambio en el repositorio ~\cite{https://docs.github.com/en/actions}.
+    trabajo directamente desde \textbf{GitHub}.
+    \textbf{GitHub Actions} facilita la configuración de pipelines de CI/CD, ejecutando pruebas y despliegues
+    \item automáticamente con cada cambio en el repositorio ~\cite{https://docs.github.com/en/actions}.
 \end{itemize}
 
-\colorbox{color_highlight}{@TODO: para qué sirve}
+En \colorbox{color_highlight}{@TODO: INSERTAR REFERENCIA} de la sección anterior, ya determinamos que las pruebas eran
+una parte fundamental de este proyecto.
+Hemos utilizado \textbf{PHPUnit}  para la ejecución definir una batería o \textit{suite} de pruebas unitarias, de
+integración y funcionales.
+Hemos utilizado \textbf{GitHub Actions}  para que esta \textit{suite}
+se ejecutara automáticamente después de cada commit, en un proceso de integración continua.
 
 \subsection*{Contenerización}
 
@@ -139,9 +146,13 @@ independientemente de las configuraciones del sistema subyacente.
     de desarrollo complejos ~\cite{https://docs.docker.com/compose/}.
 \end{itemize}
 
-\colorbox{color_highlight}{@TODO: para qué sirve}
+Hemos utilizado \textbf{Docker} para definir dos conjuntos de contenedores, uno básico y otro ampliado.
+El conjunto básico contiene un único contenedor en el que se ejecuta la aplicación.
+El conjunto ampliado contiene servicios que son complementarios, en este caso el conjunto \textbf{ELK} descrito en la
+subsección de registros  \ref{subsec:chapter_4.logs}.
 
-\subsection*{Registros}
+\subsection*{Registros}\label{subsec:chapter_4.logs}
+
 Los registros o \textit{logs} contienen información de eventos que ocurren en un sistema, son utilizados para
 monitorear, diagnosticar y solucionar problemas.
 Capturan información vital sobre el funcionamiento de aplicaciones, servidores y otros componentes, proporcionando un
@@ -161,11 +172,16 @@ historial que pueda ser analizado.
     almacenados en Elasticsearch ~\cite{https://www.elastic.co/guide/en/kibana/current/index.html}.
 \end{itemize}
 
-\colorbox{color_highlight}{@TODO: para qué sirve}
+Hemos utilizado \textbf{Monolog} para configurar los \textit{logs} generados en la aplicación.
+El resto de elementos, \textbf{Elastic Search}, \textbf{Logstash} y \textbf{Kibana}, conocidos como \textbf{ELK},
+permiten procesar en tiempo real los registros de la aplicación.
+A través de una interfaz web, estos componentes permiten generar paneles de control y realizar búsquedas sobre los
+registros.
 
 \subsection*{Componente \textit{Generator}}
 
-El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:generator_component} de la sección anterior.
+El componente \textit{Generator} fue descrito en la subsección \ref{subsec:chapter_4.generator_component}
+de la sección anterior.
 
 \begin{itemize}
     \item \textbf{Pdf to Text} es una herramienta que convierte documentos PDF en texto plano.
@@ -177,7 +193,8 @@ El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:gene
 
 \subsection*{Componente Reader}
 
-El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:reader_component} de la sección anterior.
+El componente \textit{Generator} fue descrito en la subsección \ref{subsec:chapter_4.reader_component}
+de la sección anterior.
 
 \begin{itemize}
     \item \textbf{Symfony HttpClient} es un cliente HTTP flexible y eficiente para PHP. Permite realizar solicitudes
