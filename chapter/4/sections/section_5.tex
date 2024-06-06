@@ -1,0 +1,84 @@
+\section{Pruebas y evaluación}
+
+Detalla las pruebas realizadas para verificar el correcto funcionamiento de tu solución.
+Explica los casos de prueba utilizados, los resultados obtenidos y cómo se han abordado los problemas o errores
+identificados.
+Si has realizado pruebas de rendimiento, seguridad u otros aspectos, también inclúyelos en esta sección.
+
+
+\section{Pruebas}
+Las pruebas en este proyecto son fundamentales para asegurar que la tecnología funciona conforme a las expectativas y
+requisitos establecidos. Para garantizar una validación exhaustiva y precisa, se ha diseñado cuidadosamente un sistema
+de pruebas descrito a continuación.
+
+\subsection*{Construcción del conjunto de datos de prueba}
+
+\colorbox{color_highlight}{@TODO: @marlene:} menciona el tamaño del dataset
+El proceso para encontrar un conjunto de datos de prueba fue complejo, ya que no se encontraron conjuntos de datos de
+fuentes abiertas que cumplieran con los requisitos necesarios..
+
+La mayoría de estos conjuntos se distribuyen anonimizados, y nuestra tecnología necesita identificar y extraer
+principalmente datos de carácter personal, como nombres, documentos de identidad, direcciones, fechas, importes, números
+de cuentas bancarias, entre otros.
+
+Finalmente, se construyó manualmente un conjunto de datos de prueba utilizando modelos de documentos encontrados en
+internet, así como contratos reales a los que tuvimos acceso..
+
+Este conjunto de datos se compone de tres subconjuntos:
+
+
+INSERTAR TABLA
+
+El siguiente paso fue modificar todos los documentos para que todos los datos de carácter personal fueran aleatorios y
+no correspondiera a personas reales. Este proceso aseguró la privacidad y cumplió con las normativa de protección de
+datos.
+
+Para facilitar la modificación y manejo de estos documentos, se guardaron en formato Markdown, lo que permitió una
+edición más rápida en el propio editor de código.
+
+Dado que la entrada del sistema acepta documentos en formato PDF, se desarrolló un pequeño script para convertir cada
+documento Markdown en PDF. Este script utiliza plantillas LaTeX para introducir variabilidad en el formato de los
+documentos, asegurando una mayor robustez en las pruebas del sistema.
+
+
+Este enfoque en la creación del conjunto de datos de prueba garantiza que el sistema pueda ser evaluado de manera
+exhaustiva y precisa, cubriendo diversos escenarios y tipos de documentos relevantes para la tecnología desarrollada.
+
+\subsection*{Pruebas automáticas}
+Las pruebas automáticas son esenciales para garantizar la calidad y la robustez del software. Permiten verificar que el
+código se comporta como se espera, identificar errores de manera temprana y asegurar que las nuevas funcionalidades no
+introduzcan fallos en el sistema existente..
+
+En este proyecto, se han implementado varios tipos de pruebas automáticas, cada una con un enfoque diferente para cubrir
+todas las facetas del desarrollo y la implementación del software.
+
+\subsubsection*{Pruebas unitarias}
+Las pruebas unitarias se centran en verificar la funcionalidad de componentes individuales del sistema, como funciones o
+métodos. Estas pruebas son cruciales para asegurar que cada parte del código funciona correctamente en aislamiento.
+
+Se utilizan frameworks de pruebas, como PHPUnit, para automatizar estas pruebas y hacerlas repetibles y confiables.
+
+
+Pruebas unitarias ejecutadas desde un entorno de desarrollo integrado
+
+\subsubsection*{Pruebas funcionales}
+Las pruebas funcionales evalúan el sistema desde el punto de vista del usuario final, verificando que las
+funcionalidades del software se comportan como se espera cuando se integran varios componentes.
+
+
+Pruebas funcionales ejecutadas desde la línea de comandos
+
+\subsection*{Integración continua}
+La integración continua es una práctica esencial en el desarrollo de software moderno, que implica la integración
+frecuente del trabajo de los desarrolladores en un repositorio compartido, normalmente programando la ejecución
+automática de los test en un servidor de integración continua, cada vez que se añade un commit al repositorio.
+
+En este proyecto, hemos implementado la integración continua utilizando GitHub Actions, un servicio de automatización
+que permite crear flujos de trabajo personalizados para compilar, probar y desplegar código directamente desde GitHub.
+
+
+Pruebas de Integración continua realizada en GitHub actions.
+
+\colorbox{color_highlight}{@TODO: @marlene:}
+En cuanto a los datos, los generaste manual. No hay forma de generar datos sintéticos? Se podrían generar 100 o 1000
+documentos? Sino, hay que justificarlo bien.

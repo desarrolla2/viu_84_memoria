@@ -23,8 +23,10 @@
 % Font colors
 \usepackage{xcolor}
 \definecolor{color_orange}{HTML}{E65113}
-\definecolor{color_dark_grey_1}{HTML}{626262}
-\definecolor{color_dark_grey_2}{HTML}{717171}
+\definecolor{color_dark_grey_1}{HTML}{606060}
+\definecolor{color_dark_grey_2}{HTML}{707070}
+\definecolor{color_dark_grey_3}{HTML}{808080}
+\definecolor{color_dark_grey_4}{HTML}{909090}
 \definecolor{color_highlight}{HTML}{FFFF00}
 \color{color_dark_grey_2}
 
@@ -33,15 +35,22 @@
 \titleformat{\chapter}[hang]
 {\chapterfont\Huge\bfseries\color{color_orange}}
 {\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{*3}{*0.75}
 
 % Section style format
 \titleformat{\section}[hang]
 {\sectionfont\Large\bfseries\color{color_dark_grey_1}}
 {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{*1}{*0.5}
 
 % Subsection style format
 \titleformat{\subsection}[hang]
 {\sectionfont\large\bfseries\color{color_dark_grey_2}}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{*0.9}{*0.4}
+
+\titleformat{\subsubsection}[hang]
+{\sectionfont\large\bfseries\color{color_dark_grey_3}}{\subsubsection}{0.9em}{}
+\titlespacing*{\subsubsection}{0pt}{*0.8}{*0.3}
 
 % Appendix style format
 \titleformat{\appendix}[hang]
@@ -81,10 +90,6 @@
     \fancyheadoffset{0pt}
 }
 
-% Configure captions
-\usepackage{caption}
-\captionsetup{belowskip=20pt,aboveskip=20pt}
-
 % List configuration
 \usepackage{enumitem}
 \setlist[enumerate,1]{left=20pt, noitemsep}
@@ -107,13 +112,13 @@
     \addcontentsline{toc}{chapter}{\listfigurename}
     \addcontentsline{toc}{chapter}{\listtablename}
     \listoffigures
-    \listoftables
+    % \listoftables
 
     % Abstract
-    %\input{./abstract/abstract}
+    \input{./abstract/abstract}
 
     % Dedication
-    %\input{./dedication/dedication}
+    \input{./dedication/dedication}
 
     %% Chapters
     \include{chapter/1/chapter}

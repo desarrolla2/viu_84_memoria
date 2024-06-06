@@ -1,12 +1,13 @@
 \section{Diseño del sistema}
 
-En la figura \ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
+En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
 PDF y genera objetos que contienen la información más importante de los mismos.
-En la figura \ref{fig:chapter_1.specific_b} vimos que se va a incluir también el desarollo de dos interfaces, una web
+En la figura~\ref{fig:chapter_1.specific_b} vimos que se va a incluir también el desarrollo de dos interfaces, una web
 y una de línea de comandos.
 
-En la figura \ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el \textit{Reader}
-y el \textit{Generator}
+En esta sección profundizaremos en el diseño del sistema.
+En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el componente
+\textit{Generator} y el componente \textit{Reader}.
 
 \begin{figure}[ht]
     \begin{center}
@@ -18,35 +19,64 @@ y el \textit{Generator}
 
 \subsection*{Componente \textit{Generator}}\label{subsec:chapter_4.generator_component}
 
-Este componente sirve como el motor inicial en el proceso, encargado de convertir documentos de cualquier formato a
-texto plano.
+La responsabilidad de este primer componente es convertir archivos de cualquier formato a objetos que contienen una
+representación en texto plano del mismo.
+Tal y como se ve en la figura~\ref{fig:chapter_4.generator_component_uml} el componente consta de cuatro tipos
+diferentes de elementos.
 
-Se compone de tres conjuntos de elementos y un orquestador al que llamaremos \textit{Engine} responsable de la
-coordinación de las operaciones.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.generator_component_uml}
+        \caption{Diagrama UML del componente \textit{Generator}}
+        \label{fig:chapter_4.generator_component_uml}
+    \end{center}
+\end{figure}
 
-Diagrama UML del componente generator.
+\subsubsection*{Motor}
+El motor o \textit{Engine} es el corazón del componente.
+Es el encargado de hacer las llamadas a los demás elementos registrados en el mismo coordinando cuáles y en que
+orden son llamados.
 
 \subsubsection*{Preprocesadores}
 Los preprocesadores preparan el documento original para facilitar su conversión a texto.
-En esta implementación no se ha desarrollado ningún preprocesador.
-
-Comunicación del Engine con los preprocesadores definidos.
-
+En esta implementación no se ha desarrollado ningún preprocesador, ya que no ha sido necesario para los casos de uso
+previstos.
 
 \subsubsection*{Procesadores}
-Actúan como el núcleo del Generator, donde se realiza la conversión efectiva del documento a texto. Funcionan mediante
-un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento en cuestión,
-seleccionando el más adecuado para llevar a cabo la tarea.
+En los procesadores se realiza la conversión efectiva del documento a texto.
+Funcionan mediante un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento
+en cuestión, seleccionando el más adecuado para llevar a cabo la tarea.
 
-Este enfoque modular y competitivo asegura que el procesamiento del texto sea no solo eficiente, sino también
-extremadamente flexible, adaptándose a las variaciones en la naturaleza de los documentos procesados.
+En la figura~\ref{fig:chapter_4.generator_component_processors} puede verse un ejemplo.
+El \textit{Engine} pretende convertir un fichero PDF en texto y tiene registrados dos procesadores, el
+\textit{MP3Processor} y el \textit{PDFProcessor}.
 
+Primero realiza una llamada a \textit{MP3Processor}, el cual evalúa el documento y responde con una puntuación
+de -1, lo cual significa que no es capaz de procesar este tipo de documento.
+A continuación realiza una llamada a \textit{PDFProcessor}, el cual evalúa el documento y responde con una puntuación
+de 90, lo cual significa que es adecuado para procesar este tipo de documento.
 
-Comunicación del Engine con los procesadores definidos.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.generator_component_processors}
+        \caption{Competición entre procesadores en el componente \textit{Generator}}
+        \label{fig:chapter_4.generator_component_processors}
+    \end{center}
+\end{figure}
 
-En la actual implementación, hemos desarrollado un único procesador especializado en transformar documentos PDF a
-texto. Este procesador utiliza la utilidad de línea de comandos `pdftotext` para llevar a cabo la conversión (Glyph \&
-Cog, 2023).
+Una vez que todos los procesadores han sido invocados, el \textit{Engine} enviará el documento al procesador que
+haya respondido con una puntuación más alta.
+
+Como puede verse, es fácil añadir soporte a nuevos tipos de documentos.
+Podrías añadir soporte para documentos escaneados, simplemente añadiendo un procesador que utilizara una tecnología
+de reconocimiento de caractéres o \textit{Optical character recognition} (OCR) como por ejemplo \textit{Tesseract}
+~\cite{https://github.com/tesseract-ocr/tesseract}.
+
+El \textbf{Requisito 1} definido en el capítulo~\ref{ch:chapter_1} para este proyecto era ``convertir documentos PDF
+en documentos de texto''.
+El procesador \textit{PDFPToTextProcessor} es el responsable de esta tarea mediante llamadas a una tecnología que se
+encuentra en la capa de infraestructura, en este caso
+\textbf{Pdf to Text}~\cite{https://www.xpdfreader.com/pdftotext-man.html}.
 
 \subsubsection*{Postprocesadores}
 Estos componentes perfeccionan el texto generado, eliminando errores como caracteres no UTF-8 y espacios en blanco
@@ -63,10 +93,7 @@ desarrollado varios post-procesadores:
     \item Character Replace PostProcessor: Desarrollado para eliminar caracteres específicos que complicaba las pruebas.
 \end{itemize}
 
-\subsubsection*{Engine}
-Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
-aplicación. Coordina el flujo entre los pre-procesadores, procesadores y post-procesadores para asegurar que el
-documento sea procesado de manera correcta.
+
 
 \subsection*{Componente \textit{Reader}}\label{subsec:chapter_4.reader_component}
 El componente Reader juega un papel crucial en el proceso de interpretación y procesamiento del texto plano obtenido a
@@ -99,45 +126,7 @@ extracción de entidades clave. En esta implementación, se han desarrollado los
 Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
 aplicación, en este caso únicamente los procesadores.
 
-
-\section{Interfaces de usuario}
-Aunque el objetivo principal de este trabajo es desarrollar una tecnología, flexible, extensible y que pueda ser
-fácilmente integrada en otros sistemas, se han implementado dos tipos de interfaces sencillas, que permiten demostrar el
-correcto funcionamiento de la tecnología.
-
-\subsection*{Interfaz de línea de comandos}
-La interfaz de línea de comandos es una herramienta para desarrolladores y administradores del sistema. Permite ejecutar
-comandos y scripts de manera directa, facilitando la automatización de tareas y la integración con otros sistemas.
-
-
-Ejecución de la aplicación a través de la línea de comandos
-
-Esta interfaz recibe como parámetro la ruta de un fichero que se pretende analizar y una vez analizado muestra una
-representación en formato tabla de la información extraída del mismo.
-
-\subsection*{Interfaz web}
-La interfaz web es el principal punto de interacción para la mayoría de los usuarios. Está diseñada para ser intuitiva,
-accesible y eficiente, permitiendo a los usuarios realizar una amplia gama de operaciones a través de un navegador web.
-
-Para este proyecto hemos desarrollado una interfaz con las siguientes características
-
-\begin{itemize}
-    \item
-    Diseño Responsive: La interfaz web está diseñada para ser accesible desde dispositivos de escritorio y móviles,
-    asegurando una experiencia de usuario coherente y optimizada en diferentes tamaños de pantalla.
-    \item
-    Experiencia de usuario intuitiva: Se ha prestado atención a la usabilidad, con una interfaz limpias y fáciles de
-    utilizar y retroalimentación inmediata a las acciones del usuario.
-\end{itemize}
-
-
-Ejecución de la aplicación a través de la interfaz web.
-
-Esta interfaz muestra un área sobre la que se pueden arrastrar y soltar documentos, una vez recibidos, y analizados
-muestra una representación en formato json de la información extraída del mismo.
-
-
-\section{Caché}
+\subsection{Caché}
 La implementación de una caché en aplicaciones web es una técnica comúnmente utilizada para mejorar el rendimiento y la
 eficiencia..
 
@@ -148,8 +137,7 @@ Aunque en un entorno de producción la utilidad de esta caché podría ser limit
 invaluable. Esto se debe a que en desarrollo se trabaja principalmente con un conjunto de datos más pequeño y las
 peticiones se repiten con frecuencia.
 
-
-\section{Registro y gestión de logs}
+\subsection{Registro y gestión de logs}
 El registro de logs es una parte crucial del monitoreo y mantenimiento de cualquier aplicación..
 
 En este proyecto, se ha implementado un sistema de logging utilizando Monolog, una biblioteca de registro para PHP.
@@ -202,9 +190,7 @@ El sistema ELK se compone de tres componentes:
     Elasticsearch.
 \end{itemize}
 
-\colorbox{color_highlight}{@TODO: @marlene:}
-En cuanto a los datos, los generaste manual. No hay forma de generar datos sintéticos? Se podrían generar 100 o 1000
-documentos? Sino, hay que justificarlo bien.
+
 
 \colorbox{color_highlight}{@TODO: @marlene:}
 Vale, veo que si usas el LLM de chatgpt. Eso es algo que no me había quedado claro de la memoria. Sin embargo, aún

@@ -42,6 +42,6 @@ realizados y las razones detrás de ellos.
 
 ## Consideraciones técnicas:
 
-Si hay consideraciones técnicas importantes relacionadas con tu desarrollo, como
-requisitos de hardware o restricciones de recursos, menciónalas en esta sección. Explica cómo has abordado estos
-desafíos técnicos y cómo han influido en el desarrollo de tu proyecto.
+Si hay consideraciones técnicas importantes relacionadas con tu desarrollo, como requisitos de hardware o restricciones
+de recursos, menciónalas en esta sección. Explica cómo has abordado estos desafíos técnicos y cómo han influido en el
+desarrollo de tu proyecto.
