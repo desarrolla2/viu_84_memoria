@@ -1,4 +1,4 @@
-\section{Diseño del sistema}\label{sec:Diseño del sistema}
+\section{Diseño del sistema}\label{sec:diseno_del_sistema}
 
 En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
 PDF y genera objetos que contienen la información más importante de los mismos.
@@ -57,12 +57,12 @@ en cuestión, seleccionando cuál es el más adecuado para llevar a cabo la tare
 
 En la figura~\ref{fig:chapter_4.generator_component_processors} puede verse un ejemplo.
 El \textit{Engine} pretende convertir un fichero PDF en texto y tiene registrados dos procesadores, el
-\textit{MP3Processor} y el \textit{PDFProcessor}.
+\textit{MP3Processor} y el \textit{PDFrocessor}.
 
 Primero realiza una llamada a \textit{MP3Processor}, el cual evalúa el documento y responde con una puntuación
 de -1, lo cual significa que no es capaz de procesar este tipo de documento.
 
-A continuación realiza una llamada a \textit{PDFProcessor}, el cual evalúa el documento y responde con una puntuación
+A continuación realiza una llamada a \textit{PDFrocessor}, el cual evalúa el documento y responde con una puntuación
 de 90, lo cual significa que es adecuado para procesar este tipo de documento.
 
 \begin{figure}[ht]
@@ -86,11 +86,11 @@ de reconocimiento de caractéres u \textit{Optical character recognition} (OCR) 
 El \textbf{Requisito 1} definido en el capítulo~\ref{ch:chapter_1} para este proyecto era ``convertir documentos PDF
 en documentos de texto''.
 
-El procesador \textit{PDFPToTextProcessor} es el responsable de esta tarea mediante llamadas a una tecnología que se
+El procesador \textit{PDF To Text Processor} es el responsable de esta tarea mediante llamadas a una tecnología que se
 encuentra en la capa de infraestructura, en este caso
 \textbf{Pdf to Text}~\cite{https://www.xpdfreader.com/pdftotext-man.html}.
 Añadiremos más detalles sobre como fue la implementación de este procesador en la
-sección~\ref{sec:Implemetación y programación} Implemetación y programación.
+sección~\ref{sec:implemetacion_y_programacion} Implemetación y programación.
 
 \subsubsection*{Postprocesadores}
 
@@ -106,13 +106,11 @@ En esta implementación, se han desarrollado los siguientes postprocesadores:
 \begin{itemize}
     \item \textbf{UTF8 PostProcessor}: Algunos documentos pueden contener caracteres no UTF8. Como este tipo de
     caracteres pueden generar problemas, este procesador los reemplazará por caractéres equivalentes en UTF8.
-
     \item \textbf{Character Replace PostProcessor}: Después de eliminar los caracterés no UTF8 se detectó que algunos
     caracteres todavía podían resultar problemáticos, asi que se implementó un nuevo procesador capaz de reemplazar
     caracteres problemáticos, por otros equivalentes.
     En este caso se cambió el carácter \textit{\textbackslash f}, salto de página, por el carácter
     \textit{\textbackslash n} salto de línea.
-
     \item \textbf{Word Limit PostProcessor}: Más adelante en la implementación del componente \textit{Reader}, y debido
     al uso de las tecnologías implementadas en el mismo, se vio que documentos con textos demasiado largos podían
     generar errores.
