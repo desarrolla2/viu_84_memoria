@@ -1,11 +1,14 @@
-\section{Diseño del sistema}
+\section{Diseño del sistema}\label{sec:Diseño del sistema}
 
 En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
 PDF y genera objetos que contienen la información más importante de los mismos.
-En la figura~\ref{fig:chapter_1.specific_b} vimos que se va a incluir también el desarrollo de dos interfaces, una web
-y una de línea de comandos.
 
-En esta sección profundizaremos en el diseño del sistema.
+Dependiendo del tipo de documento, la información contenida en estos objetos puede variar.
+
+En la figura~\ref{fig:chapter_1.specific_b} mostramos que se va a incluir también el desarrollo de dos interfaces, una
+web y una de línea de comandos.
+
+En esta sección profundizaremos en el diseño de la arquitectura de este sistema.
 En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el componente
 \textit{Generator} y el componente \textit{Reader}.
 
@@ -19,8 +22,8 @@ En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos compone
 
 \subsection*{Componente \textit{Generator}}\label{subsec:chapter_4.generator_component}
 
-La responsabilidad de este primer componente es convertir archivos de cualquier formato a objetos que contienen una
-representación en texto plano del mismo.
+La responsabilidad de este primer componente, el \textit{Generator} es convertir archivos de cualquier formato en una
+representación en texto plano con el contenido del mismo.
 Tal y como se ve en la figura~\ref{fig:chapter_4.generator_component_uml} el componente consta de cuatro tipos
 diferentes de elementos.
 
@@ -32,20 +35,25 @@ diferentes de elementos.
     \end{center}
 \end{figure}
 
+Es importante destacar que salvo el \textit{Engine}, el resto de elementos son intercambiables, y dependiendo del caso
+de uso, pueden utilizarse los componentes descritos en este TFG, o ser necesaria la implementación de otros nuevos.
+
 \subsubsection*{Motor}
 El motor o \textit{Engine} es el corazón del componente.
 Es el encargado de hacer las llamadas a los demás elementos registrados en el mismo coordinando cuáles y en que
-orden son llamados.
+orden deben ser llamados.
 
 \subsubsection*{Preprocesadores}
 Los preprocesadores preparan el documento original para facilitar su conversión a texto.
+
 En esta implementación no se ha desarrollado ningún preprocesador, ya que no ha sido necesario para los casos de uso
 previstos.
 
 \subsubsection*{Procesadores}
-En los procesadores se realiza la conversión efectiva del documento a texto.
+Los procesadores realizan la conversión efectiva del documento a texto.
+
 Funcionan mediante un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento
-en cuestión, seleccionando el más adecuado para llevar a cabo la tarea.
+en cuestión, seleccionando cuál es el más adecuado para llevar a cabo la tarea.
 
 En la figura~\ref{fig:chapter_4.generator_component_processors} puede verse un ejemplo.
 El \textit{Engine} pretende convertir un fichero PDF en texto y tiene registrados dos procesadores, el
@@ -53,6 +61,7 @@ El \textit{Engine} pretende convertir un fichero PDF en texto y tiene registrado
 
 Primero realiza una llamada a \textit{MP3Processor}, el cual evalúa el documento y responde con una puntuación
 de -1, lo cual significa que no es capaz de procesar este tipo de documento.
+
 A continuación realiza una llamada a \textit{PDFProcessor}, el cual evalúa el documento y responde con una puntuación
 de 90, lo cual significa que es adecuado para procesar este tipo de documento.
 
@@ -64,138 +73,87 @@ de 90, lo cual significa que es adecuado para procesar este tipo de documento.
     \end{center}
 \end{figure}
 
-Una vez que todos los procesadores han sido invocados, el \textit{Engine} enviará el documento al procesador que
-haya respondido con una puntuación más alta.
+Si existieran más procesadores registrados, se irían invocando secuencialmente, para que evaluaran como de adecuados
+son para procesar ese tipo de documento.
+Finalmente, una vez que todos los procesadores han sido invocados, el \textit{Engine} enviará el documento al procesador
+que haya respondido con una puntuación más alta.
 
 Como puede verse, es fácil añadir soporte a nuevos tipos de documentos.
-Podrías añadir soporte para documentos escaneados, simplemente añadiendo un procesador que utilizara una tecnología
-de reconocimiento de caractéres o \textit{Optical character recognition} (OCR) como por ejemplo \textit{Tesseract}
+Se podría añadir soporte para documentos escaneados, simplemente añadiendo un procesador que utilizara una tecnología
+de reconocimiento de caractéres u \textit{Optical character recognition} (OCR) como por ejemplo \textit{Tesseract}
 ~\cite{https://github.com/tesseract-ocr/tesseract}.
 
 El \textbf{Requisito 1} definido en el capítulo~\ref{ch:chapter_1} para este proyecto era ``convertir documentos PDF
 en documentos de texto''.
+
 El procesador \textit{PDFPToTextProcessor} es el responsable de esta tarea mediante llamadas a una tecnología que se
 encuentra en la capa de infraestructura, en este caso
 \textbf{Pdf to Text}~\cite{https://www.xpdfreader.com/pdftotext-man.html}.
+Añadiremos más detalles sobre como fue la implementación de este procesador en la
+sección~\ref{sec:Implemetación y programación} Implemetación y programación.
 
 \subsubsection*{Postprocesadores}
-Estos componentes perfeccionan el texto generado, eliminando errores como caracteres no UTF-8 y espacios en blanco
-innecesarios, lo que mejora significativamente la calidad del texto resultante. En esta implementación, se han
-desarrollado varios post-procesadores:
+
+Los postprocesadores perfeccionan el texto generado, realizando los ajustes necesarios, lo que mejora la calidad del
+texto resultante.
+
+Los procesadores se llaman secuencialmente.
+El primer procesador recibe como entrada la salida del procesador ejecutado.
+Los siguientes postprocesadores reciben como entrada la salida del postprocesador anterior.
+
+En esta implementación, se han desarrollado los siguientes postprocesadores:
 
 \begin{itemize}
-    \item
-    Word Limit PostProcessor: Se detectó que los elementos de interés, como nombres, documentos de identidad y fechas de
-    contratos, típicamente aparecen en las primeras páginas. Este procesador limita el análisis a las primeras N
-    palabras del documento.
-    \item UTF8 PostProcessor: Implementado tras detectar caracteres no UTF-8 en algunos documentos, este post-procesador
-    elimina dichos caracteres.
-    \item Character Replace PostProcessor: Desarrollado para eliminar caracteres específicos que complicaba las pruebas.
+    \item \textbf{UTF8 PostProcessor}: Algunos documentos pueden contener caracteres no UTF8. Como este tipo de
+    caracteres pueden generar problemas, este procesador los reemplazará por caractéres equivalentes en UTF8.
+
+    \item \textbf{Character Replace PostProcessor}: Después de eliminar los caracterés no UTF8 se detectó que algunos
+    caracteres todavía podían resultar problemáticos, asi que se implementó un nuevo procesador capaz de reemplazar
+    caracteres problemáticos, por otros equivalentes.
+    En este caso se cambió el carácter \textit{\textbackslash f}, salto de página, por el carácter
+    \textit{\textbackslash n} salto de línea.
+
+    \item \textbf{Word Limit PostProcessor}: Más adelante en la implementación del componente \textit{Reader}, y debido
+    al uso de las tecnologías implementadas en el mismo, se vio que documentos con textos demasiado largos podían
+    generar errores.
+    Es por esto que se decide implementar este procesador que trunca el texto después de las primeras N palábras.
 \end{itemize}
-
-
 
 \subsection*{Componente \textit{Reader}}\label{subsec:chapter_4.reader_component}
-El componente Reader juega un papel crucial en el proceso de interpretación y procesamiento del texto plano obtenido a
-partir de la salida del componente Generator anterior..
+El componente Reader es el responsable del proceso de interpretación y procesamiento del texto plano obtenido a
+partir de la salida del componente \textit{Generator} descrito en la subsección anterior.
 
-Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo un mecanismo competitivo
-similar al del componente Generator. En este sistema, los procesadores compiten entre sí para determinar cuál es el más
-adecuado para analizar y extraer la información estructurada necesaria del texto.
+Tal y como se ve en la figura~\ref{fig:chapter_4.reader_component_uml} el componente consta de dos tipos diferentes de
+elementos.
 
-Diagrama UML del componente Reader.
-
-\subsubsection*{Procesadores}
-Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo del documento
-específico..
-
-Una vez seleccionado, el procesador elegido procede a ejecutar una serie de tareas que incluyen la identificación y
-extracción de entidades clave. En esta implementación, se han desarrollado los siguientes procesadores:
-
-\begin{itemize}
-    \item Residential Lease Processor: Evalúa si el documento se trata de un contrato de alquiler de vivienda entre
-    particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
-    arrendadores, los arrendatarios y la fecha del contrato.
-    \item Vehicle Sale And Purchase Processor: Evalúa si el documento se trata de un contrato de compraventa de
-    vehículos
-    entre particulares. En caso afirmativo, extrae la información más relevante del mismo, como los nombres de los
-    compradores y vendedores y la fecha de la transacción.
-\end{itemize}
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.reader_component_uml}
+        \caption{Diagrama UML del componente \textit{Reader}}
+        \label{fig:chapter_4.reader_component_uml}
+    \end{center}
+\end{figure}
 
 \subsubsection*{Engine}
-Este es el orquestador del componente, encargado de hacer las llamadas a los demás elementos registrados en la
-aplicación, en este caso únicamente los procesadores.
+El motor o \textit{Engine} es el corazón del componente.
+Encargado de hacer las llamadas a los demás elementos registrados en la aplicación, en este caso únicamente los
+procesadores.
 
-\subsection{Caché}
-La implementación de una caché en aplicaciones web es una técnica comúnmente utilizada para mejorar el rendimiento y la
-eficiencia..
+\subsubsection*{Procesadores}
+Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo el mismo mecanismo
+competitivo descrito en el componente \textit{Generator}.
 
-En este proyecto, la caché se ha utilizado específicamente para almacenar las peticiones HTTP realizadas, proporcionando
-varias ventajas significativas, como el aumento de la velocidad de respuesta y la reducción de costos operativos..
+Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo de un tipo de documento
+específico.
 
-Aunque en un entorno de producción la utilidad de esta caché podría ser limitada, en un entorno de desarrollo resulta
-invaluable. Esto se debe a que en desarrollo se trabaja principalmente con un conjunto de datos más pequeño y las
-peticiones se repiten con frecuencia.
+Una vez seleccionado, el procesador elegido procede a ejecutar una serie de tareas que incluyen la identificación y
+extracción de la información clave.
 
-\subsection{Registro y gestión de logs}
-El registro de logs es una parte crucial del monitoreo y mantenimiento de cualquier aplicación..
-
-En este proyecto, se ha implementado un sistema de logging utilizando Monolog, una biblioteca de registro para PHP.
-
-Además de los logs que almacena symfony por defecto, se han configurado 3 canales adicionales:
+En esta implementación, se han desarrollado los siguientes procesadores:
 
 \begin{itemize}
-    \item Generator: para los logs del componente generator.
-    \item Reader: para los logs del componente reader.
-    \item Http-Client: para el componente que realiza las peticiones HTTP.
+    \item \textbf{Residential Lease Processor}: Es adecuado para evaluar contratos de arrendamiento de vivienda entre
+    particulares tal y como indicamos en \textbf{Requisito 2}.
+    \item \textbf{Vehicle Sale And Purchase Processor}: Es adecuado para evaluar contratos de compra venta de vehículo
+    entre particulares tal y como indicamos en \textbf{Requisito 3}.
 \end{itemize}
-
-Un canal es la forma en la que monolog, agrupa un conjunto de información para poderla filtrar y procesar adecuadamente.
-
-Canal además se registra en dos ficheros diferentes
-
-\begin{itemize}
-    \item Log File format, es el formato estándar de ficheros de logs.
-    \item Logstash format, es el estándar de la herramienta logstash.
-\end{itemize}
-
-\subsection*{Formato de ficheros por defecto}
-El formato por defecto es adecuado para entornos de desarrollo o proyectos de pequeña envergadura. Siempre que estos
-ficheros no sean demasiado grandes, se pueden trabajar a través de herramientas de línea de comandos como:
-
-\begin{itemize}
-    \item grep: Utilizado para buscar patrones específicos dentro de los archivos de logs.
-    \item awk: Utilizado para procesar y analizar los logs de manera más compleja.
-\end{itemize}
-
-\subsection*{Sistema ELK}
-Un sistema compuesto por Elasticsearch, Logstash y Kibana (ELK) es una solución centralizada de gestión de logs, que
-permite una monitorización más avanzada de los mismos. Está indicado en entornos de producción, donde la monitorización
-de logs sea una tarea importante..
-
-
-Monitorización de logs a través de un sistema ELK
-
-El sistema ELK se compone de tres componentes:
-
-\begin{itemize}
-    \item
-    Logstash: Es una herramienta de procesamiento de datos que ingiere, transforma y envía datos a diversos destinos,
-    siendo Elasticsearch uno de los más comunes.
-    \item
-    Elasticsearch: Es un motor de búsqueda y análisis de texto completo basado en Lucene. Permite almacenar, buscar y
-    analizar grandes volúmenes de datos en tiempo real.
-    \item Kibana: Es una herramienta de visualización de datos que trabaja en conjunto con Elasticsearch. Permite a los
-    usuarios crear gráficos y dashboards interactivos para visualizar y analizar los datos de logs almacenados en
-    Elasticsearch.
-\end{itemize}
-
-
-
-\colorbox{color_highlight}{@TODO: @marlene:}
-Vale, veo que si usas el LLM de chatgpt. Eso es algo que no me había quedado claro de la memoria. Sin embargo, aún
-no
-tengo del todo claro qué generas a partir del PDF que recibes. Puedes ejecutar tu herramienta con un contrato? Estás
-usando el LLM para extraer los datos del contenido del PDF? Otra pregunta, qué modelo de chatgpt estás usando? Y
-puedes
-mandar el prompt que usaste?
