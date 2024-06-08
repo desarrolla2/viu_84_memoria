@@ -1,32 +1,7 @@
 \chapter{Resultados}\label{ch:chapter_5}
 
 
-\section{Descripción de la solución}
-El sistema desarrollado consta de una arquitectura basada en dos componentes principales: Generator y Reader.
-
-Ambos componentes están diseñados para ser fácilmente extensibles, mediante un sistema en el que se pueden registrar
-nuevos preprocesadores, procesadores y postprocesadores, para cumplir con los requisitos de casos de uso específicos.
-
-\subsection*{Componente Generator}
-El componente Generator se encarga de convertir documentos en diferentes formatos a texto plano.
-En esta implementación, se desarrolló un procesador especializado que utiliza la herramienta pdftotext para transformar
-documentos PDF en texto.
-
-La arquitectura modular del Generator permite la inclusión de nuevos preprocesadores y postprocesadores para ajustar y
-perfeccionar el texto generado.
-
-\subsection*{Componente Generator}
-El componente Reader interpreta y extrae la información estructurada del texto generado por el Generator.
-
-Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo un mecanismo competitivo
-similar al del componente Generator.
-Los procesadores compiten entre sí para determinar cuál es el más adecuado para analizar y extraer la información
-necesaria del texto.
-
-En esta implementación, se desarrollaron dos procesadores que consumen la api pública de OpenAI, para extraer la
-información de dos tipos de contratos diferentes: contratos de arrendamiento entre particulares y contratos de
-compraventa de vehículos entre particulares.
-
+\section{Pruebas y análisis de los resultados}
 \subsection*{Interfaces de Usuario}
 Para interactuar con el sistema, se han desarrollado dos interfaces:
 
@@ -41,7 +16,41 @@ Para interactuar con el sistema, se han desarrollado dos interfaces:
 \end{itemize}
 
 
-\section{Pruebas y análisis de los resultados}
+\subsection*{Interfaces de usuario}
+Aunque el objetivo principal de este trabajo es desarrollar una tecnología, flexible, extensible y que pueda ser
+fácilmente integrada en otros sistemas, se han implementado dos tipos de interfaces sencillas, que permiten demostrar el
+correcto funcionamiento de la tecnología.
+
+\subsection*{Interfaz de línea de comandos}
+La interfaz de línea de comandos es una herramienta para desarrolladores y administradores del sistema. Permite ejecutar
+comandos y scripts de manera directa, facilitando la automatización de tareas y la integración con otros sistemas.
+
+
+Ejecución de la aplicación a través de la línea de comandos
+
+Esta interfaz recibe como parámetro la ruta de un fichero que se pretende analizar y una vez analizado muestra una
+representación en formato tabla de la información extraída del mismo.
+
+\subsection*{Interfaz web}
+La interfaz web es el principal punto de interacción para la mayoría de los usuarios. Está diseñada para ser intuitiva,
+accesible y eficiente, permitiendo a los usuarios realizar una amplia gama de operaciones a través de un navegador web.
+
+Para este proyecto hemos desarrollado una interfaz con las siguientes características
+
+\begin{itemize}
+    \item
+    Diseño Responsive: La interfaz web está diseñada para ser accesible desde dispositivos de escritorio y móviles,
+    asegurando una experiencia de usuario coherente y optimizada en diferentes tamaños de pantalla.
+    \item
+    Experiencia de usuario intuitiva: Se ha prestado atención a la usabilidad, con una interfaz limpias y fáciles de
+    utilizar y retroalimentación inmediata a las acciones del usuario.
+\end{itemize}
+
+
+Ejecución de la aplicación a través de la interfaz web.
+
+Esta interfaz muestra un área sobre la que se pueden arrastrar y soltar documentos, una vez recibidos, y analizados
+muestra una representación en formato json de la información extraída del mismo.
 
 \colorbox{color_highlight} {@TODO: }
 explicar de nuevo que seha desarrollado una test suite de pruebas unitarias, y

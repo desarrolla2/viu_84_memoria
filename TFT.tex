@@ -95,6 +95,34 @@
 \setlist[enumerate,1]{left=20pt, noitemsep}
 \setlist[itemize,1]{left=20pt, noitemsep}
 
+% Code sltyle Configuration
+\usepackage{listings}
+\definecolor{color_code_green}{rgb}{0,0.6,0}
+\definecolor{color_code_gray}{rgb}{0.5,0.5,0.5}
+\definecolor{color_code_purple}{rgb}{0.58,0,0.82}
+\definecolor{color_code_background}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{my_style}{
+    basicstyle=\ttfamily\scriptsize, % Tamaño de fuente reducido
+    backgroundcolor=\color{color_code_background},
+    commentstyle=\color{color_code_green},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{color_code_gray},
+    stringstyle=\color{color_code_purple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=none,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=my_style}
+
 % Bibliography Configuration
 \usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{TFT.bib}

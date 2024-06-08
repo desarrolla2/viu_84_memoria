@@ -1,46 +1,56 @@
 \section{Implementación y programación}\label{sec:implemetacion_y_programacion}
 
-Describe cómo has implementado tu solución informática.
-Proporciona ejemplos de código relevante para ilustrar las características principales de tu implementación.
+En esta sección vamos a explicar algunos de los detalles de implementación de aquellos componentes que creemos que es
+interesante que sean introducidos.
 
-\subsection*{Interfaces de usuario}
-Aunque el objetivo principal de este trabajo es desarrollar una tecnología, flexible, extensible y que pueda ser
-fácilmente integrada en otros sistemas, se han implementado dos tipos de interfaces sencillas, que permiten demostrar el
-correcto funcionamiento de la tecnología.
+\subsection*{Componente \textit{Generator}}
 
-\subsection*{Interfaz de línea de comandos}
-La interfaz de línea de comandos es una herramienta para desarrolladores y administradores del sistema. Permite ejecutar
-comandos y scripts de manera directa, facilitando la automatización de tareas y la integración con otros sistemas.
+\subsubsection*{PDF To Text Processor}
 
+Como puede verse en el siguiente extracto de código, el procesador \textbf{PDF To Text Processor} es simplemente un
+envoltorio para \textbf{Pdf to Text}.
 
-Ejecución de la aplicación a través de la línea de comandos
+\lstinputlisting[language=PHP]{chapter/4/code/PdfToTextProcessor.php}
 
-Esta interfaz recibe como parámetro la ruta de un fichero que se pretende analizar y una vez analizado muestra una
-representación en formato tabla de la información extraída del mismo.
+En la figura~\ref{fig:chapter_4.generator_component_pdf_to_text_processor} puede verse un esquema de este
+comportamiento.
 
-\subsection*{Interfaz web}
-La interfaz web es el principal punto de interacción para la mayoría de los usuarios. Está diseñada para ser intuitiva,
-accesible y eficiente, permitiendo a los usuarios realizar una amplia gama de operaciones a través de un navegador web.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.generator_component_pdf_to_text_processor}
+        \caption{Esquema de comunicación con pdftotext}
+        \label{fig:chapter_4.generator_component_pdf_to_text_processor}
+    \end{center}
+\end{figure}
 
-Para este proyecto hemos desarrollado una interfaz con las siguientes características
+\subsection*{Componente \textit{Reader}}
 
-\begin{itemize}
-    \item
-    Diseño Responsive: La interfaz web está diseñada para ser accesible desde dispositivos de escritorio y móviles,
-    asegurando una experiencia de usuario coherente y optimizada en diferentes tamaños de pantalla.
-    \item
-    Experiencia de usuario intuitiva: Se ha prestado atención a la usabilidad, con una interfaz limpias y fáciles de
-    utilizar y retroalimentación inmediata a las acciones del usuario.
-\end{itemize}
+\subsubsection*{Residential Lease Processor}
 
+La implementación de este procesador es muy similar a la que hemos visto en el \textbf{PDF To Text Processor}, por lo
+que no vamos a incluir ni el código ni un esquema de la comunicación.
 
-Ejecución de la aplicación a través de la interfaz web.
+Simplemente, indicaremos que se trata de enviar preguntas sobre un documento que previamente hemos convertido en texto
+plano a un sistema LLM, en este caso utilizaremos el modelo
+\textbf{ChatGPT 4}~\cite{https://platform.openai.com/docs/models/gpt-4}
 
-Esta interfaz muestra un área sobre la que se pueden arrastrar y soltar documentos, una vez recibidos, y analizados
-muestra una representación en formato json de la información extraída del mismo.
+Lo que si merece la pena es profundizar en los mensajes que se envían.
 
+El primer intento de implementación se trató que el modelo respondiera con un XML. Para ello en la pregunta se le
+facilitaría un XSD, con los tipos de datos y sus validaciones.
+Sin embargo \textbf{ChatGPT 4} tiene limitaciones para trabajar con documentos XML, por lo que la implementación final
+se realizó utilizando ejemplos JSON.
 
-\subsection*{Caché}
+\lstinputlisting[language=PHP]{chapter/4/code/ResidentialLeaseAgreementProcessor.php}
+
+Como puede verse en el ejemplo de código anterior, es vital ser muy preciso en cuanto a la información que se le
+solicita y en cuanto al formato en el que se va a esperar la respuesta.
+Para ello se le facilita un ejemplo con los tipos de datos de cada dato.
+
+\subsubsection*{Vehicle Sale And Purchase Processor}
+
+\subsubsection*{Caché}
+
 La implementación de una caché en aplicaciones web es una técnica comúnmente utilizada para mejorar el rendimiento y la
 eficiencia..
 
@@ -48,10 +58,13 @@ En este proyecto, la caché se ha utilizado específicamente para almacenar las 
 varias ventajas significativas, como el aumento de la velocidad de respuesta y la reducción de costos operativos..
 
 Aunque en un entorno de producción la utilidad de esta caché podría ser limitada, en un entorno de desarrollo resulta
-invaluable. Esto se debe a que en desarrollo se trabaja principalmente con un conjunto de datos más pequeño y las
-peticiones se repiten con frecuencia.
+invaluable.
 
-\subsection*{Registro y gestión de logs}
+Esto se debe a que en desarrollo se trabaja principalmente con un conjunto de datos más pequeño y las peticiones se
+repiten con frecuencia.
+
+\subsection*{Registros}
+
 El registro de logs es una parte crucial del monitoreo y mantenimiento de cualquier aplicación..
 
 En este proyecto, se ha implementado un sistema de logging utilizando Monolog, una biblioteca de registro para PHP.
@@ -84,8 +97,8 @@ ficheros no sean demasiado grandes, se pueden trabajar a través de herramientas
 
 \subsection*{Sistema ELK}
 Un sistema compuesto por Elasticsearch, Logstash y Kibana (ELK) es una solución centralizada de gestión de logs, que
-permite una monitorización más avanzada de los mismos. Está indicado en entornos de producción, donde la monitorización
-de logs sea una tarea importante..
+permite una monitorización más avanzada de los mismos.
+Está indicado en entornos de producción, donde la monitorización de logs sea una tarea importante..
 
 
 Monitorización de logs a través de un sistema ELK
@@ -103,7 +116,6 @@ El sistema ELK se compone de tres componentes:
     usuarios crear gráficos y dashboards interactivos para visualizar y analizar los datos de logs almacenados en
     Elasticsearch.
 \end{itemize}
-
 
 \colorbox{color_highlight}{@TODO: @marlene:}
 Vale, veo que si usas el LLM de chatgpt. Eso es algo que no me había quedado claro de la memoria. Sin embargo, aún
