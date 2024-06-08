@@ -1,38 +1,125 @@
-\section{Desarrollo de software}\label{sec:Desarrollo de software}
+\section{Desarrollo de software}\label{sec:desarrollo_de_software}
 
+Este proyecto parte de una base realizada en la asignatura 47 GIIN Proyecto de ingeniería del
+software~\cite{https://github.com/desarrolla2/viu_47_proyecto_de_ingenieria_del_software} de este mismo grado
+universitario.
 
-\subsection*{Interfaces de usuario}
-Aunque el objetivo principal de este trabajo es desarrollar una tecnología, flexible, extensible y que pueda ser
-fácilmente integrada en otros sistemas, se han implementado dos tipos de interfaces sencillas, que permiten demostrar el
-correcto funcionamiento de la tecnología.
+\subsection*{Objetivos}
 
-\subsection*{Interfaz de línea de comandos}
-La interfaz de línea de comandos es una herramienta para desarrolladores y administradores del sistema. Permite ejecutar
-comandos y scripts de manera directa, facilitando la automatización de tareas y la integración con otros sistemas.
+A partir del trabajo realizado en esa asignatura se plantean los siguientes objetivos, que ya fueron recogidos en el
+anteproyecto.
 
+\begin{enumerate}
+    \item \textbf{Definir un nuevo conjunto de datos de prueba}: En el trabajo previo ya existía un conjunto de datos de
+    prueba.
+    Para este TFG se quería definir un nuevo conjunto, utilizando si fuera posible un conjunto de datos de fuentes
+    abiertas.
+    \item \textbf{Evaluar la precisión del sistema}: Para este TFG se quería evaluar como de preciso es el sistema a la
+    hora de la extracción de información de los documentos.
+    \item \textbf{Experimentar y seleccionar uno o más sistemas LLM}: En el trabajo previo se había probado con los
+    modelos \textbf{ollama}~\cite{https://ollama.com/documentation} y
+    \textbf{gpt-3.5-turbo}~\cite{https://platform.openai.com/docs/models/gpt-3.5-turbo}.
+    Para este TFG se quería probar con nuevos modelos.
+    Finalmente, este trabajo implicó reescribir completamente algunos componentes.
+    \item \textbf{Mejora de las interfaces}: En este TFG se querían realizar mejoras en la capa de presentación de ambas
+    interfaces.
+    \item \textbf{Documentación formal}: elaboración de la documentación requerida para completar satisfactoriamente
+    este TFG.
+\end{enumerate}
 
-Ejecución de la aplicación a través de la línea de comandos
+Debían respetarse además los tres requisitos definidos previamente en el capítulo~\ref{ch:chapter_1} Introducción.
 
-Esta interfaz recibe como parámetro la ruta de un fichero que se pretende analizar y una vez analizado muestra una
-representación en formato tabla de la información extraída del mismo.
+\subsection*{Plan de trabajo}
 
-\subsection*{Interfaz web}
-La interfaz web es el principal punto de interacción para la mayoría de los usuarios. Está diseñada para ser intuitiva,
-accesible y eficiente, permitiendo a los usuarios realizar una amplia gama de operaciones a través de un navegador web.
+Una vez que se han identificado los requisitos y los objetivos se estableció un plan de trabajo, que además tal y como
+se describió en la sección~\ref{sec:iterativo_incremental} Iterativo incremental, al final de cada sprint se realizó
+una pequeña retrospectiva, para evaluar que tan bien estaba funcionando el plan de trabajo, así como para planificar
+el siguiente sprint y modificar si fuera necesario el plan de trabajo restante en función de los resultados obtenidos
+hasta ese momento.
 
-Para este proyecto hemos desarrollado una interfaz con las siguientes características
+\subsubsection{Sprint 0: Hasta el 24 de marzo}
+
+Se realizó el planteamiento inicial del TFG, la elaboración y entrega del anteproyecto.
+Se realizó la instalación del proyecto y una nueva selección de las herramientas de trabajo.
+
+\subsubsection{Sprint 1: del 25 de marzo al 7 de abril}
+
+Se realizó una ampliación del conjunto de datos de prueba.
+
+Para ello se realizó una investigación sobre distintos bases de datos que ofrecen conjuntos de datos, aquí una lista
+de las que investigamos.
 
 \begin{itemize}
-    \item
-    Diseño Responsive: La interfaz web está diseñada para ser accesible desde dispositivos de escritorio y móviles,
-    asegurando una experiencia de usuario coherente y optimizada en diferentes tamaños de pantalla.
-    \item
-    Experiencia de usuario intuitiva: Se ha prestado atención a la usabilidad, con una interfaz limpias y fáciles de
-    utilizar y retroalimentación inmediata a las acciones del usuario.
+    \item \textbf{Data.gov}~\cite{https://www.data.gov/}: Portal de datos abiertos del gobierno de Estados Unidos
+    \item \textbf{European Union Open Data Portal}~\cite{https://data.europa.eu/euodp/en/home}: Portal de datos abiertos
+    de la Unión Europea.
+    \item \textbf{Kaggle Datasets}~\cite{https://www.kaggle.com/datasets}: Conjuntos de datos para competencias y
+    proyectos de análisis de datos.
+    \item \textbf{UCI Machine Learning Repository}~\cite{https://archive.ics.uci.edu/ml/index.php}: Conjuntos de datos
+    para aprendizaje automático.
+    \item \textbf{Google Dataset Search}~\cite{https://datasetsearch.research.google.com/}: Motor de búsqueda de
+    conjuntos de datos.
+    \item \textbf{Amazon Web Services (AWS) Public Datasets}~\cite{https://registry.opendata.aws/}: Conjuntos de datos
+    públicos de AWS.
 \end{itemize}
 
+Sin embargo, no fue posible encontrar un conjunto adecuado.
+Los conjuntos de datos publicados en estos portáles presentan datos anonimizados.
+No es posible encontrar datos como nombres, documentos de identidad, direcciónes, etc., por lo que este enfoque no fue
+adecuado.
 
-Ejecución de la aplicación a través de la interfaz web.
+\subsubsection{Sprint 2: del 8 de abril al 21 de abril}
 
-Esta interfaz muestra un área sobre la que se pueden arrastrar y soltar documentos, una vez recibidos, y analizados
-muestra una representación en formato json de la información extraída del mismo.
+En este sprint se determinó que el conjunto de datos de prueba debería realizarse manualmente.
+Para ello se desarrolló un sistema que permitiría, escribir los contratos en formato \textit{Markdown} el cual es fácil
+de manipular y luego sería convertido a \textit{PDF} utilizando \textbf{LaTeX} y diferentes plantillas para introducir
+variabilidad en los formatos de entrada.
+
+\colorbox{color_highlight}{@TODO: reescribir e insertar referencias}
+
+\subsubsection{Sprint 3: del 22 de abril al 5 de mayo}
+
+En apenas unos meses desde el final de la asignatura en la que se basa este trabajo, han aparecido una serie de nuevos
+modelos.
+Se hacía necesario investigar el funcionamiento de estos modelos para determinar si eran más adecuados que los modelos
+que se utilizaron en dicho trabajo.
+
+\begin{itemize}
+    \item \textbf{Llama 3}~\cite{https://ollama.com/library/llama3}.
+    \item \textbf{ChatGPT 4}~\cite{https://platform.openai.com/docs/models/gpt-4}
+\end{itemize}
+
+Después de realizar una serie de pruebas durante este \textit{sprint}, se determinó que si bien \textbf{Llama 3} es un
+modelo mucho más avanzado con respecto a su versión anterior, \textbf{ChatGPT 4} demostró ser muy superior, por lo que
+se determinó que se realizaría una nueva implementación del proyecto, utilizando este modelo.
+
+\subsubsection{Sprint 4: del 6 de mayo al 19 de mayo}
+
+Este \textit{sprint} estuvo enfocado en realizar una reimplementación de los procesadores
+\textbf{Residential Lease Processor} y \textbf{Vehicle Sale And Purchase Processor} que introdujimos en la
+sección~\ref{sec:diseno_del_sistema}.
+
+\colorbox{color_highlight}{@TODO: reescribir e insertar referencias}
+
+\subsubsection{Sprint 5: del 20 de mayo al 2 de junio}
+
+Si bien durante todo el proyecto se han desarrollado las pruebas unitarias, de integración y funcionales oportunas, este
+\textit{sprint} se dedicó a realizar una revisión formal de cómo de bueno era la implementación realizada en comparación
+con los datos reales que contiene el conjunto de datos de prueba desarrollado.
+
+\colorbox{color_highlight}{@TODO: reescribir e insertar referencias}
+
+En este \textit{sprint}, se realizó una primera versión del borrador del TFG. Para ello se utilizó la herramienta web
+\textbf{Google Docs}~\cite{https://www.google.com/docs/about/}.
+Si bien los resultados con esta herramienta fueron muy buenos en cuanto a productividad y aspecto de los documentos
+generados, no cumplía con algunos de los requisitos necesarios para la realización del TFG.
+
+\subsubsection{Sprint 6: del 3 de junio al 16 de junio}
+
+En este segundo sprint dedicado a la elaboración de la memoria fue necesario realizar una nueva versión de este
+documento, pero esta vez utilizando \textbf{LaTeX}~\cite{https://www.latex-project.org/}, una herramienta más compleja
+de utilizar pero mucho más potente a la hora de realizar este tipo de trabajos.
+
+\subsubsection{Sprint 7: del 17 de junio al 30 de junio}
+
+\colorbox{color_highlight}{@TODO: escribir}
