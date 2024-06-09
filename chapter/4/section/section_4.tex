@@ -15,14 +15,14 @@ envoltorio para \textbf{Pdf to Text}.
 
 \lstinputlisting[language=PHP]{chapter/4/code/PdfToTextProcessor.php}
 
-En la figura~\ref{fig:chapter_4.generator_component_pdf_to_text_processor} puede verse un esquema de este
+En la figura~\ref{fig:chapter_4.4.generator_component_pdf_to_text_processor} puede verse un esquema de este
 comportamiento.
 
 \begin{figure}[ht]
     \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.generator_component_pdf_to_text_processor}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.4.generator_component_pdf_to_text_processor}
         \caption{Esquema de comunicación con pdftotext}
-        \label{fig:chapter_4.generator_component_pdf_to_text_processor}
+        \label{fig:chapter_4.4.generator_component_pdf_to_text_processor}
     \end{center}
 \end{figure}
 
@@ -70,14 +70,20 @@ A continuación una tabla calculada con el promedio de 100 peticiones para este 
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{p{0.35\textwidth} p{0.65\textwidth}}
-        \hline\textbf{Total peticiones}    & 3     \\
-        \hline\textbf{Tiempo total}        & 8.05  \\
-        \hline\textbf{Total input tokens}  & ~6643 \\
-        \hline\textbf{total output tokens} & ~159  \\
-        \hline\textbf{Total price}         & ~0.07 \\
-        \hline
+    \setlength{\tabcolsep}{10pt}
+    \centering
+    \begin{tabular}{>{\bfseries}p{0.35\textwidth} p{0.65\textwidth}}
+        \toprule
+        \textbf{Nombre}     & \textbf{Valor} \\
+        \midrule
+        Total peticiones    & 3              \\
+        Tiempo total        & 8.05           \\
+        Total input tokens  & ~6643          \\
+        Total output tokens & ~159           \\
+        Total price         & ~0.07          \\
+        \bottomrule
     \end{tabular}
+    \caption{Resultados del procesador de arrendamiento residencial}
     \label{tab:residential_lease_processor}
 \end{table}
 
@@ -132,12 +138,12 @@ El formato \textbf{Logstash format} es adecuado para ser procesado por un sistem
 \textbf{Elasticsearch}, \textbf{Logstash} y \textbf{Kibana} (ELK).
 Este formato está indicado en entornos de producción, donde la monitorización de los logs sea una tarea relevante.
 
-En la figura~\ref{fig:chapter_4.logs_overview} puede verse un esquema de este comportamiento.
+En la figura~\ref{fig:chapter_4.4.logs_overview} puede verse un esquema de este comportamiento.
 
 \begin{figure}[ht]
     \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.logs_overview}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.4.logs_overview}
         \caption{Esquema del sistema de procesamiento de logs}
-        \label{fig:chapter_4.logs_overview}
+        \label{fig:chapter_4.4.logs_overview}
     \end{center}
 \end{figure}

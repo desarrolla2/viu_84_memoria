@@ -9,14 +9,14 @@ En la figura~\ref{fig:chapter_1.specific_b} mostramos que se va a incluir tambi�
 web y una de línea de comandos.
 
 En esta sección profundizaremos en el diseño de la arquitectura de este sistema.
-En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos componentes principales: el componente
+En la figura~\ref{fig:chapter_4.1.overview} vemos que el sistema tiene dos componentes principales: el componente
 \textit{Generator} y el componente \textit{Reader}.
 
 \begin{figure}[ht]
     \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.overview}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.overview}
         \caption{Esquema de los componentes principales}
-        \label{fig:chapter_4.overview}
+        \label{fig:chapter_4.1.overview}
     \end{center}
 \end{figure}
 
@@ -24,14 +24,14 @@ En la figura~\ref{fig:chapter_4.overview} vemos que el sistema tiene dos compone
 
 La responsabilidad de este primer componente, el \textit{Generator} es convertir archivos de cualquier formato en una
 representación en texto plano con el contenido del mismo.
-Tal y como se ve en la figura~\ref{fig:chapter_4.generator_component_uml} el componente consta de cuatro tipos
+Tal y como se ve en la figura~\ref{fig:chapter_4.1.generator_component_uml} el componente consta de cuatro tipos
 diferentes de elementos.
 
 \begin{figure}[ht]
     \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.generator_component_uml}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.generator_component_uml}
         \caption{Diagrama UML del componente \textit{Generator}}
-        \label{fig:chapter_4.generator_component_uml}
+        \label{fig:chapter_4.1.generator_component_uml}
     \end{center}
 \end{figure}
 
@@ -55,21 +55,21 @@ Los procesadores realizan la conversión efectiva del documento a texto.
 Funcionan mediante un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento
 en cuestión, seleccionando cuál es el más adecuado para llevar a cabo la tarea.
 
-En la figura~\ref{fig:chapter_4.generator_component_processors} puede verse un ejemplo.
+En la figura~\ref{fig:chapter_4.1.generator_component_processors} puede verse un ejemplo.
 El \textit{Engine} pretende convertir un fichero PDF en texto y tiene registrados dos procesadores, el
 \textit{MP3Processor} y el \textit{PDFrocessor}.
 
 Primero realiza una llamada a \textit{MP3Processor}, el cual evalúa el documento y responde con una puntuación
 de -1, lo cual significa que no es capaz de procesar este tipo de documento.
 
-A continuación realiza una llamada a \textit{PDFrocessor}, el cual evalúa el documento y responde con una puntuación
+A continuación realiza una llamada a \textit{PDFProcessor}, el cual evalúa el documento y responde con una puntuación
 de 90, lo cual significa que es adecuado para procesar este tipo de documento.
 
 \begin{figure}[ht]
     \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.generator_component_processors}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.generator_component_processors}
         \caption{Competición entre procesadores en el componente \textit{Generator}}
-        \label{fig:chapter_4.generator_component_processors}
+        \label{fig:chapter_4.1.generator_component_processors}
     \end{center}
 \end{figure}
 
@@ -121,14 +121,14 @@ En esta implementación, se han desarrollado los siguientes postprocesadores:
 El componente Reader es el responsable del proceso de interpretación y procesamiento del texto plano obtenido a
 partir de la salida del componente \textit{Generator} descrito en la subsección anterior.
 
-Tal y como se ve en la figura~\ref{fig:chapter_4.reader_component_uml} el componente consta de dos tipos diferentes de
+Tal y como se ve en la figura~\ref{fig:chapter_4.1.reader_component_uml} el componente consta de dos tipos diferentes de
 elementos.
 
 \begin{figure}[ht]
     \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.reader_component_uml}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.reader_component_uml}
         \caption{Diagrama UML del componente \textit{Reader}}
-        \label{fig:chapter_4.reader_component_uml}
+        \label{fig:chapter_4.1.reader_component_uml}
     \end{center}
 \end{figure}
 
@@ -141,7 +141,8 @@ procesadores.
 Funciona mediante un sistema de procesadores organizados en una única capa, que opera bajo el mismo mecanismo
 competitivo descrito en el componente \textit{Generator}.
 
-Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo de un tipo de documento
+Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo de un tipo de
+documento
 específico.
 
 Una vez seleccionado, el procesador elegido procede a ejecutar una serie de tareas que incluyen la identificación y

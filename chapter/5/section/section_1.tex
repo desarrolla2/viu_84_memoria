@@ -1,7 +1,23 @@
 \section{Descripción detallada de la solución informática desarrollada}
 
-* Descripción detallada de la solución informática desarrollada, incluyendo sus características principales,
-funcionalidades y objetivos específicos.
+Se ha desarrollado un sistema capaz de extraer información de documentos.
+Para el desarrollo se ha seguido un conjunto de buenas prácticas cómo por ejemplo el uso de arquitecturas límpias,
+esto facilita que la solución pueda ser extendida, para diferentes casos de uso.
+
+El sistema tiene un primer componente, el componente \textit{Generator} con capacidad para convertir documentos
+\textbf{PDF} en texto, tal y como definimos en el \textbf{Requisito 1}.
+
+Aunque en esta implementación se han utilizado un sistema concreto para la conversión de documentos \textbf{PDF}
+en texto, el sistema permite incorporar otras implementaciones, que hagan la conversión utilizando otros elementos de
+infraestructura, o añadiendo soporte para otros formatos.
+
+El sistema tiene un segundo componente, el componente \textit{Reader} capaz de extraer información a partir de la
+salida del componente anterior.
+Se han implementado el soporte para dos tipos de documento concretos que son los contratos de arrendamiento de vivienda
+entre particulares \textbf{Requisito 2} y contratos de compraventa de vehículo entre particulares \textbf{Requisito 3}.
+
+De la misma forma, que con el componente anterior, es sencillo añadir soporte para nuevos tipos de documentos.
+
 
 
 \subsection*{Interfaces de Usuario}
