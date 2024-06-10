@@ -1,8 +1,55 @@
 \section{Rendimiento y eficiencia}
 
-\colorbox{color_highlight}{@TODO: Esta sección no está desarrollada todavía}
+El nucleo del sistema desarrollado es realmente liviano.
+Se trata de un pequeño conjunto de clases en PHP sin ningún tipo de dependencias externas, por los que su tiempo de
+ejecución y consumo de recursos, podríamos considerarlos despreciables.
 
-evaluación del rendimiento y la eficiencia de la solución informática.
-Muestra los resultados obtenidos en términos de tiempos de respuesta, velocidad de procesamiento, uso de recursos,
-escalabilidad, entre otros aspectos relevantes para tu proyecto.
-Compara los resultados con los objetivos establecidos.
+Sin embargo, tal y como puede verse en la figura~\ref{fig:chapter_5.2.performance}
+la ejecución del sistema está ligada a las herramientas en la capa de infraestructura que son las finalmente
+responsables de realizar el trabajo.
+
+En este caso el rendimiento y el consumo de recursos estará ligado directamente la las herramientas seleccionadas y al
+documento que se esté analizando.
+
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/5/images/chapter_5.2.performance}
+        \caption{Herramientas en la capa de infraestructura}
+        \label{fig:chapter_5.2.performance}
+    \end{center}
+\end{figure}
+
+
+
+El rendimiento estará también ligado a las características del entorno en el que se está ejecutando y la carga del
+mismo.
+
+Sin embargo, hemos calculado los tiempos de ejecución y el consumo de memoria para el documento 000/001.pdf con el
+objetivo de establecer una referencia, tal y cómo se aprecia en la tabla~\ref{tab:execution_performance}.
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.5}
+    \setlength{\tabcolsep}{10pt}
+    \centering
+    \begin{tabular}{>{\bfseries}p{0.25\textwidth} p{0.20\textwidth} p{0.15\textwidth} p{0.25\textwidth} }
+        \toprule
+        \textbf{Nombre}         & \textbf{Ejecución} & \textbf{Memoria} & \textbf{Tiempo}    \\
+        \midrule
+        \textbf{PDFtoText}      & Local              & 288Kb            & 42,49 milisegundos \\
+        \textbf{API de ChatGPT} & Remota             & 612Kb            & 6,74 segundos      \\
+        \bottomrule
+    \end{tabular}
+    \caption{Evaluación del rendimiento y eficiciencia de las herramientas en la capa de infraestructura}
+    \label{tab:execution_performance}
+\end{table}
+
+Como puede verse el consumo de memoria es realmente bajo, y esta se libera en el momento de completarse cada ejecución.
+Los tiempos de respuesta son muy bajos para \textbf{PDFtoText} que se ejecuta en local, mientras que son bastante más
+elevados para los que dependen del consumo de la \textbf{API de ChatGPT}.
+
+Aun así los tiempos de respuesta, para la extracción de la información son realmente buenos, si lo comparamos con el
+tiempo que sería necesario para la extracción por parte de un usuario.
+
+Posiblemente, estos tiempos de respuesta requieran en la mayoría de los casos de una ejecución asíncrona, donde el
+usuario sube un paquete de documentación y esta se marca con el estado \textit{``PROCESANDO''} mientras que una tarea es
+enviada a una cola, donde tras ser ejecutada marcará el paquete como \textit{``PROCESADO''}.

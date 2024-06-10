@@ -1,6 +1,78 @@
 \section{Calidad del código y mantenibilidad}
 
-\colorbox{color_highlight}{@TODO: Esta sección no está desarrollada todavía}
+La calidad del código, y su mantenibilidad es elevada gracias al uso de los estándares de la industria descritos en
+las secciones \ref{sec:clean_code} Código limpio y \ref{sec:clean_architecture} Arquitectura limpia.
 
-Evalúa la calidad del código desarrollado y la mantenibilidad de la solución.
-Code coverage.
+Para evaluar la calidad del código tendremos en cuenta los siguientes apartados.
+
+\subsection*{Estándares de codificación}
+
+En cuanto a los estándares de codificación se han seguido los estandartes definidos por el marco de trabajo de
+\textbf{Symfony}~\cite{https://symfony.com/doc/7.0/contributing/code/standards.html}.
+
+Para verificar el cumplimiento de los estándares mencionados se ha utilizado la herramienta
+\textbf{PHP\_CodeSniffer}~\cite{https://github.com/squizlabs/PHP_CodeSniffer}.
+Con la cual se ha verificado que no existe ningún incumplimiento estándar de codificación definido.
+
+\subsection*{Cobertura de Pruebas}
+
+Para la ejecución de la batería de pruebas automáticas hemos utilizado \textbf{PHPUnit}.
+Esta herramienta permite generar un reporte de cobertura de código.
+
+Sin embargo, hemos calculado los tiempos de ejecución y el consumo de memoria para el documento 000/001.pdf con el
+objetivo de establecer una referencia, tal y como se aprecia en la tabla~\ref{tab:phpunit_report}.
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.5}
+    \setlength{\tabcolsep}{10pt}
+    \centering
+    \begin{tabular}{>{\bfseries}p{0.40\textwidth} p{0.40\textwidth}  }
+        \toprule
+        \textbf{Capa}                         & \textbf{Cobertura} \\
+        \midrule
+        \textbf{Dominio}                      & 72.41 \%           \\
+        \textbf{Infraestructura y aplicación} & 42.86 \%           \\
+        \bottomrule
+    \end{tabular}
+    \caption{Evaluación de la cobertura de código}
+    \label{tab:phpunit_report}
+\end{table}
+
+Como puede verse la capa de dominio tiene una cobertura de código razonablemente buena, aunque aún tiene margen de
+mejora.
+En cambio, las capa de infraestructura y aplicación, tienen una menor cobertura, esto es debido a que en ocasiones son
+capas más complicadas de testear, además que se dan situaciones que no merece la pena estar recogidas en la batería de
+pruebas.
+
+\subsection*{Análisis Estático}
+
+Para el análisis estático del código hemos utilizado la herramienta \textbf{scrutinizer-ci}, la cual nos califica
+con una puntuación de diez sobre diez~\cite{https://scrutinizer-ci.com/g/desarrolla2/viu_84_proyecto/}.
+
+\subsection*{Complejidad del Código}
+
+Para evaluar la complejidad del código hemos utilizado la herramienta \textbf{phploc}, la cual reporta entre otros los
+datos que aparecen en la tabla~\ref{tab:phploc_report}
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.5}
+    \setlength{\tabcolsep}{10pt}
+    \centering
+    \begin{tabular}{>{\bfseries}p{0.40\textwidth} p{0.40\textwidth}  }
+        \toprule
+        \textbf{Nombre}                         & \textbf{Valor} \\
+        \midrule
+        Total Non-Comment Lines of Code (NCLOC) & 1649 (80.64\%) \\
+        Total Logical Lines of Code (LLOC)      & 313 (15.31\%)  \\
+        Average Class Length (LLOC)             & 7              \\
+        Average Complexity per Class            & 2.68           \\
+        Average Complexity per Method           & 1.38           \\
+        \bottomrule
+    \end{tabular}
+    \caption{Evaluación de la complejidad del código}
+    \label{tab:phploc_report}
+\end{table}
+
+\subsection*{Documentación}
+
+El proyecto cuenta con una amplia documentación recogida en este TFG.
