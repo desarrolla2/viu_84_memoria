@@ -1,0 +1,25 @@
+\section{Recapitulación de los objetivos}
+
+Al inicio de este proyecto, se establecieron tres objetivos principales, cada uno orientado a abordar diferentes
+aspectos del proceso de extracción de información automatizada desde documentos.
+
+A continuación, se presenta una recapitulación de cada uno de estos objetivos y su grado de cumplimiento:
+
+\textbf{Requisito 1: desarrollar un sistema capaz de convertir documentos PDF en texto plano}
+
+Este objetivo se logró con éxito mediante el desarrollo del componente \textit{Generator}.
+Este componente utiliza la herramienta \textbf{Pdf to Text} para realizar la conversión.
+
+\textbf{Requisito 2: extracción de información de contratos de arrendamiento de vivienda entre particulares}
+
+Este objetivo se cumplió mediante el desarrollo del componente \textit{Reader} que utiliza la \textbf{API}
+de \textbf{ChatGPT} interpretar y extraer información de los documentos convertidos.
+Las pruebas realizadas determinaron que el sistema puede extraer con precisión el 100\% de la información relevante
+en los contratos de arrendamiento.
+
+\textbf{Requisito 3: extracción de información de contratos de compraventa de vehículo entre particulares}
+
+Al igual que con los contratos de arrendamiento, el componente \textit{Reader} se encargó de este objetivo.
+
+Finalmente, destacar que el diseño modular implementado permite incorporar fácilmente soporte para nuevos formatos de
+documentos y nuevos tipos de documentos.

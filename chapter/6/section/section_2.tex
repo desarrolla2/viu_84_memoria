@@ -1,0 +1,66 @@
+\section{Síntesis de los resultados}
+
+Durante el desarrollo del proyecto se alcanzaron resultados relevantes que demuestran la relevancia del sistema
+desarrollado para la extracción de información de documentos.
+A continuación, se muestra un resumen los principales resultados:
+
+\textbf{Desarrollo de un sistema de extracción de información}
+
+Se implementó un sistema dividido en dos componentes principales: \textit{Generator} y \textit{Reader}.
+El componente \textit{Generator} convierte documentos PDF en texto plano, mientras que el componente \textit{Generator}
+extrae información relevante del texto procesado.
+
+Dentro de cada componente se diseñó un sistema de preprocesadores, procesadores y postprocesadores que permiten
+añadir fácilmente soporte para nuevos tipos de formato o de documentos.
+
+\textbf{Rendimiento y Eficiencia}
+
+En este proyecto, el rendimiento y la eficiencia no son apartados trascendentales, siempre y cuando el procesamiento de
+documentos se mantenga en el rango de unos pocos segundos.
+El núcleo del sistema es rápido y eficiente, pero el rendimiento general depende en gran medida de las herramientas
+seleccionadas para la infraestructura.
+
+\begin{enumerate}
+    \item \textbf{PDF To Text}: Esta herramienta, que se ejecuta localmente, ofrece un buen rendimiento debido a su
+    rapidez en el procesamiento de documentos PDF.
+    \item \textbf{API de ChatGPT}
+    El rendimiento de esta herramienta dependerá significativamente del tipo de documento y de la
+    carga del sistema en un momento concreto.
+    En general, el rendimiento no será tan bueno como el de las herramientas locales.
+\end{enumerate}
+
+
+\textbf {Calidad del código y mantenibilidad}
+
+\textbf{Calidad del Código y mantenibilidad}
+
+La calidad del código y su mantenibilidad en este proyecto han sido elevadas gracias a la adopción de estándares de la
+industria, como los sugeridos por Robert C. Martin en ``Código Limpio'' y ``Arquitectura Limpia''.
+Estos estándares aseguran que el código sea robusto, consistente y fácil de mantener a lo largo del tiempo.
+La buena cobertura de pruebas en la capa de dominio, con un 72.41\%, refleja un enfoque riguroso en la validación de la
+lógica de negocio, mientras que la capa de infraestructura, con un 42.86\%, aunque moderada, indica es un área a la
+que también se le ha prestado atención.
+
+El análisis estático del código, realizado mediante Scrutinizer-CI, ha proporcionado una puntuación perfecta de diez
+sobre diez, destacando la adherencia a las mejores prácticas y la ausencia de errores críticos.
+
+La documentación detallada del proyecto, incluida en este TFG asegura su mantenibilidad a largo plazo.
+
+\textbf {Precisión en la extracción de datos}
+
+El sistema demostró una precisión del 100\% en la identificación y extracción de datos para todos los conjuntos de
+prueba.
+Si bien los conjuntos de prueba eran relativamente pequeños, este nivel de precisión resalta la robustez del sistema y
+su capacidad para manejar diversos tipos de documentos con alta exactitud.
+
+\textbf {Pruebas e integración continua}
+
+Se implementaron prácticas de integración continúa utilizando GitHub Actions, lo que permitió automatizar la ejecución
+de pruebas.
+Esta integración asegura que cualquier cambio en el código sea rigurosamente probado y validado.
+
+\textbf {Adaptabilidad y extensibilidad}
+
+El sistema fue diseñado con una arquitectura limpia, lo que facilita la incorporación de nuevos tipos de documentos y
+métodos de procesamiento.
+Esta flexibilidad asegura que el sistema pueda adaptarse a diferentes necesidades, manteniendo su relevancia y utilidad.
