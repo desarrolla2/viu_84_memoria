@@ -1,20 +1,30 @@
 \newpage
 \section*{Resumen}
-\addcontentsline{toc}{chapter}{Resumen}
-\colorbox{color_highlight}{@TODO:}
-Es una sección concisa y precisa (400 a 500 palabras) que resume los aspectos más importantes del trabajo
-realizado.
-Su objetivo es proporcionar una visión general rápida y clara del contenido y los resultados obtenidos,
-capaz de captar la atención e interés del lector, invitándolo a leer el trabajo completo.
-El resumen debe comenzar con una breve introducción que contextualice el tema del trabajo y exponga la problemática
-abordada.
-Debes mencionar de manera breve los objetivos o propósitos principales del trabajo.
-Brevemente, describe los métodos/metodología o enfoque que has utilizado para llevar a cabo el trabajo.
-Resume los principales resultados
-obtenidos.
-Indica las conclusiones o contribuciones más importantes derivadas de tu trabajo.
-Palabras clave: Al final del resumen, proporciona una lista de palabras clave que representen los conceptos
-principales y los temas abordados en tu trabajo.
+\addcontentsline{toc}{section}{Resumen}
+El presente trabajo se centra en el desarrollo de un sistema de extracción de información de documentos utilizando
+tecnologías avanzadas y enfoques modernos de arquitectura de software.
+El objetivo principal del proyecto es crear una herramienta eficiente y precisa para convertir documentos PDF en texto y
+extraer datos relevantes, aplicando los principios de ``código limpio'' y ``arquitectura limpia'' para asegurar la
+mantenibilidad y calidad del código.
 
-\vspace{0.5cm}
-KEYWORDS: primero, segundo, tercero
+Para el desarrollo del sistema, se utilizó un enfoque modular, implementando componentes: el \textit{Generator}, que
+convierte documentos PDF en texto, y el \textit{Reader}, que extrae la información requerida del texto generado.
+
+En términos de rendimiento, se constató que el núcleo del sistema es rápido, aunque que el rendimiento general depende
+de las herramientas seleccionadas para la capa de infraestructura.
+Las pruebas de rendimiento mostraron tiempos de ejecución bajos para herramientas locales como \textbf{PDFToText}, pero
+tiempos más elevados para la API de \textbf{ChatGPT}.
+
+El análisis de los resultados demostró una precisión del 100\% en la identificación y extracción de datos para los
+conjuntos de prueba utilizados.
+Sin embargo, dado que \textbf{ChatGPT} es un sistema no determinista y la muestra es relativamente pequeña, es posible
+que los resultados reales sean ligeramente inferiores.
+
+Las implicaciones de este trabajo son significativas tanto en el ámbito académico como profesional.
+En el ámbito académico, el proyecto muestra un nuevo enfoque para aprovechar los sistemas LLM.
+Profesionalmente, demuestra el potencial de estas tecnologías para transformar la forma en que las empresas y
+organizaciones gestionan la documentación.
+
+\vspace{1cm}
+
+\textbf{Palabras clave}: Extracción de información, código limpio, arquitectura limpia, Symfony, PHP, LLM, ChatGPT.
