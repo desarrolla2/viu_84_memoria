@@ -5,7 +5,7 @@
 \date{\today}
 
 % Configure language and codification
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
 \selectlanguage{spanish}
@@ -68,6 +68,7 @@
 % Prevent word breaking
 \usepackage[none]{hyphenat}
 \usepackage{microtype}
+\sloppy
 
 % Image manipulation
 \usepackage{graphicx}
@@ -90,6 +91,8 @@
     {\tikz[remember picture,overlay]\node[opacity=0.4] at (-3mm, 10mm){\includegraphics[scale=0.18]{./images/header}};}
     \fancyheadoffset{0pt}
 }
+\setlength{\headheight}{13.6pt}
+\addtolength{\topmargin}{-1.6pt}
 
 % List configuration
 \usepackage{enumitem}
@@ -126,6 +129,7 @@
 
 % Bibliography Configuration
 \usepackage[backend=biber, sorting=none]{biblatex}
+\usepackage{csquotes}
 \addbibresource{TFT.bib}
 
 \pagestyle{plain}
@@ -144,7 +148,8 @@
     \listoftables
 
     % Abstract
-    \input{./abstract/abstract}
+    \input{./abstract/abstract_1}
+    \input{./abstract/abstract_2}
 
     % Dedication
     \input{./dedication/dedication}
