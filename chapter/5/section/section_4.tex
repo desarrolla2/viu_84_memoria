@@ -1,7 +1,8 @@
 \section{Análisis de los resultados}
 
-Para terminar evaluaremos la precisión de los datos obtenidos, tratándose de este caso de un 100\%
-de precisión en cuanto a los resultados previstos.
+Para terminar evaluaremos la precisión de los datos obtenidos.
+Se realizó una revisión manual de todos los resultados obtenidos, confirmando que en todos los casos fueron
+correctos.
 
 En la tabla~\ref{tab:data_set_performance} puede verse que el sistema fue capaz de identificar y extraer
 correctamente el 100\% de los datos para todos los conjuntos.
@@ -9,15 +10,21 @@ correctamente el 100\% de los datos para todos los conjuntos.
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
     \setlength{\tabcolsep}{10pt}
-    \begin{tabular}{>{\bfseries}p{0.10\textwidth} p{0.55\textwidth} p{0.15\textwidth}}
+    \begin{tabular}{>{\bfseries}p{0.35\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.15\textwidth}}
         \toprule
-        \textbf{Conjunto} & \textbf{Contenido}                                        & \textbf{Precisión} \\
+        \textbf{Conjunto} & \textbf{Documentos} & \textbf{Correctos} & \textbf{Precisión} \\
         \midrule
-        \textbf{000}      & Ruido                                                     & 100 \%             \\
-        \textbf{001}      & Contratos de arrendamiento de vivienda entre particulares & 100 \%             \\
-        \textbf{002}      & Contratos de compra venta de vehículo entre particulares  & 100 \%             \\
+        \textbf{000}      & 3                   & 3                  & 100 \%             \\
+        \textbf{001}      & 9                   & 9                  & 100 \%             \\
+        \textbf{002}      & 9                   & 9                  & 100 \%             \\
         \bottomrule
     \end{tabular}
-    \caption{Precisión de los datos extraídos para cada conjunto}
+    \caption{Evaluación de los resultados por tipo de conjunto}
     \label{tab:data_set_performance}
 \end{table}
+
+Sin embargo, dado que los modelos LLM y en concreto el modelo \textbf{ChatGPT} usado son sistemas no determinista y
+que la muestra utilizada en esta evaluación es relativamente pequeña, es posible que la precisión real del sistema sea
+ligeramente inferior en escenarios más amplios y variados.
+La naturaleza no determinista de \textbf{ChatGPT}
+implica que los resultados pueden variar entre ejecuciones, lo que debe ser considerado al interpretar estos resultados.
