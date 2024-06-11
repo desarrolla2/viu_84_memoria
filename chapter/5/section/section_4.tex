@@ -1,11 +1,34 @@
 \section{Análisis de los resultados}
 
+Para terminar evaluaremos la precisión de los datos obtenidos, tratándose de este caso de un 100\% de precisión en
+cuanto a los resultados previstos.
+
+En la tabla~\ref{tab:data_set_performance} puede verse que el sistema fue capaz de identificar y extraer
+correctamente el 100\% de los datos para todos los conjuntos.
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.5}
+    \setlength{\tabcolsep}{10pt}
+    \centering
+    \begin{tabular}{>{\bfseries}p{0.15\textwidth} p{0.55\textwidth} p{0.15\textwidth}}
+        \toprule
+        \textbf{Conjunto} & \textbf{Contenido}                                        & \textbf{Precisión} \\
+        \midrule
+        \textbf{000}      & Ruido                                                     & 100\%              \\
+        \textbf{001}      & Contratos de arrendamiento de vivienda entre particulares & 100\%              \\
+        \textbf{002}      & Contratos de compra venta de vehículo entre particulares  & 100\%              \\
+        \bottomrule
+    \end{tabular}
+    \caption{Precisión de los datos extraidos para cada conjunto}
+    \label{tab:data_set_performance}
+\end{table}
+
 \colorbox{color_highlight}{@TODO: Esta sección no está desarrollada todavía}
 
 * Pruebas y resultados funcionales: se presentan los resultados de las pruebas realizadas para verificar el
-funcionamiento correcto de la solución. Muestra cómo se han llevado a cabo las pruebas y los casos de prueba
-utilizados. Destaca los resultados obtenidos en términos de la funcionalidad y el cumplimiento de los requisitos
-establecidos.
+funcionamiento correcto de la solución.
+Muestra cómo se han llevado a cabo las pruebas y los casos de prueba utilizados.
+Destaca los resultados obtenidos en términos de la funcionalidad y el cumplimiento de los requisitos establecidos.
 
 * Casos de estudio o resultados específicos: Si has realizado estudios de casos específicos o evaluaciones particulares,
 describe los resultados obtenidos y su relevancia para tu proyecto. Puedes incluir ejemplos concretos de cómo la
