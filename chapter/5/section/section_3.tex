@@ -7,11 +7,11 @@ Para evaluar la calidad del código tendremos en cuenta los siguientes apartados
 
 \subsection*{Estándares de codificación}
 
-En cuanto a los estándares de codificación se han seguido los estandartes definidos por el marco de trabajo de
-\textbf{Symfony}~\cite{https://symfony.com/doc/7.0/contributing/code/standards.html}.
+En cuanto a los estándares de codificación se han seguido los estándares definidos por el marco de trabajo de
+\textbf{Symfony}~\cite{url_symfony_code_standards}.
 
-Para verificar el cumplimiento de los estándares mencionados se ha utilizado la herramienta
-\textbf{PHP\_CodeSniffer}~\cite{https://github.com/squizlabs/PHP_CodeSniffer}.
+Para verificar el cumplimiento de los estándares mencionados, se ha utilizado la herramienta
+\textbf{PHP Code Sniffer}.
 Con la cual se ha verificado que no existe ningún incumplimiento estándar de codificación definido.
 
 \subsection*{Cobertura de Pruebas}
@@ -25,8 +25,7 @@ objetivo de establecer una referencia, tal y como se aprecia en la tabla~\ref{ta
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
     \setlength{\tabcolsep}{10pt}
-    \centering
-    \begin{tabular}{>{\bfseries}p{0.60\textwidth} p{0.25\textwidth}  }
+    \begin{tabular}{>{\bfseries}p{0.65\textwidth} p{0.15\textwidth}}
         \toprule
         \textbf{Capa}                         & \textbf{Cobertura} \\
         \midrule
@@ -47,7 +46,7 @@ pruebas.
 \subsection*{Análisis Estático}
 
 Para el análisis estático del código hemos utilizado la herramienta \textbf{scrutinizer-ci}, la cual nos califica
-con una puntuación de diez sobre diez~\cite{https://scrutinizer-ci.com/g/desarrolla2/viu_84_proyecto/}.
+con una puntuación de diez sobre diez~\cite{url_scrutinizer_viu_84_proyecto}.
 
 \subsection*{Complejidad del Código}
 
@@ -57,16 +56,15 @@ datos que aparecen en la tabla~\ref{tab:phploc_report}
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
     \setlength{\tabcolsep}{10pt}
-    \centering
-    \begin{tabular}{>{\bfseries}p{0.60\textwidth} p{0.25\textwidth}  }
+    \begin{tabular}{>{\bfseries}p{0.50\textwidth} p{0.15\textwidth} p{0.15\textwidth}}
         \toprule
-        \textbf{Nombre}                         & \textbf{Valor} \\
+        \textbf{Nombre}                 & \textbf{Valor} & \textbf{Porcentaje} \\
         \midrule
-        Total Non-Comment Lines of Code (NCLOC) & 1649 (80.64\%) \\
-        Total Logical Lines of Code (LLOC)      & 313 (15.31\%)  \\
-        Average Class Length (LLOC)             & 7              \\
-        Average Complexity per Class            & 2.68           \\
-        Average Complexity per Method           & 1.38           \\
+        Total Non-Comment Lines of Code & 1649           & 80.64 \%            \\
+        Total Logical Lines of Code     & 313            & 15.31 \%            \\
+        Average Class Length            & 7              &                     \\
+        Average Complexity per Class    & 2.68           &                     \\
+        Average Complexity per Method   & 1.38           &                     \\
         \bottomrule
     \end{tabular}
     \caption{Evaluación de la complejidad del código}
