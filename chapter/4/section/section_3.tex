@@ -1,8 +1,7 @@
 \section{Desarrollo de software}\label{sec:desarrollo_de_software}
 
 Este proyecto parte de una base realizada en la asignatura 47 GIIN Proyecto de ingeniería del
-software~\cite{url_viu_47_proyecto} de este mismo grado
-universitario.
+software~\cite{url_viu_47_proyecto} de este mismo grado universitario.
 
 \subsection{Objetivos}
 
@@ -10,21 +9,22 @@ A partir del trabajo realizado en esa asignatura se plantean los siguientes obje
 anteproyecto.
 
 \begin{enumerate}
-    \item \textbf{Definir un nuevo conjunto de datos de prueba}: En el trabajo previo ya existía un conjunto de datos de
-    prueba.
-    Para este TFG se quería definir un nuevo conjunto, utilizando si fuera posible un conjunto de datos de fuentes
-    abiertas.
-    \item \textbf{Evaluar la precisión del sistema}: Para este TFG se quería evaluar como de preciso es el sistema a la
-    hora de la extracción de información de los documentos.
-    \item \textbf{Experimentar y seleccionar uno o más sistemas LLM}: En el trabajo previo se había probado con los
-    modelos \textbf{ollama}~\cite{url_ollama} y
-    \textbf{gpt-3.5-turbo}~\cite{url_gpt3_5}.
-    Para este TFG se quería probar con nuevos modelos.
-    Finalmente, este trabajo implicó reescribir completamente algunos componentes.
-    \item \textbf{Mejora de las interfaces}: En este TFG se querían realizar mejoras en la capa de presentación de ambas
-    interfaces.
-    \item \textbf{Documentación formal}: elaboración de la documentación requerida para completar satisfactoriamente
-    este TFG.
+    \item \textbf{Definir un nuevo conjunto de datos de prueba},
+    ya en el trabajo previo existía un conjunto de datos de prueba.
+    Sin embargo, para este TFG se quería definir un nuevo conjunto, utilizando si fuera posible algún conjunto de
+    datos de fuentes abiertas.
+    \item \textbf{Evaluar la precisión del sistema},
+    se quería evaluar como de preciso es el sistema a la hora de la extracción de información de los documentos.
+    \item \textbf{Experimentar y seleccionar uno o más sistemas LLM}
+    en el trabajo previo se había probado con los modelos \textit{ollama}~\cite{url_ollama} y
+    \textit{gpt-3.5-turbo}~\cite{url_gpt3_5}.
+    Para este proyecto se quería probar con nuevos modelos.
+    Finalmente, este trabajo implicó reescribir completamente los procesadores del componente \textit{Reader}.
+    \item \textbf{Mejora de las interfaces}
+    se querían realizar mejoras en la capa de presentación de ambas interfaces, en el sentido de hacerlas más
+    visuales, concretamente en cuanto a la representación de los datos.
+    \item \textbf{Documentación formal},
+    será necesaria la elaboración de la documentación requerida para completar satisfactoriamente este TFG.
 \end{enumerate}
 
 Debían respetarse además los tres requisitos definidos previamente en el capítulo~\ref{ch:chapter_1} Introducción.
@@ -34,15 +34,15 @@ Debían respetarse además los tres requisitos definidos previamente en el capí
 Una vez que se han identificado los requisitos y los objetivos se estableció un plan de trabajo, que además tal y como
 se describió en la sección~\ref{subsec:iterativo_incremental} Iterativo incremental, al final de cada sprint se realizó
 una pequeña retrospectiva, para evaluar que tan bien estaba funcionando el plan de trabajo, así como para planificar
-el siguiente sprint y modificar si fuera necesario el plan de trabajo restante en función de los resultados obtenidos
+la siguiente iteración y modificar si fuera necesario el plan de trabajo restante en función de los resultados obtenidos
 hasta ese momento.
 
-\subsubsection{Sprint 0: Hasta el 24 de marzo}
+\subsubsection{Iteración 0: Hasta el 24 de marzo}
 
 Se realizó el planteamiento inicial del TFG, la elaboración y entrega del anteproyecto.
 Se realizó la instalación del proyecto y una nueva selección de las herramientas de trabajo.
 
-\subsubsection{Sprint 1: del 25 de marzo al 7 de abril}
+\subsubsection{Iteración 1: del 25 de marzo al 7 de abril}
 
 Se realizó una ampliación del conjunto de datos de prueba.
 Para ello se realizó una investigación sobre distintos bases de datos que ofrecen conjuntos de datos abiertos; sin
@@ -51,14 +51,14 @@ números de documentos, direcciones, no aparecen.
 
 Es por este motivo que se descartó utilizar uno de estos conjuntos de datos.
 
-\subsubsection{Sprint 2: del 8 de abril al 21 de abril}
+\subsubsection{Iteración 2: del 8 de abril al 21 de abril}
 
 En este sprint se determinó que el conjunto de datos de prueba debería realizarse manualmente.
 Para ello se desarrolló un sistema que permitiría, escribir los contratos en formato \textit{Markdown} el cual es fácil
 de manipular y luego sería convertido a \textit{PDF} utilizando \textbf{LaTeX} y diferentes plantillas para introducir
 variabilidad en los formatos de entrada.
 
-\subsubsection{Sprint 3: del 22 de abril al 5 de mayo}
+\subsubsection{Iteración 3: del 22 de abril al 5 de mayo}
 
 En apenas unos meses desde el final de la asignatura en la que se basa este trabajo, han aparecido una serie de nuevos
 modelos.
@@ -74,29 +74,29 @@ Después de realizar una serie de pruebas durante este \textit{sprint}, se deter
 modelo mucho más avanzado con respecto a su versión anterior, \textbf{ChatGPT 4} demostró ser muy superior, por lo que
 se determinó que se realizaría una nueva implementación del proyecto, utilizando este modelo.
 
-\subsubsection{Sprint 4: del 6 de mayo al 19 de mayo}
+\subsubsection{Iteración 4: del 6 de mayo al 19 de mayo}
 
 Este \textit{sprint} estuvo enfocado en realizar una reimplementación de los procesadores
 \textbf{Residential Lease Processor} y \textbf{Vehicle Sale And Purchase Processor} que introdujimos en la
 sección~\ref{sec:diseno_del_sistema}.
 
-\subsubsection{Sprint 5: del 20 de mayo al 2 de junio}
+\subsubsection{Iteración 5: del 20 de mayo al 2 de junio}
 
 Si bien durante todo el proyecto se han desarrollado las pruebas unitarias, de integración y funcionales oportunas, este
 \textit{sprint} se dedicó a realizar una revisión formal de cómo de bueno era la implementación realizada en comparación
 con los datos reales que contiene el conjunto de datos de prueba desarrollado.
 
-En este \textit{sprint}, se realizó una primera versión del borrador del TFG. Para ello se utilizó la herramienta web
+En esta iteración, se realizó una primera versión del borrador del TFG. Para ello se utilizó la herramienta web
 \textbf{Google Docs}~\cite{url_google_docs}.
 Si bien los resultados con esta herramienta fueron muy buenos en cuanto a productividad y aspecto de los documentos
 generados, no cumplía con algunos de los requisitos necesarios para la realización del TFG.
 
-\subsubsection{Sprint 6: del 3 de junio al 16 de junio}
+\subsubsection{Iteración 6: del 3 de junio al 16 de junio}
 
-En este segundo sprint dedicado a la elaboración de la memoria fue necesario realizar una nueva versión de este
-documento, pero esta vez utilizando \textbf{LaTeX}~\cite{url_latex}, una herramienta más compleja
+En este segunda iteración dedicado a la elaboración de la memoria fue necesario realizar una nueva versión de este
+documento, pero esta vez utilizando \textit{LaTeX}~\cite{url_latex}, una herramienta más compleja
 de utilizar pero mucho más potente a la hora de realizar este tipo de trabajos.
 
-\subsubsection{Sprint 7: del 17 de junio al 30 de junio}
+\subsubsection{Iteración 7: del 17 de junio al 30 de junio}
 
-\colorbox{color_highlight}{@TODO: pendiente de escribir dependerá de los comentarios que reciba de mi directora de TFG}
+La última iteración se dedicó a realizar los ajustes finales de la memoria.

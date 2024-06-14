@@ -20,7 +20,7 @@ Habitualmente se ocupan de la lógica de negocio y la persistencia de datos.
     Un sistema de plantillas permite separar la capa de presentación de la capa de negocio.
 \end{itemize}
 
-Hemos utilizado \textbf{PHP} como lenguaje principal para desarrollar nuestro sistema.
+En este proyecto hemos utilizado \textit{PHP} como lenguaje principal para desarrollar nuestro sistema.
 Symfony se utiliza en la parte de infraestructura, incluida la interfaz web, para la que también hemos usado Twig.
 
 \subsection{Cliente}
@@ -48,10 +48,9 @@ El \textit{frontend} se encarga de la presentación y la experiencia del usuario
     Facilita la inclusión de iconos de alta calidad sin depender de imágenes ~\cite{url_fontawesome}.
 \end{itemize}
 
-Hemos utilizado \textbf{HTML}, \textbf{CSS} y \textbf{JavaScript} para el desarrollo de la interfaz web.
-Además, hemos usado \textbf{Bootstrap} para realizar un prototipado rápido y finalmente hemos utilizado
-\textbf{Font Awesome} para la representación de iconos y logos.
-
+Hemos utilizado \textit{HTML}, \textit{CSS} y \textit{JavaScript} para el desarrollo de la interfaz web.
+Además, hemos usado \textit{Bootstrap} para realizar un prototipado rápido y finalmente hemos utilizado
+\textit{Font Awesome} para la representación de iconos y logos.
 
 \subsection{Gestión de dependencias}
 
@@ -65,8 +64,8 @@ Se encarga de administrar las bibliotecas y paquetes que un proyecto necesita pa
     actualizadas ~\cite{url_composer}.
 \end{itemize}
 
-Hemos utilizado  \textbf{Composer} para instalar todas las librerías  \textbf{PHP} necesarias, principalmente
-\textbf{Symfony} y algunos de sus componentes.
+Hemos utilizado  \textit{Composer} para instalar todas las librerías  \textit{PHP} necesarias, principalmente
+\textit{Symfony} y algunos de sus componentes.
 
 \subsection{Control de versiones}
 
@@ -84,9 +83,10 @@ realizados en el código fuente a lo largo del tiempo.
     ~\cite{url_github}.
 \end{itemize}
 
-Hemos utilizado \textbf{Git} para gestionar las versiones del código, siguiendo el patrón de crear una nueva rama para
-cada nueva característica y fusionarla a la rama principal, cuando esta está completada.
-Además, hemos enlazado con el sistema de gestión de proyectos a través de los mensajes de cada commit.
+Hemos utilizado \textit{Git} yh \textit{GitHub} para gestionar las versiones del código~\cite{url_viu_84_proyecto}.
+Se ha seguido el patrón de crear una nueva rama para cada nueva característica y fusionarla a la rama principal, cuando
+esta está completada.
+También hemos enlazado con el sistema de gestión de proyectos a través de los mensajes de cada commit.
 
 \subsection{Automatización}
 
@@ -101,7 +101,7 @@ repetitivas de manera automática, sin intervención manual
     ~\cite{url_make}.
 \end{itemize}
 
-Hemos usado \textbf{Make} para automatizar las tareas más comunes como son la construcción o el inicio de los
+Hemos usado \textit{Make} para automatizar las tareas más comunes como son la construcción o el inicio de los
 contenedores de docker, pero también para tener acceso directo a tareas que resultaban repetitivas.
 
 \subsection{Pruebas}
@@ -116,18 +116,18 @@ identificar y corregir errores.
     ejecutar pruebas automatizadas para asegurar que el código se comporta como se espera, facilitando el desarrollo de
     software de alta calidad~\cite{url_phpunit}.
     \item \textbf{GitHub Actions} es una plataforma de integración continua que permite automatizar flujos de
-    trabajo directamente desde \textbf{GitHub}.
+    trabajo directamente desde \textit{GitHub}.
     \textbf{GitHub Actions} facilita la configuración de pipelines de CI/CD, ejecutando pruebas y despliegues
-    \item automáticamente con cada cambio en el repositorio ~\cite{url_github_actions}.
+    automáticamente con cada cambio en el repositorio ~\cite{url_github_actions}.
 \end{itemize}
 
 En la sección~\ref{sec:pruebas_y_evaluacion} Pruebas y evaluación, veremos que las pruebas son una parte fundamental
 de este TFG.
 
-Hemos utilizado \textbf{PHPUnit} para la definición y ejecución de una batería de pruebas o \textit{test suite} que
+Hemos utilizado \textit{PHPUnit} para la definición y ejecución de una batería de pruebas o \textit{test suite} que
 contiene pruebas unitarias, pruebas de integración y pruebas funcionales.
 
-Hemos utilizado \textbf{GitHub Actions} para que esta \textit{suite} se ejecutara automáticamente después de cada
+Hemos utilizado \textit{GitHub Actions} para que esta \textit{suite} se ejecutara automáticamente después de cada
 commit, en un proceso de integración continua.
 
 \subsection{Contenerización}
@@ -147,10 +147,10 @@ independientemente de las configuraciones del sistema subyacente.
     de desarrollo complejos ~\cite{url_docker_compose}.
 \end{itemize}
 
-Hemos utilizado \textbf{Docker} para definir dos conjuntos de contenedores, uno básico y otro ampliado.
+Hemos utilizado \textit{Docker} para definir dos conjuntos de contenedores, uno básico y otro ampliado.
 
 El conjunto básico contiene un único contenedor en el que se ejecuta la aplicación.
-El conjunto ampliado contiene servicios que son complementarios, en este caso el conjunto \textbf{ELK} descrito en la
+El conjunto ampliado contiene servicios que son complementarios, en este caso el conjunto \textit{ELK} descrito en la
 siguiente subsección.
 
 \subsection{Registros}\label{subsec:chapter_4.logs}
@@ -174,8 +174,8 @@ historial que pueda ser analizado.
     almacenados en Elasticsearch ~\cite{url_kibana}.
 \end{itemize}
 
-Hemos utilizado \textbf{Monolog} para configurar los \textit{logs} generados en la aplicación.
-El resto de elementos, \textbf{Elastic Search}, \textbf{Logstash} y \textbf{Kibana}, conocidos como \textbf{ELK},
+Hemos utilizado \textit{Monolog} para configurar los \textit{logs} generados en la aplicación.
+El resto de elementos, \textit{Elastic Search}, \textit{Logstash} y \textit{Kibana}, conocidos como \textit{ELK},
 permiten interpretar en tiempo real los registros de la aplicación.
 
 En la sección~\ref{sec:implemetacion_y_programacion} Implemetación y programación, ampliamos los detalles.
@@ -213,9 +213,9 @@ El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:chap
 \end{itemize}
 
 Hemos utilizado la API de ChatGPT, para extraer la información de los documentos en los procesadores
-\textbf{Residential Lease Processor} y \textbf{Vehicle Sale And Purchase Processor}.
+\textit{Residential Lease Processor} y \textit{Vehicle Sale And Purchase Processor}.
 
-Las llamadas HTTP se realizaron mediante la librería \textbf{Symfony HttpClient} y finalmente \textbf{Symfony Cache}
+Las llamadas HTTP se realizaron mediante la librería \textit{Symfony HttpClient} y finalmente \textit{Symfony Cache}
 cachea las respuestas.
 Veremos más en profundidad este proceso en la sección~\ref{sec:implemetacion_y_programacion} Implemetación y
 programación.
