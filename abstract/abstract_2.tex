@@ -1,31 +1,33 @@
 \newpage
 \section*{Abstract}
 \addcontentsline{toc}{section}{Abstract}
-The present work focuses on the development of a document information extraction system using advanced technologies and
-modern software architecture approaches.
-The main objective of the project is to create an efficient and precise tool for converting PDF documents into text and
-extracting relevant data, applying the principles of ``clean code'' and ``clean architecture'' to ensure code
-maintainability and quality.
+The present work focuses on the development of an information extraction system for documents of any type and format,
+using advanced technologies and modern software architecture approaches.
 
-For the development of the system, a modular approach was used, implementing components: the \textit{Generator}, which
-converts PDF documents into text, and the \textit{Reader}, which extracts the required information from the generated
-text.
+Since this general objective may be too ambitious for an undergraduate thesis, the specific objective will be to create
+a tool capable of processing PDF documents, focusing on two specific types: residential lease agreements between
+individuals and vehicle sale contracts between individuals.
+
+By applying the principles of \textit{clean code} and \textit{clean architecture}, the quality of the code and the
+ability to add support for new document formats and new types of contracts can be ensured.
+
+For the development of the system, a modular approach was used, implementing two main components: the
+\textit{Generator}, which converts PDF documents into text, and the \textit{Reader}, which extracts the required
+information from the generated text.
+
+The analysis of the results demonstrated 100\% accuracy in the identification and extraction of data for the test
+sets used.
+However, since LLM models like \textit{ChatGPT}are not deterministic systems and the sample is relatively small, the
+actual results may be slightly lower.
 
 In terms of performance, it was found that the core of the system is fast, although the overall performance depends on
 the tools selected for the infrastructure layer.
-Performance tests showed low execution times for local tools such as \textbf{PDFToText}, but higher times for the
-\textbf{ChatGPT} API.
+Performance tests showed low execution times for local tools like\textit{PDFtoText}, but higher times for the
+\textit{ChatGPT} API.
 
-The analysis of the results demonstrated 100\% accuracy in identifying and extracting data for the test sets used.
-However, given that \textbf{ChatGPT} is a non-deterministic system and the sample is relatively small, it is
-possible that the actual results may be slightly lower.
 
-The implications of this work are significant both academically and professionally.
-Academically, the project shows a new approach to leveraging LLM systems.
-Professionally, it demonstrates the potential of these technologies to transform the way companies and organizations
-manage documentation.
 
 \vspace{1cm}
 
-\textbf{Keywords}: Information extraction, clean code, clean architecture, Symfony, PHP, LLM, ChatGPT.
+\textbf{Keywords}: Information extraction, clean code, clean architecture, PHP, Symfony, PDF, LLM, ChatGPT.
 
