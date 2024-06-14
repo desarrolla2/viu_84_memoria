@@ -10,13 +10,22 @@ interesante que sean introducidos.
 Como introdujimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
 convertir un fichero PDF en un fragmento de texto plano.
 
-Como puede verse en el siguiente extracto de código, el procesador \textbf{PDF To Text Processor} es simplemente un
-envoltorio para \textbf{Pdf to Text}.
+Tal y como puede verse en el extracto de código de la figura~\ref{fig:chapter_4.4.pdf_to_text_processor}, el procesador
+\textit{PDF To Text Processor} es simplemente un envoltorio para la herramienta de línea de comandos
+\textit{Pdf to Text}.
 
-\lstinputlisting[language=PHP]{chapter/4/code/PdfToTextProcessor.php}
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.4.pdf_to_text_processor}
+        \caption{Código fuente para el \textit{PDF To Text Processor}}
+        \label{fig:chapter_4.4.pdf_to_text_processor}
+    \end{center}
+\end{figure}
 
 En la figura~\ref{fig:chapter_4.4.generator_component_pdf_to_text_processor} puede verse un esquema de este
-comportamiento.
+comportamiento: el motor envía el documento PDF al procesador, este a su vez lo envía a \textit{PDF to Text} el cual
+genera un fichero de texto plano.
+Finalmente, el procesador extrae el contenido de ese fichero y lo envía de vuelta al motor, donde comenzó todo.
 
 \begin{figure}[ht]
     \begin{center}
@@ -28,77 +37,105 @@ comportamiento.
 
 \subsection{Componente \textit{Reader}}
 
-\subsubsection{Residential Lease Processor}
+De este componente queremos destacar los siguientes elementos, el \textit{Residential Lease Agreement Processor} y el
+\textit{Vehicle Sale And Purchase Agreement Processor} responsables de extraer la información de los contratos de
+alquiler de vivienda entre particulares y la compraventa de vehículos entre particulares respectivamente.
+
+\subsubsection{Residential Lease Agreement Processor}
 
 Como introdujimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
-convertir transformar el texto de un contrato de arrendamiento de vivienda entre particulares en un objeto con sus
-datos fundamentales.
+transformar el texto de un contrato de arrendamiento de vivienda entre particulares en un objeto con sus datos
+fundamentales.
 
-La implementación de este procesador es muy similar a la que hemos visto en el \textbf{PDF To Text Processor}, por lo
-que no vamos a incluir ni el código ni un esquema de la comunicación.
+La implementación de este procesador es muy similar a la que hemos visto en el \textit{PDF To Text Processor}, por lo
+que no vamos a incluir ni el código ni el esquema con la comunicación.
 
 Simplemente, indicaremos que se trata de enviar peticiones sobre un documento que previamente hemos convertido en texto
-plano a un sistema que lo pueda procesar, en este caso
-\textbf{ChatGPT 4 Turbo}~\cite{url_gpt4}
+plano a un sistema que lo pueda procesar, en este caso nos hemos decantado por \textit{ChatGPT 4 Turbo}~\cite{url_gpt4}
 
-Lo que si merece la pena es profundizar en los las características de las peticiones que se envían.
+Si merece la pena es profundizar en los las características de las peticiones que se envían.
+La parte más compleja de estos componentes es encontrar un \textit{prompt} o entrada lo suficientemente precisa para que
+genere una respuesta que pueda ser utilizada a continuación.
 
-El primer intento de implementación se trató que el modelo respondiera con un XML. Para ello en la petición o en el
-contexto se le facilitaría un XSD, que contiene los tipos de datos y sus validaciones.
-Sin embargo, \textbf{ChatGPT 4} tiene limitaciones para trabajar con documentos XML, por lo que la implementación final
+Para encontrar una entrada suficientemente precisa, utilizamos dos técnicas:
+
+La primera \textit{Few-shot Prompting}~\cite{article_few_shot_prompting} es una técnica en la cual se proporcionan
+al modelo ejemplos de entrada y salida para que aprenda el patrón específico.
+Por ejemplo para una persona se indica: \textit{\{"name": "John", "surname": "Doe", "number": "12345678 A"\}}.
+
+La segunda técnica es el \textit{Format-based Prompting}~\cite{article_format_based_prompting}, una técnica en la
+cual se estructura el prompt para guiar al modelo a generar respuestas en un formato específico,como JSON, listas o
+tablas, las cuales pueden ser luego fácilmente parseadas.
+
+El primer intento de implementación se trató que el modelo respondiera con un XML.
+Sin embargo, \textit{ChatGPT 4} tiene limitaciones para trabajar con documentos XML, por lo que la implementación final
 se realizó utilizando modelos JSON.
 
-Como puede verse en el ejemplo de código que aparece a continuación, es vital ser muy preciso en cuanto a la
-información que se le solicita y al formato en el que se espera la respuesta.
-Para ello le facilitamos un ejemplo para cada tipo de dato.
+Todo esto puede verse en el ejemplo de código que aparece en la figura~
+\ref{fig:chapter_4.4.residential_lease_agreement_processor}, donde se muestra el código del método que define el
+\textit{prompt}.
 
-\lstinputlisting[language=PHP]{chapter/4/code/ResidentialLeaseAgreementProcessor.php}
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.4.residential_lease_agreement_processor}
+        \caption{Código fuente del \textit{Residential Lease Agreement Processor}}
+        \label{fig:chapter_4.4.residential_lease_agreement_processor}
+    \end{center}
+\end{figure}
 
 Una vez que se obtiene la respuesta en formato JSON, tan solo es necesario des-serializarlo para convertirlo en un
-objeto del tipo indicado, en este caso un \textit{ResidentialLeaseAgreement} que como puede verse en el fragmento
-que aparece a continuación, contiene los tipos de datos esperados para un contrato de arrendamiento de vivienda
-entre particulares.
+objeto del tipo indicado, en este caso un \textit{ResidentialLeaseAgreement} que como puede verse en la
+figura~\ref{fig:chapter_4.4.residential_agreement} que aparece contiene los tipos de datos esperados para un contrato de
+arrendamiento de vivienda entre particulares.
 
-\lstinputlisting[language=PHP]{chapter/4/code/ResidentialLeaseAgreement.php}
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.4.residential_lease_agreement}
+        \caption{Código fuente del \textit{Residential Lease Agreement}}
+        \label{fig:chapter_4.4.residential_agreement}
+    \end{center}
+\end{figure}
 
-La API de \textbf{ChatGPT 4} presenta dos problemas, es lenta y cuesta dinero.
+La \textit{API} de \textit{ChatGPT 4} presenta dos problemas: es lenta y cuesta dinero.
 Los tiempos de respuesta pueden variar dependiendo del tipo de documento y del estado de la api.
 Los costes también pueden variar dependiendo del tipo de documento y del precio de la api en ese
 momento~\cite{https://openai.com/api/pricing/}.
 
-A continuación una tabla calculada con el promedio de 100 peticiones para este tipo de documento.
+A continuación una tabla calculada con el promedio de 100 peticiones para el documento \textit{001/001.pdf}.
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
     \setlength{\tabcolsep}{10pt}
     \begin{tabular}{>{\bfseries}p{0.35\textwidth} p{0.65\textwidth}}
         \toprule
-        \textbf{Nombre}     & \textbf{Valor} \\
+        \textbf{Nombre}              & \textbf{Valor} \\
         \midrule
-        Total peticiones    & 3              \\
-        Tiempo total        & 8.05           \\
-        Total input tokens  & ~6643          \\
-        Total output tokens & ~159           \\
-        Total price         & ~0.07          \\
+        Total peticiones             & 3              \\
+        Tiempo total                 & 6.74 segundos  \\
+        Total \textit{input tokens}  & ~6643          \\
+        Total \textit{output tokens} & ~159           \\
+        Precio total                 & ~0.07 euros    \\
         \bottomrule
     \end{tabular}
     \caption{Resultados del procesador de arrendamiento residencial}
     \label{tab:residential_lease_processor}
 \end{table}
 
-En la fase de desarrollo de este proyecto se repiten continuamente los mismos documentos, en un ciclo de prueba y error
-por lo que tanto para acelerar los tiempos de ejecución como para reducir los costes se hizo recomendable implementar
-un sistema de caché.
+Un token en un modelo \textit{ChatGPT} es una unidad básica de texto que puede ser una palabra, parte de una palabra
+o un carácter de puntuación.
 
-El sistema de caché genera un token para cada petición y guarda la respuesta de dicha petición, durante un tiempo
-definido.
+Cabe mencionar que durante la fase de desarrollo de este proyecto se repitieron continuamente los mismos documentos,
+en un ciclo de prueba y error por lo que tanto para acelerar los tiempos de ejecución como para reducir los costes se
+hizo recomendable implementar un sistema de caché.
+
+El sistema de caché genera un hash para cada petición y guarda la respuesta, durante un tiempo definido.
 Si se repite una misma petición recupera la respuesta de la caché, por lo que la respuesta es prácticamente
 instantánea y sin ningún coste adicional.
 
-\subsubsection{Vehicle Sale And Purchase Processor}
+\subsubsection{Vehicle Sale And Purchase Agreement Processor}
 
-Este procesador es responsable de convertir transformar el texto de un contrato de compraventa de vehículo entre
-particulares en un objeto con sus datos fundamentales.
+Este procesador es responsable de transformar el texto de un contrato de compraventa de vehículo entre particulares en
+un objeto con sus datos fundamentales.
 
 Este procesador funciona de forma tan similar al procesador anterior que no será necesario entrar en nuevos detalles
 con respecto a su funcionamiento, hasta el punto de que en el momento del desarrollo fue evidente que podrían
@@ -106,7 +143,7 @@ compartir una parte muy importante del código, simplemente cambiando ligerament
 
 \subsection{Registros}
 
-El registro de logs es una parte crucial del monitoreo y mantenimiento de cualquier aplicación.
+El registro de \textit{logs} es una parte crucial del monitoreo y mantenimiento de cualquier aplicación.
 En proyecto de este tipo, por la cantidad de pequeños componentes y por interactuar con elementos de infraestructura
 externos, se hace necesario contar con un buen sistema de registro de logs.
 

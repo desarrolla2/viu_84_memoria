@@ -29,10 +29,10 @@ con el objetivo de establecer una referencia, tal y como se aprecia en la tabla~
     \setlength{\tabcolsep}{10pt}
     \begin{tabular}{>{\bfseries}p{0.25\textwidth} p{0.20\textwidth} p{0.15\textwidth} p{0.25\textwidth}}
         \toprule
-        \textbf{Nombre}         & \textbf{Ejecución} & \textbf{Memoria} & \textbf{Tiempo}    \\
+        \textbf{Nombre}                  & \textbf{Ejecución} & \textbf{Memoria} & \textbf{Tiempo}    \\
         \midrule
-        \textbf{PDFtoText}      & Local              & 288Kb            & 42.49 milisegundos \\
-        API de \textbf{ChatGPT} & Remota             & 612Kb            & 6.74 segundos      \\
+        \textit{PDFtoText}               & Local              & 288Kb            & 42.49 milisegundos \\
+        \textit{API} de \textit{ChatGPT} & Remota             & 612Kb            & 6.74 segundos      \\
         \bottomrule
     \end{tabular}
     \caption{Evaluación del rendimiento de las herramientas en la capa de infraestructura}
@@ -41,8 +41,8 @@ con el objetivo de establecer una referencia, tal y como se aprecia en la tabla~
 
 Como puede verse, el consumo de memoria es realmente bajo, además esta se libera en el momento de completarse cada
 ejecución.
-Los tiempos de respuesta son muy bajos para \textbf{PDFtoText}, que se ejecuta en local, mientras que son bastante
-más elevados para los que dependen del consumo de la API remota de \textbf{ChatGPT}.
+Los tiempos de respuesta son muy bajos para \textit{PDF To Text}, que se ejecuta en local, mientras que son bastante
+más elevados para los que dependen del consumo de la API remota de \textit{ChatGPT}.
 
 Aun así, los tiempos de respuesta para la extracción de la información son realmente buenos si los comparamos con el
 tiempo que sería necesario para la extracción por parte de un usuario.
