@@ -12,7 +12,7 @@ convertir un fichero PDF en un fragmento de texto plano.
 
 Tal y como puede verse en el extracto de código de la figura~\ref{fig:chapter_4.4.pdf_to_text_processor}, el procesador
 \textit{PDF To Text Processor} es simplemente un envoltorio para la herramienta de línea de comandos
-\textit{Pdf to Text}.
+\textit{Pdf To Text}.
 
 \begin{figure}[ht]
     \begin{center}
@@ -23,7 +23,7 @@ Tal y como puede verse en el extracto de código de la figura~\ref{fig:chapter_4
 \end{figure}
 
 En la figura~\ref{fig:chapter_4.4.generator_component_pdf_to_text_processor} puede verse un esquema de este
-comportamiento: el motor envía el documento PDF al procesador, este a su vez lo envía a \textit{PDF to Text} el cual
+comportamiento: el motor envía el documento PDF al procesador, este a su vez lo envía a \textit{PDF To Text} el cual
 genera un fichero de texto plano.
 Finalmente, el procesador extrae el contenido de ese fichero y lo envía de vuelta al motor, donde comenzó todo.
 
@@ -64,15 +64,15 @@ al modelo ejemplos de entrada y salida para que aprenda el patrón específico.
 Por ejemplo para una persona se indica: \textit{\{"name": "John", "surname": "Doe", "number": "12345678 A"\}}.
 
 La segunda técnica es el \textit{Format-based Prompting}~\cite{article_format_based_prompting}, una técnica en la
-cual se estructura el prompt para guiar al modelo a generar respuestas en un formato específico,como JSON, listas o
-tablas, las cuales pueden ser luego fácilmente parseadas.
+cual se estructura el prompt para guiar al modelo a generar respuestas en un formato específico, como \textit{JSON},
+listas o tablas, las cuales pueden ser luego fácilmente parseadas.
 
-El primer intento de implementación se trató que el modelo respondiera con un XML.
-Sin embargo, \textit{ChatGPT 4} tiene limitaciones para trabajar con documentos XML, por lo que la implementación final
-se realizó utilizando modelos JSON.
+El primer intento de implementación se trató que el modelo respondiera con un \textit{XML}.
+Sin embargo, \textit{ChatGPT 4} tiene limitaciones para trabajar con documentos \textit{XML}, por lo que la
+implementación final se realizó utilizando modelos \textit{JSON}.
 
-Todo esto puede verse en el ejemplo de código que aparece en la figura~
-\ref{fig:chapter_4.4.residential_lease_agreement_processor}, donde se muestra el código del método que define el
+Todo esto puede verse en el ejemplo de código que aparece en la
+figura~\ref{fig:chapter_4.4.residential_lease_agreement_processor}, donde se muestra el código del método que define el
 \textit{prompt}.
 
 \begin{figure}[ht]
@@ -83,8 +83,8 @@ Todo esto puede verse en el ejemplo de código que aparece en la figura~
     \end{center}
 \end{figure}
 
-Una vez que se obtiene la respuesta en formato JSON, tan solo es necesario des-serializarlo para convertirlo en un
-objeto del tipo indicado, en este caso un \textit{ResidentialLeaseAgreement} que como puede verse en la
+Una vez que se obtiene la respuesta en formato \textit{JSON}, tan solo es necesario des-serializarlo para convertirlo
+en un objeto del tipo indicado, en este caso un \textit{ResidentialLeaseAgreement} que como puede verse en la
 figura~\ref{fig:chapter_4.4.residential_agreement} que aparece contiene los tipos de datos esperados para un contrato de
 arrendamiento de vivienda entre particulares.
 

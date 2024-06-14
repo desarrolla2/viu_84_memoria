@@ -46,8 +46,8 @@ La capa de dominio contiene la lógica central de negocio del sistema y es cruci
 que el comportamiento del sistema sea correcto.
 
 En cambio, una cobertura del 42.86\% en la capa de infraestructura y aplicación se considera moderada a baja.
-Esta capa incluye componentes que interactúan con sistemas externos, bases de datos, APIs, y otras infraestructuras de
-soporte.
+Esta capa incluye componentes que interactúan con sistemas externos, bases de datos, \textit{API}, y otras
+infraestructuras de soporte.
 Esto se debe a que en ocasiones son capas más complicadas de testear, además de que hay situaciones que no merece la
 pena incluir en la batería de pruebas debido a su complejidad o rareza.
 
@@ -63,7 +63,6 @@ de diez sobre diez~\cite{url_scrutinizer_viu_84_proyecto}.
 
 Esta herramienta analiza el código en busca de posibles problemas proporcionando un informe detallado así
 sugerencias de mejora.
-
 
 \subsection{Complejidad del código}
 
@@ -89,31 +88,29 @@ A continuación, se presentan algunos de los resultados obtenidos, que aparecen 
     \label{tab:phploc_report}
 \end{table}
 
-\textbf{Total Non-Comment Lines of Code (NCLOC)}:
-Esta métrica indica el número total de líneas de código que no son comentarios.
-Un mayor número de NCLOC puede indicar un código más complejo o extenso, aunque no necesariamente más difícil de
-mantener.
+La métrica \textit{Total Non-Comment Lines of Code (NCLOC)} indica el número total de líneas de código que no son
+comentarios.
+Un mayor número de \textit{NCLOC} puede indicar un código más complejo o extenso, aunque no necesariamente más difícil
+de mantener.
 
-\textbf{Total Logical Lines of Code (LLOC)}:
-Esta métrica mide el número de líneas lógicas de código, excluyendo las líneas vacías y los comentarios.
+La métrica \textit{Total Logical Lines of Code (LLOC)} mide el número de líneas lógicas de código, excluyendo las
+líneas vacías y los comentarios.
 Las líneas lógicas representan instrucciones de programación, lo que da una idea más precisa de la cantidad de trabajo
 realizado por el código.
 
-\textbf{Average Class Length (LLOC)}:
-Esta métrica muestra la longitud promedio de las clases en términos de líneas lógicas de código.
+\textit{Average Class Length (LLOC)} muestra la longitud promedio de las clases en términos de líneas lógicas de código.
 Una menor longitud promedio de clase suele ser preferible, ya que indica clases más manejables y con responsabilidades
 bien definidas.
 
-\textbf{Average Complexity per Class}:
-Esta métrica mide la complejidad promedio de las clases utilizando la complejidad ciclomática, que cuantifica el
-número de caminos independientes a través del código.
+\textit{Average Complexity per Class} mide la complejidad promedio de las clases utilizando la complejidad ciclomática,
+que cuantifica el número de caminos independientes a través del código.
 Una menor complejidad por clase sugiere un diseño más simple y fácil de entender.
 
-\textbf{Average Complexity per Method}:
-Similar a la métrica anterior, esta mide la complejidad ciclomática promedio por método.
+Finalmente, \textit{Average Complexity per Method} similar a la métrica anterior, mide la complejidad ciclomática
+promedio por método.
 Métodos con menor complejidad son más fáciles de mantener y menos propensos a errores.
 
-Estas métricas nos proporcionan una visión clara de un software bien estructurado y con baja complejidad.
+Estas métricas nos proporcionan una visión de un software bien estructurado y con baja complejidad.
 
 \subsection{Documentación}
 

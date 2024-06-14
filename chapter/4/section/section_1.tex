@@ -1,146 +1,102 @@
-\section{Diseño del sistema}\label{sec:diseno_del_sistema}
+\section{Planificación}\label{sec:desarrollo_de_software}
 
-En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
-PDF y genera objetos que contienen la información más importante de los mismos.
-Dependiendo del tipo de documento, la información contenida en estos objetos puede variar.
-En la figura~\ref{fig:chapter_1.specific_b} mostramos que se va a incluir también el desarrollo de dos interfaces, una
-web y una de línea de comandos.
-En esta sección profundizaremos en el diseño de la arquitectura de este sistema.
-En la figura~\ref{fig:chapter_4.1.overview} vemos que el sistema tiene dos componentes principales: el componente
-\textit{Generator} y el componente \textit{Reader}.
+Este proyecto parte de una base realizada en la asignatura 47 GIIN Proyecto de ingeniería del
+software~\cite{url_viu_47_proyecto} de este mismo grado universitario.
 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.overview}
-        \caption{Esquema de los componentes principales}
-        \label{fig:chapter_4.1.overview}
-    \end{center}
-\end{figure}
+\subsection{Objetivos}
 
-\subsection{Componente \textit{Generator}}\label{subsec:chapter_4.generator_component}
+A partir del trabajo realizado en esa asignatura se plantean los siguientes objetivos, que ya fueron recogidos en el
+anteproyecto.
 
-La responsabilidad de este primer componente, el \textit{Generator} es convertir archivos de cualquier formato en una
-representación en texto plano con el contenido del mismo.
-Tal y como se ve en la figura~\ref{fig:chapter_4.1.generator_component_uml} el componente consta de cuatro tipos
-diferentes de elementos.
+\begin{enumerate}
+    \item \textbf{Definir un nuevo conjunto de datos de prueba},
+    ya en el trabajo previo existía un conjunto de datos de prueba.
+    Sin embargo, para este TFG se quería definir un nuevo conjunto, utilizando si fuera posible algún conjunto de
+    datos de fuentes abiertas.
+    \item \textbf{Evaluar la precisión del sistema},
+    se quería evaluar como de preciso es el sistema a la hora de la extracción de información de los documentos.
+    \item \textbf{Experimentar y seleccionar uno o más sistemas LLM}
+    en el trabajo previo se había probado con los modelos \textit{ollama}~\cite{url_ollama} y
+    \textit{gpt-3.5-turbo}~\cite{url_gpt3_5}.
+    Para este proyecto se quería probar con nuevos modelos.
+    Finalmente, este trabajo implicó reescribir completamente los procesadores del componente \textit{Reader}.
+    \item \textbf{Mejora de las interfaces}
+    se querían realizar mejoras en la capa de presentación de ambas interfaces, en el sentido de hacerlas más
+    visuales, concretamente en cuanto a la representación de los datos.
+    \item \textbf{Documentación formal},
+    será necesaria la elaboración de la documentación requerida para completar satisfactoriamente este TFG.
+\end{enumerate}
 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.generator_component_uml}
-        \caption{Diagrama UML del componente \textit{Generator}}
-        \label{fig:chapter_4.1.generator_component_uml}
-    \end{center}
-\end{figure}
+Debían respetarse además los tres requisitos definidos previamente en el capítulo~\ref{ch:chapter_1} Introducción.
 
-Es importante destacar que salvo el \textit{Engine}, el resto de elementos son intercambiables, y dependiendo del caso
-de uso, pueden utilizarse los componentes descritos en este TFG, o ser necesaria la implementación de otros nuevos.
+\subsection{Plan de trabajo}
 
-El motor o \textit{Engine} es el corazón del componente.
-Es el encargado de hacer las llamadas a los demás elementos registrados en el mismo coordinando cuáles y en que
-orden deben ser llamados.
+Una vez que se han identificado los requisitos y los objetivos se estableció un plan de trabajo, que además tal y como
+se describió en la sección~\ref{subsec:iterativo_incremental} Iterativo incremental, al final de cada sprint se realizó
+una pequeña retrospectiva, para evaluar que tan bien estaba funcionando el plan de trabajo, así como para planificar
+la siguiente iteración y modificar si fuera necesario el plan de trabajo restante en función de los resultados obtenidos
+hasta ese momento.
 
-Los \textit{preprocesadores} preparan el documento original para facilitar su conversión a texto.
-En esta implementación no se ha desarrollado ningún preprocesador, ya que no ha sido necesario para los casos de uso
-previstos.
+\subsubsection{Iteración 0: Hasta el 24 de marzo}
 
-Los \textit{procesadores} realizan la conversión efectiva del documento a texto.
-Funcionan mediante un sistema competitivo donde varios procesadores evalúan su propia aptitud para manejar el documento
-en cuestión, seleccionando cuál es el más adecuado para llevar a cabo la tarea.
+Se realizó el planteamiento inicial del TFG, la elaboración y entrega del anteproyecto.
+Se realizó la instalación del proyecto y una nueva selección de las herramientas de trabajo.
 
-En la figura~\ref{fig:chapter_4.1.generator_component_processors} puede verse un ejemplo.
-El \textit{Engine} pretende convertir un fichero PDF en texto y tiene registrados dos procesadores, el
-\textit{MP3Processor} y el \textit{PDFProcessor}.
+\subsubsection{Iteración 1: del 25 de marzo al 7 de abril}
 
-Primero realiza una llamada a \textit{MP3Processor}, el cual evalúa el documento y responde con una puntuación
-de -1, lo cual significa que no es capaz de procesar este tipo de documento.
+Se realizó una ampliación del conjunto de datos de prueba.
+Para ello se realizó una investigación sobre distintos bases de datos que ofrecen conjuntos de datos abiertos; sin
+embargo, estas fuentes de datos ofrecen conjuntos de datos anonimizados, es decir datos como nombres, apellidos,
+números de documentos, direcciones, no aparecen.
 
-A continuación realiza una llamada a \textit{PDFProcessor}, el cual evalúa el documento y responde con una puntuación
-de 90, lo cual significa que es adecuado para procesar este tipo de documento.
+Es por este motivo que se descartó utilizar uno de estos conjuntos de datos.
 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.generator_component_processors}
-        \caption{Competición entre procesadores en el componente \textit{Generator}}
-        \label{fig:chapter_4.1.generator_component_processors}
-    \end{center}
-\end{figure}
+\subsubsection{Iteración 2: del 8 de abril al 21 de abril}
 
-Si existieran más procesadores registrados, se irían invocando secuencialmente, para que evaluaran como de adecuados
-son para procesar ese tipo de documento.
-Finalmente, una vez que todos los procesadores han sido invocados, el \textit{Engine} enviará el documento al procesador
-que haya respondido con una puntuación más alta.
+En este sprint se determinó que el conjunto de datos de prueba debería realizarse manualmente.
+Para ello se desarrolló un sistema que permitiría, escribir los contratos en formato \textit{Markdown} el cual es fácil
+de manipular y luego sería convertido a \textit{PDF} utilizando \textit{LaTeX} y diferentes plantillas para introducir
+variabilidad en los formatos de entrada.
 
-Como puede verse, es fácil añadir soporte a nuevos tipos de documentos.
-Se podría añadir soporte para documentos escaneados, simplemente añadiendo un procesador que utilizara una tecnología
-de reconocimiento de caractéres u \textit{Optical character recognition} (OCR) como por ejemplo \textit{Tesseract}
-~\cite{url_tesseract}.
+\subsubsection{Iteración 3: del 22 de abril al 5 de mayo}
 
-El \textbf{Requisito 1} definido en el capítulo~\ref{ch:chapter_1} para este proyecto era ``convertir documentos PDF
-en documentos de texto''.
-
-El procesador \textit{PDF To Text Processor} es el responsable de esta tarea mediante llamadas a una tecnología que se
-encuentra en la capa de infraestructura, en este caso
-\textit{Pdf to Text}~\cite{url_pdftotextl}.
-Añadiremos más detalles sobre como fue la implementación de este procesador en la
-sección~\ref{sec:implemetacion_y_programacion} Implemetación y programación.
-
-
-Los \textbf{postprocesadores} perfeccionan el texto generado, realizando los ajustes necesarios, lo que mejora la
-calidad del texto resultante.
-
-Los postprocesadores se llaman secuencialmente.
-El primer postprocesador recibe como entrada la salida del procesador ejecutado.
-Los siguientes postprocesadores reciben como entrada la salida del postprocesador anterior.
-
-En esta implementación, se han desarrollado los siguientes postprocesadores:
+En apenas unos meses desde el final de la asignatura en la que se basa este trabajo, han aparecido una serie de nuevos
+modelos.
+Se hacía necesario investigar el funcionamiento de estos modelos para determinar si eran más adecuados que los modelos
+que se utilizaron en dicho trabajo.
 
 \begin{itemize}
-    \item \textbf{UTF8 PostProcessor}: Algunos documentos pueden contener caracteres no UTF8. Como este tipo de
-    caracteres pueden generar problemas, este procesador los reemplazará por caractéres equivalentes en UTF8.
-    \item \textbf{Character Replace PostProcessor}: Después de eliminar los caracterés no UTF8 se detectó que algunos
-    caracteres todavía podían resultar problemáticos, asi que se implementó un nuevo procesador capaz de reemplazar
-    caracteres problemáticos, por otros equivalentes.
-    En este caso se cambió el carácter \textit{\textbackslash f}, salto de página, por el carácter
-    \textit{\textbackslash n} salto de línea.
-    \item \textbf{Word Limit PostProcessor}: Más adelante en la implementación del componente \textit{Reader}, y debido
-    al uso de las tecnologías implementadas en el mismo, se vio que documentos con textos demasiado largos podían
-    generar errores.
-    Es por esto que se decide implementar este procesador que trunca el texto después de las primeras N palábras.
+    \item \textbf{Llama 3}~\cite{url_llama3}.
+    \item \textbf{ChatGPT 4}~\cite{url_gpt4}
 \end{itemize}
 
-\subsection{Componente \textit{Reader}}\label{subsec:chapter_4.reader_component}
-El componente Reader es el responsable del proceso de interpretación y procesamiento del texto plano obtenido a
-partir de la salida del componente \textit{Generator} descrito en la subsección anterior.
+Después de realizar una serie de pruebas durante este \textit{sprint}, se determinó que si bien \textit{Llama 3} es un
+modelo mucho más avanzado con respecto a su versión anterior, \textit{ChatGPT 4} demostró ser muy superior, por lo que
+se determinó que se realizaría una nueva implementación del proyecto, utilizando este modelo.
 
-Tal y como se ve en la figura~\ref{fig:chapter_4.1.reader_component_uml} el componente consta de dos tipos diferentes de
-elementos: El motor o \textit{Engine} es el corazón del componente.
-Es el encargado de hacer las llamadas a los demás elementos registrados en la aplicación, en este caso únicamente los
-procesadores.
+\subsubsection{Iteración 4: del 6 de mayo al 19 de mayo}
 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.reader_component_uml}
-        \caption{Diagrama UML del componente \textit{Reader}}
-        \label{fig:chapter_4.1.reader_component_uml}
-    \end{center}
-\end{figure}
+Este \textit{sprint} estuvo enfocado en realizar una reimplementación de los procesadores
+\textit{Residential Lease Agreement Processor} y \textit{Vehicle Sale And Purchase Agreement Processor} que introdujimos en la
+sección~\ref{sec:diseno_del_sistema}.
 
-\subsubsection{Motor}
+\subsubsection{Iteración 5: del 20 de mayo al 2 de junio}
 
-Los \textbf{procesadores} organizados en una única capa,  operan bajo el mismo mecanismo competitivo descrito en la
-subsección \ref{subsec:chapter_4.generator_component} Componente\textit{Generator}.
+Si bien durante todo el proyecto se han desarrollado las pruebas unitarias, de integración y funcionales oportunas, este
+\textit{sprint} se dedicó a realizar una revisión formal de cómo de bueno era la implementación realizada en comparación
+con los datos reales que contiene el conjunto de datos de prueba desarrollado.
 
-Cada uno de estos procesadores es invocado secuencialmente para evaluar su idoneidad en el manejo de un tipo de
-documento específico.
+En esta iteración, se realizó una primera versión del borrador del TFG. Para ello se utilizó la herramienta web
+\textit{Google Docs}~\cite{url_google_docs}.
+Si bien los resultados con esta herramienta fueron muy buenos en cuanto a productividad y aspecto de los documentos
+generados, no cumplía con algunos de los requisitos necesarios para la realización del TFG.
 
-Una vez seleccionado, el procesador elegido procede a ejecutar una serie de tareas que incluyen la identificación y
-extracción de la información clave.
+\subsubsection{Iteración 6: del 3 de junio al 16 de junio}
 
-En esta implementación, se han desarrollado los siguientes procesadores:
+En este segunda iteración dedicado a la elaboración de la memoria fue necesario realizar una nueva versión de este
+documento, pero esta vez utilizando \textit{LaTeX}~\cite{url_latex}, una herramienta más compleja
+de utilizar pero mucho más potente a la hora de realizar este tipo de trabajos.
 
-\begin{itemize}
-    \item \textbf{Residential Lease Agreement Processor}: Es adecuado para evaluar contratos de arrendamiento de vivienda entre
-    particulares tal y como indicamos en \textbf{Requisito 2}.
-    \item \textbf{Vehicle Sale And Purchase Agreement Processor}: Es adecuado para evaluar contratos de compra venta de vehículo
-    entre particulares tal y como indicamos en \textbf{Requisito 3}.
-\end{itemize}
+\subsubsection{Iteración 7: del 17 de junio al 30 de junio}
+
+La última iteración se dedicó a realizar los ajustes finales de la memoria.
