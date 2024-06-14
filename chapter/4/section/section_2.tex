@@ -3,7 +3,7 @@
 A continuación, se describen las principales tecnologías utilizadas en el proyecto, categorizadas en distintas áreas
 según su propósito y aplicación.
 
-\subsection*{Servidor}
+\subsection{Servidor}
 
 Las tecnologías de servidor o \textit{backend} son aquellas que se ejecutan en un servidor gestionado por la propia
 organización.
@@ -23,7 +23,7 @@ Habitualmente se ocupan de la lógica de negocio y la persistencia de datos.
 Hemos utilizado \textbf{PHP} como lenguaje principal para desarrollar nuestro sistema.
 Symfony se utiliza en la parte de infraestructura, incluida la interfaz web, para la que también hemos usado Twig.
 
-\subsection*{Cliente}
+\subsection{Cliente}
 
 Las tecnologías de cliente o \textit{frontend} son aquellas que se ejecutan en el navegador del usuario de una
 aplicación web.
@@ -53,7 +53,7 @@ Además, hemos usado \textbf{Bootstrap} para realizar un prototipado rápido y f
 \textbf{Font Awesome} para la representación de iconos y logos.
 
 
-\subsection*{Gestión de dependencias}
+\subsection{Gestión de dependencias}
 
 La gestión de dependencias es un aspecto crucial en el desarrollo de software.
 Se encarga de administrar las bibliotecas y paquetes que un proyecto necesita para funcionar correctamente.
@@ -68,7 +68,7 @@ Se encarga de administrar las bibliotecas y paquetes que un proyecto necesita pa
 Hemos utilizado  \textbf{Composer} para instalar todas las librerías  \textbf{PHP} necesarias, principalmente
 \textbf{Symfony} y algunos de sus componentes.
 
-\subsection*{Control de versiones}
+\subsection{Control de versiones}
 
 El control de versiones es una práctica en el desarrollo de software que permite rastrear y gestionar los cambios
 realizados en el código fuente a lo largo del tiempo.
@@ -88,7 +88,7 @@ Hemos utilizado \textbf{Git} para gestionar las versiones del código, siguiendo
 cada nueva característica y fusionarla a la rama principal, cuando esta está completada.
 Además, hemos enlazado con el sistema de gestión de proyectos a través de los mensajes de cada commit.
 
-\subsection*{Automatización}
+\subsection{Automatización}
 
 La automatización en el desarrollo de software se refiere al uso de herramientas y scripts para ejecutar tareas
 repetitivas de manera automática, sin intervención manual
@@ -104,7 +104,7 @@ repetitivas de manera automática, sin intervención manual
 Hemos usado \textbf{Make} para automatizar las tareas más comunes como son la construcción o el inicio de los
 contenedores de docker, pero también para tener acceso directo a tareas que resultaban repetitivas.
 
-\subsection*{Pruebas}
+\subsection{Pruebas}
 
 Las pruebas en el desarrollo de software son un proceso fundamental para garantizar la calidad y funcionalidad de una
 aplicación.
@@ -130,7 +130,7 @@ contiene pruebas unitarias, pruebas de integración y pruebas funcionales.
 Hemos utilizado \textbf{GitHub Actions} para que esta \textit{suite} se ejecutara automáticamente después de cada
 commit, en un proceso de integración continua.
 
-\subsection*{Contenerización}
+\subsection{Contenerización}
 
 La contenerización es una técnica de virtualización del sistema operativo que permite empaquetar aplicaciones y
 sus dependencias en contenedores.
@@ -153,7 +153,7 @@ El conjunto básico contiene un único contenedor en el que se ejecuta la aplica
 El conjunto ampliado contiene servicios que son complementarios, en este caso el conjunto \textbf{ELK} descrito en la
 siguiente subsección.
 
-\subsection*{Registros}\label{subsec:chapter_4.logs}
+\subsection{Registros}\label{subsec:chapter_4.logs}
 
 Los registros o \textit{logs} contienen información de eventos que ocurren en un sistema, son utilizados para
 monitorear, diagnosticar y solucionar problemas.
@@ -180,7 +180,7 @@ permiten interpretar en tiempo real los registros de la aplicación.
 
 En la sección~\ref{sec:implemetacion_y_programacion} Implemetación y programación, ampliamos los detalles.
 
-\subsection*{Componente \textit{Generator}}
+\subsection{Componente \textit{Generator}}
 
 El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:chapter_4.generator_component} Componente
 \textit{Generator} de la sección anterior.
@@ -194,7 +194,7 @@ El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:chap
 Utilizamos esta tecnología dentro del procesador \textit{PDF To Text Processor} para la conversión de documentos PDF en
 texto plano.
 
-\subsection*{Componente Reader}
+\subsection{Componente Reader}
 
 El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:chapter_4.reader_component} Componente
 \textit{Reader} de la sección anterior.

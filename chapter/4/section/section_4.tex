@@ -3,9 +3,9 @@
 En esta sección vamos a explicar algunos de los detalles de implementación de aquellos componentes que creemos que es
 interesante que sean introducidos.
 
-\subsection*{Componente \textit{Generator}}
+\subsection{Componente \textit{Generator}}
 
-\subsubsection*{PDF To Text Processor}
+\subsubsection{PDF To Text Processor}
 
 Como introdujimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
 convertir un fichero PDF en un fragmento de texto plano.
@@ -26,9 +26,9 @@ comportamiento.
     \end{center}
 \end{figure}
 
-\subsection*{Componente \textit{Reader}}
+\subsection{Componente \textit{Reader}}
 
-\subsubsection*{Residential Lease Processor}
+\subsubsection{Residential Lease Processor}
 
 Como introdujimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
 convertir transformar el texto de un contrato de arrendamiento de vivienda entre particulares en un objeto con sus
@@ -95,7 +95,7 @@ definido.
 Si se repite una misma petición recupera la respuesta de la caché, por lo que la respuesta es prácticamente
 instantánea y sin ningún coste adicional.
 
-\subsubsection*{Vehicle Sale And Purchase Processor}
+\subsubsection{Vehicle Sale And Purchase Processor}
 
 Este procesador es responsable de convertir transformar el texto de un contrato de compraventa de vehículo entre
 particulares en un objeto con sus datos fundamentales.
@@ -104,7 +104,7 @@ Este procesador funciona de forma tan similar al procesador anterior que no ser�
 con respecto a su funcionamiento, hasta el punto de que en el momento del desarrollo fue evidente que podrían
 compartir una parte muy importante del código, simplemente cambiando ligeramente las peticiones que se debían realizar.
 
-\subsection*{Registros}
+\subsection{Registros}
 
 El registro de logs es una parte crucial del monitoreo y mantenimiento de cualquier aplicación.
 En proyecto de este tipo, por la cantidad de pequeños componentes y por interactuar con elementos de infraestructura
