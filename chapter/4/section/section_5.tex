@@ -37,7 +37,7 @@ que el coste de la ejecución de un documento eran aproximadamente siete céntim
 para los conjuntos de datos de prueba y de tres elementos para los conjuntos de datos de contraste, ofrecía un
 balance adecuado.
 
-En la tabla que aparece a continuación pueden verse los conjuntos de datos de prueba desarrollados.
+En la tabla~\ref{tab:data_sets} pueden verse los conjuntos de datos de prueba desarrollados.
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
@@ -46,7 +46,7 @@ En la tabla que aparece a continuación pueden verse los conjuntos de datos de p
         \toprule
         \textbf{Conjunto} & \textbf{Contenido}                                        & \textbf{Elementos} \\
         \midrule
-        \textbf{000}      & Ruido                                                     & 3                  \\
+        \textbf{000}      & Datos de contraste                                        & 3                  \\
         \textbf{001}      & Contratos de arrendamiento de vivienda entre particulares & 9                  \\
         \textbf{002}      & Contratos de compra venta de vehículo entre particulares  & 9                  \\
         \bottomrule
@@ -55,7 +55,7 @@ En la tabla que aparece a continuación pueden verse los conjuntos de datos de p
     \label{tab:data_sets}
 \end{table}
 
-El conjunto de datos \textbf{000} contiene ruido, es decir documentos que no corresponden a ninguno de los
+El conjunto de datos \textbf{000} contiene ruido o contraste es decir documentos que no corresponden a ninguno de los
 otros conjuntos.
 
 El conjunto de datos \textbf{001} contiene modelos descargados de diferentes fuentes de internet.
@@ -65,25 +65,22 @@ El conjunto de datos \textbf{002} se generó de la misma forma que el anterior.
 
 Este proceso aseguró la privacidad y el cumplimiento de la normativa de protección de datos.
 
-
-
 \subsubsection{Construcción del conjunto de datos de prueba}
 
 Para permitir modificar fácilmente los documentos de los diferentes conjuntos, estos fueron transformados a formato
-\textbf{Markdown}, más sencillo de modificar, que los documentos originales en formato \textbf{Word}.
+\textit{Markdown} más sencillo de modificar, que los documentos originales en formato \textit{Word}.
 
-A través de \textbf{LaTeX} y diferentes plantillas para introducir variabilidad en los formatos de entrada, estos
-documentos son convertidos a formato \textbf{PDF}.
+A través de \textit{LaTeX} y un conjunto definido de plantillas para introducir variabilidad en los formatos de
+entrada, estos documentos son convertidos a formato \textit{PDF}.
 En la figura~\ref{fig:chapter_4.5.dataset_construction_overview} puede verse un esquema de este comportamiento.
 
 \begin{figure}[ht]
     \begin{center}
         \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.5.dataset_construction_overview}
-        \caption{Contrucción del conjunto de datos de prueba}
+        \caption{Contrucción automática del conjunto de datos de prueba}
         \label{fig:chapter_4.5.dataset_construction_overview}
     \end{center}
 \end{figure}
-
 
 \subsection{Pruebas automáticas}
 
@@ -93,11 +90,11 @@ En este proyecto, se han implementado varios tipos de pruebas automáticas, cada
 todas las facetas del desarrollo y la implementación del software.
 
 \begin{enumerate}
-    \item \textbf{Pruebas unitarias}: verifican el funcionamiento de componentes individuales del sistema, como
+    \item Las \textbf{Pruebas unitarias} verifican el funcionamiento de componentes individuales del sistema, como
     funciones o métodos.
-    \item \textbf{Pruebas integración}: comprueban el correcto funcionamiento de diferentes componentes
+    \item Las \textbf{Pruebas integración} comprueban el correcto funcionamiento de diferentes componentes
     interactuando coordinadamente.
-    \item \textbf{Pruebas funcionales}: evalúan el sistema desde el punto de vista del usuario final.
+    \item Las \textbf{Pruebas funcionales} evalúan el sistema desde el punto de vista del usuario final.
 \end{enumerate}
 
 En la figura~\ref{fig:chapter_4.5.test_suite_execution} puede verse el resultado de la ejecución de la batería de
@@ -113,8 +110,8 @@ pruebas.
 
 \subsection{Integración continua}
 La integración continua es una práctica esencial en el desarrollo de software moderno, que implica la integración
-frecuente, normalmente programando la ejecución automática de los test y otras tareas en un servidor de integración
-continua, cada vez que se añade un commit al repositorio.
+frecuente y la ejecución automática de los test.
+Normalmente programado para ejecutarse cada vez que se añade un cambio al repositorio.
 
 \begin{figure}[ht]
     \begin{center}
@@ -124,9 +121,9 @@ continua, cada vez que se añade un commit al repositorio.
     \end{center}
 \end{figure}
 
-En este proyecto, hemos implementado la integración continua utilizando \textbf{GitHub Actions}, un servicio de
+En este proyecto, hemos implementado la integración continúa utilizando \textit{GitHub Actions}, un servicio de
 automatización que permite crear flujos de trabajo personalizados para compilar, probar y desplegar código directamente
-desde \textbf{GitHub}.
+desde \textit{GitHub}.
 
 En la figura~\ref{fig:chapter_4.5.github_actions_execution} puede verse el resultado de la ejecución de la batería de
 pruebas en el entorno de integración continua.
