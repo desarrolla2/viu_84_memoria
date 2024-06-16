@@ -1,6 +1,6 @@
 \section{Pruebas y evaluación}\label{sec:pruebas_y_evaluacion}
 
-\subsection{Desarrollo del conjunto de datos de prueba}
+\subsection*{Desarrollo del conjunto de datos de prueba}
 
 Una parte fundamental de este TFG fue construir un conjunto de pruebas que permitiera dar soporte tanto al
 desarrollo como a la validación del proyecto.
@@ -32,7 +32,7 @@ También se determinó que los conjuntos de datos deberían ser lo suficientemen
 permitieran alcanzar conclusiones relevantes en términos de precisión del sistema, pero lo suficientemente pequeños
 como para que la ejecución completa de la batería no fuera excesivamente cara.
 
-Dado que en la sección \ref{sec:implemetacion_y_programacion} Implementación y programación, se había estipulado
+Dado que en la sección~\ref{sec:implemetacion_y_programacion} Implementación y programación, se había estipulado
 que el coste de la ejecución de un documento eran aproximadamente siete céntimos, se consideró que de nueve documentos
 para los conjuntos de datos de prueba y de tres elementos para los conjuntos de datos de contraste, ofrecía un
 balance adecuado.
@@ -42,16 +42,16 @@ En la tabla~\ref{tab:data_sets} pueden verse los conjuntos de datos de prueba de
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
     \setlength{\tabcolsep}{10pt}
-    \begin{tabular}{>{\bfseries}p{0.15\textwidth} p{0.55\textwidth} p{0.15\textwidth}}
+    \begin{tabular}{p{0.15\textwidth} p{0.60\textwidth} >{\raggedleft\arraybackslash}p{0.15\textwidth}}
         \toprule
-        \textbf{Conjunto} & \textbf{Contenido}                                        & \textbf{Elementos} \\
+        \textbf{Conjunto} & \textbf{Contenido}                                        & \textbf{Documentos} \\
         \midrule
-        \textbf{000}      & Datos de contraste                                        & 3                  \\
-        \textbf{001}      & Contratos de arrendamiento de vivienda entre particulares & 9                  \\
-        \textbf{002}      & Contratos de compra venta de vehículo entre particulares  & 9                  \\
+        \textbf{000}      & Datos de contraste                                        & 3                   \\
+        \textbf{001}      & Contratos de arrendamiento de vivienda entre particulares & 9                   \\
+        \textbf{002}      & Contratos de compra venta de vehículo entre particulares  & 9                   \\
         \bottomrule
     \end{tabular}
-    \caption{Conjuntos de datos de prueba}
+    \caption{Resumen de los conjuntos de datos de prueba}
     \label{tab:data_sets}
 \end{table}
 
@@ -64,7 +64,7 @@ Finalmente, el conjunto de datos \textbf{002} se generó de la misma forma que e
 
 Este proceso aseguró la privacidad y el cumplimiento de la normativa de protección de datos.
 
-\subsubsection{Construcción del conjunto de datos de prueba}
+\subsubsection*{Construcción del conjunto de datos de prueba}
 
 Para permitir modificar fácilmente los documentos de los diferentes conjuntos, estos fueron transformados a formato
 \textit{Markdown} más sencillo de modificar, que los documentos originales en formato \textit{Word}.
@@ -76,12 +76,12 @@ En la figura~\ref{fig:chapter_4.5.dataset_construction_overview} puede verse un 
 \begin{figure}[ht]
     \begin{center}
         \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.5.dataset_construction_overview}
-        \caption{Contrucción automática del conjunto de datos de prueba}
+        \caption{Esquema del sistema de contrucción automática de documentos en el conjunto de datos de prueba}
         \label{fig:chapter_4.5.dataset_construction_overview}
     \end{center}
 \end{figure}
 
-\subsection{Pruebas automáticas}
+\subsection*{Pruebas automáticas}
 
 Las pruebas automáticas son esenciales para garantizar la calidad y la robustez del software.
 
@@ -102,12 +102,12 @@ pruebas~\cite{url_viu_84_proyecto_continous_integration}.
 \begin{figure}[ht]
     \begin{center}
         \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.5.test_suite_execution}
-        \caption{Resultado de la ejecución de la batería de pruebas automáticas}
+        \caption{Captura del resultado de la ejecución de la batería de pruebas automáticas en el entorno de desarrollo}
         \label{fig:chapter_4.5.test_suite_execution}
     \end{center}
 \end{figure}
 
-\subsection{Integración continua}
+\subsection*{Integración continua}
 La integración continua es una práctica esencial en el desarrollo de software moderno, que implica la integración
 frecuente y la ejecución automática de los test.
 Normalmente programado para ejecutarse cada vez que se añade un cambio al repositorio.
@@ -115,7 +115,8 @@ Normalmente programado para ejecutarse cada vez que se añade un cambio al repos
 \begin{figure}[ht]
     \begin{center}
         \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.5.github_actions_execution}
-        \caption{Resultado de la ejecución de la batería de pruebas en el entorno de integración continua}
+        \caption{Captura del resultado de la ejecución de la batería de pruebas automáticas en el entorno de integración
+        continua}
         \label{fig:chapter_4.5.github_actions_execution}
     \end{center}
 \end{figure}

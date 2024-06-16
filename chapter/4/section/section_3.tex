@@ -12,12 +12,12 @@ En la figura~\ref{fig:chapter_4.1.overview} vemos que el sistema tiene dos compo
 \begin{figure}[ht]
     \begin{center}
         \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.overview}
-        \caption{Esquema de los componentes principales}
+        \caption{Esquema de los componentes principales del sistem}
         \label{fig:chapter_4.1.overview}
     \end{center}
 \end{figure}
 
-\subsection{Componente \textit{Generator}}\label{subsec:chapter_4.generator_component}
+\subsection*{Componente \textit{Generator}}\label{subsec:chapter_4.generator_component}
 
 La responsabilidad de este primer componente, el \textit{Generator} es convertir archivos de cualquier formato en una
 representación en texto plano con el contenido del mismo.
@@ -60,7 +60,7 @@ de 90, lo cual significa que es adecuado para procesar este tipo de documento.
 \begin{figure}[ht]
     \begin{center}
         \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.1.generator_component_processors}
-        \caption{Competición entre procesadores en el componente \textit{Generator}}
+        \caption{Esquema de la competición entre procesadores del componente \textit{Generator}}
         \label{fig:chapter_4.1.generator_component_processors}
     \end{center}
 \end{figure}
@@ -108,7 +108,7 @@ En esta implementación, se han desarrollado los siguientes postprocesadores:
     Es por esto que se decide implementar este procesador que trunca el texto después de las primeras N palábras.
 \end{itemize}
 
-\subsection{Componente \textit{Reader}}\label{subsec:chapter_4.reader_component}
+\subsection*{Componente \textit{Reader}}\label{subsec:chapter_4.reader_component}
 El componente Reader es el responsable del proceso de interpretación y procesamiento del texto plano obtenido a
 partir de la salida del componente \textit{Generator} descrito en la subsección anterior.
 
@@ -125,7 +125,7 @@ procesadores.
     \end{center}
 \end{figure}
 
-\subsubsection{Motor}
+\subsubsection*{Motor}
 
 Los \textbf{procesadores} organizados en una única capa,  operan bajo el mismo mecanismo competitivo descrito en la
 subsección \ref{subsec:chapter_4.generator_component} Componente\textit{Generator}.
