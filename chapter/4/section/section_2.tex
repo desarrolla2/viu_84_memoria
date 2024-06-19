@@ -102,7 +102,7 @@ repetitivas de manera automática, sin intervención manual
 \end{itemize}
 
 Hemos usado \textit{Make} para automatizar las tareas más comunes como son la construcción o el inicio de los
-contenedores de docker, pero también para tener acceso directo a tareas que resultaban repetitivas.
+contenedores de docker, pero también para tener acceso directo a tareas que resultan repetitivas.
 
 \subsection*{Pruebas}
 
@@ -127,7 +127,7 @@ de este TFG.
 Hemos utilizado \textit{PHPUnit} para la definición y ejecución de una batería de pruebas o \textit{test suite} que
 contiene pruebas unitarias, pruebas de integración y pruebas funcionales.
 
-Hemos utilizado \textit{GitHub Actions} para que esta \textit{suite} se ejecutara automáticamente después de cada
+Hemos utilizado \textit{GitHub Actions} para que esta \textit{suite} se ejecutará automáticamente después de cada
 commit, en un proceso de integración continua.
 
 \subsection*{Contenerización}
@@ -164,7 +164,7 @@ historial que pueda ser analizado.
     \item \textbf{Monolog} es una biblioteca de \textit{logs} para PHP. Permite enviar registros a varios destinos, como
     archivos, bases de datos y servicios de terceros, facilitando la monitorización y depuración de aplicaciones
     ~\cite{url_monolog}.
-    \item \textbf{Elastic Search} es un motor de búsqueda y análisis de texto completo basado en Lucene.
+    \item \textbf{Elasticsearch} es un motor de búsqueda y análisis de texto completo basado en Lucene.
     Permite almacenar, buscar y analizar grandes volúmenes de datos en tiempo real
     ~\cite{url_elasticsearch}.
     \item \textbf{Logstash} es una herramienta de procesamiento de datos que ingesta, transforma y envía datos a varios
@@ -175,10 +175,10 @@ historial que pueda ser analizado.
 \end{itemize}
 
 Hemos utilizado \textit{Monolog} para configurar los \textit{logs} generados en la aplicación.
-El resto de elementos, \textit{Elastic Search}, \textit{Logstash} y \textit{Kibana}, conocidos como \textit{ELK},
+El resto de elementos, \textit{Elasticsearch}, \textit{Logstash} y \textit{Kibana}, conocidos como \textit{ELK},
 permiten interpretar en tiempo real los registros de la aplicación.
 
-En la sección~\ref{sec:implemetacion_y_programacion} Implemetación y programación, ampliamos los detalles.
+En la sección~\ref{sec:implemetacion_y_programacion} Implementación y programación, ampliamos los detalles.
 
 \subsection*{Componente \textit{Generator}}
 
@@ -187,9 +187,8 @@ El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:chap
 
 \begin{itemize}
     \item \textbf{Pdf to Text} es una herramienta que convierte documentos \textit{PDF} en texto plano.
-    Permite extraer el contenido textual de archivos \textit{PDF}
-    , lo cual es útil para la posterior manipulación y análisis de
-    datos ~\cite{url_pdftotextl}.
+    Permite extraer el contenido textual de archivos \textit{PDF}, lo cual es útil para la posterior manipulación y
+    análisis de datos ~\cite{url_pdftotextl}.
 \end{itemize}
 
 Utilizamos esta tecnología dentro del procesador \textit{PDF To Text Processor} para la conversión de documentos
@@ -218,7 +217,7 @@ Hemos utilizado la \textit{API} de \textit{ChatGPT}, para extraer la informació
 
 Las llamadas \textit{HTTP} se realizaron mediante la librería \textit{Symfony HttpClient} y finalmente
 \textit{Symfony Cache} cachea las respuestas.
-Veremos más en profundidad este proceso en la sección~\ref{sec:implemetacion_y_programacion} Implemetación y
+Veremos más en profundidad este proceso en la sección~\ref{sec:implemetacion_y_programacion} Implementación y
 programación.
 
 

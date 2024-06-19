@@ -7,7 +7,7 @@ interesante que sean introducidos.
 
 \subsubsection*{PDF To Text Processor}
 
-Como introdujimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
+Cómo introducimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
 convertir un fichero \textit{PDF} en un fragmento de texto plano.
 
 Tal y como puede verse en el extracto de código de la figura~\ref{fig:chapter_4.4.pdf_to_text_processor}, el procesador
@@ -43,7 +43,7 @@ alquiler de vivienda entre particulares y la compraventa de vehículos entre par
 
 \subsubsection*{Residential Lease Agreement Processor}
 
-Como introdujimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
+Cómo introducimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
 transformar el texto de un contrato de arrendamiento de vivienda entre particulares en un objeto con sus datos
 fundamentales.
 
@@ -54,7 +54,7 @@ Simplemente, indicaremos que se trata de enviar peticiones sobre un documento qu
 plano a un sistema que lo pueda procesar, en este caso nos hemos decantado por \textit{ChatGPT 4 Turbo}~
 \cite{url_openai_gpt4}
 
-Si merece la pena es profundizar en los las características de las peticiones que se envían.
+Si merece la pena profundizar en las características de las peticiones que se envían.
 La parte más compleja de estos componentes es encontrar un \textit{prompt} o entrada lo suficientemente precisa para que
 genere una respuesta que pueda ser utilizada a continuación.
 
@@ -84,8 +84,8 @@ figura~\ref{fig:chapter_4.4.residential_lease_agreement_processor}, donde se mue
     \end{center}
 \end{figure}
 
-Una vez que se obtiene la respuesta en formato \textit{JSON}, tan solo es necesario des-serializarlo para convertirlo
-en un objeto del tipo indicado, en este caso un \textit{ResidentialLeaseAgreement} que como puede verse en la
+Una vez que se obtiene la respuesta en formato \textit{JSON}, tan solo es necesario des-serializar para convertirlo
+en un objeto del tipo indicado, en este caso un \textit{Residential Lease Agreement} que como puede verse en la
 figura~\ref{fig:chapter_4.4.residential_agreement} que aparece contiene los tipos de datos esperados para un contrato de
 arrendamiento de vivienda entre particulares.
 
@@ -145,7 +145,7 @@ compartir una parte muy importante del código, simplemente cambiando ligerament
 \subsection*{Registros}\label{subsec:logs}
 
 El registro de \textit{logs} es una parte crucial del monitoreo y mantenimiento de cualquier aplicación.
-En proyecto de este tipo, por la cantidad de pequeños componentes y por interactuar con elementos de infraestructura
+En proyectos de este tipo, por la cantidad de pequeños componentes y por interactuar con elementos de infraestructura
 externos, se hace necesario contar con un buen sistema de registro de logs.
 
 En este proyecto, se ha implementado un sistema de registros utilizando \textbf{Monolog}, una biblioteca de registro
@@ -159,15 +159,15 @@ Se han configurado tres canales.
     \item Http-Client: para el componente que realiza las peticiones HTTP.
 \end{itemize}
 
-Un canal es la forma en la que monolog, agrupa un conjunto de información para poderla filtrar y procesar adecuadamente.
+Un canal es la forma en la que monolog, agrupa un conjunto de información para poder filtrar y procesar adecuadamente.
 Además, los logs se almacenan en dos ficheros y formatos diferentes:
 
 \begin{itemize}
-    \item \textbf{Monolog File format}, es el formato estándar de ficheros de log generados por esta biblioteca.
+    \item \textbf{Monolog format}, es el formato estándar de ficheros de log generados por esta biblioteca.
     \item \textbf{Logstash format}, es el estándar de la herramienta \textbf{Monolog}.
 \end{itemize}
 
-El formato \textbf{Monolog File format} está indicado para entornos de desarrollo o proyectos de pequeña envergadura.
+El formato \textbf{Monolog format} está indicado para entornos de desarrollo o proyectos de pequeña envergadura.
 Siempre que estos ficheros no sean demasiado grandes, se pueden trabajar a través de herramientas de línea de comandos
 como \textbf{grep} o \textbf{awk}.
 
