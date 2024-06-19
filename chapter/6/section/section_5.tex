@@ -19,6 +19,18 @@ Otra mejora en este aspecto es designar un equipo externo que se ocupe de la eva
 se produzca el sesgo del creador, un sesgo que se produce cuando la misma persona que desarrolla el código también lo
 prueba, lo que puede resultar en la falta de detección de errores~\cite{url_test_io_bias_software_testing}.
 
+\subsection*{Aumentar el soporte a otros formatos}
+
+Aunque una gran parte de la documentación gestionada está en formato \textit{PDF}, es conveniente incrementar el soporte
+para otros formatos igualmente comunes.
+
+Por ejemplo se podría utilizar \textit{LibreOffice}~\cite{url_libreoffice} para convertir documentos en formato
+\textit{word}~\cite{url_microsoft_word} o en formato \textit{excel}~\cite{url_microsoft_excel} a texto.
+
+Además, se podría emplear \textit{Tesseract OCR}~\cite{url_tesseract}, una herramienta que permite convertir
+imágenes en texto, utilizando una tecnología de reconocimiento óptico de caracteres u
+\textit{optical character recognition} (OCR) para convertir documentos escaneados o fotografías a texto.
+
 \subsection*{Probar con otros modelos}
 
 La rápida evolución de los modelos de lenguaje natural ofrece continuas oportunidades para mejorar la precisión, los
@@ -29,6 +41,31 @@ desarrollan.
 Evaluar estos modelos en términos de precisión, eficiencia y costo ayudará a identificar cuál es el más adecuado para
 diferentes casos de uso, asegurando que el sistema se mantenga a la vanguardia de la tecnología y sea capaz de ofrecer
 el mejor rendimiento posible.
+
+\subsection*{Utilizar otras técnicas para extraer la información}
+
+Aunque los modelos LLM ofrecen una solución óptima para documentos con formato desconocido, para otros documentos el
+formato será conocido y tendrá pocas variaciones, como por ejemplo una declaración de la renta, facturas comerciales o
+los recibos de servicios públicos.
+
+En estos casos, es más eficiente y económico extraer la información mediante técnicas más rudimentarias, como por
+ejemplo las expresiones regulares.
+Estas técnicas permiten identificar y extraer datos específicos de manera rápida y con un menor costo, aprovechando la
+estructura predecible de los documentos.
+
+\subsection*{Incrementar la seguridad de los datos}
+
+La privacidad y la seguridad de los datos son aspectos críticos en cualquier sistema de procesamiento de información,
+especialmente cuando se manejan documentos sensibles.
+
+La incorporación de prácticas de seguridad desde el diseño, conocido como \textit{privacy by design}, puede ayudar a
+construir un sistema más seguro en este sentido.
+Para ello, se podrían implementar políticas de acceso, cifrado de datos y anonimización de los mismos cuando sea
+adecuado.
+
+Estas medidas no solo protegen la información personal durante el procesamiento y almacenamiento, sino que también
+aseguran el cumplimiento de normativas de protección de datos.
+
 
 \subsection*{Liberar el proyecto}
 

@@ -1,50 +1,99 @@
-\chapter{Instrucciones adicionales}\label{ch:appendix_1}
+\chapter{Instrucciones de instalación}\label{ch:appendix_2}
+
+Puedes encontrar una versión actualizada de este documento en la documentación del proyecto en
+\textit{github}~\cite{url_viu_84_proyecto_install}.
+
+\section*{Instalar dependencias del proyecto}\label{sec:instalar_dependencias}
+
+Para la ejecución de este proyecto, es necesario tener instalados los paquetes que aparecen indicados en la
+tabla~\ref{tab:dependencies} junto con sus versiones mínimas.
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.5}
+    \setlength{\tabcolsep}{10pt}
+    \begin{tabular}{>{\bfseries}p{0.75\textwidth} >{\raggedleft\arraybackslash}p{0.15\textwidth}}
+        \toprule
+        \textbf{Paquete}                         & \textbf{Versión mínima} \\
+        \midrule
+        docker~\cite{url_docker}                 & 20.10                   \\
+        docker-compose~\cite{url_docker_compose} & 1.25                    \\
+        git~\cite{url_git}                       & 2.34                    \\
+        \bottomrule
+    \end{tabular}
+    \caption{Dependencias del proyecto y versiones mínimas}
+    \label{tab:dependencies}
+\end{table}
+
+\section*{Proceso de instalación}\label{sec:proceso_instalacion}
+
+\subsection*{Descargar el código fuente}\label{subsec:descargar_codigo}
+
+Descargamos el código fuente desde el repositorio principal del proyecto.
+
+\begin{lstlisting}[language=bash]
+git clone git@github.com:desarrolla2/viu_84_trabajo_fin_grado
+\end{lstlisting}
+
+\subsection*{Configurar el entorno docker}\label{subsec:configurar_docker}
+
+En este paso será necesario copiar archivos de configuración de docker, para ello ejecutamos lo siguiente:
+
+\begin{lstlisting}[language=bash]
+cp docker/.env.dist .env
+cp docker/docker-compose.yml.dist docker-compose.yml
+cp docker/Makefile.dist Makefile
+\end{lstlisting}
+
+Si también se desea contar con los contenedores ELK descritos en la subsección \ref{subsec:logs} Registros, para la
+visualización de los logs deberás ejecutar:
+
+\begin{lstlisting}[language=bash]
+cp docker/docker-compose.override.yml.dist docker-compose.override.yml
+\end{lstlisting}
+
+Finalmente, puedes reescribir la configuración si fuera necesario para adecuarla a tus necesidades.
+
+\subsection*{Construir contenedores e instalar dependencias}\label{subsec:construir_contenedores}
+
+\subsubsection*{Construir contenedores}\label{subsubsec:construir_contenedores}
+
+Para la construcción de los contenedores hay una tarea definida en el fichero \textit{MakeFile}
+
+\begin{lstlisting}[language=bash]
+make docker-build
+\end{lstlisting}
+
+\subsubsection*{Instalar dependencias PHP}\label{subsubsec:instalar_dependencias_php}
+
+También hay una tarea definida para la instalación de las dependencias.
+
+\begin{lstlisting}[language=bash]
+make php-composer-install
+\end{lstlisting}
+
+\subsubsection*{Levantar los contenedores}\label{subsubsec:levantar_contenedores}
+
+La siguiente tarea levanta los contenedores necesarios para la ejecución del proyecto.
+
+\begin{lstlisting}[language=bash]
+make docker-up
+\end{lstlisting}
+
+\subsubsection*{Editar archivo .env}\label{subsubsec:editar_env}
+
+Finalmente, edita el archivo \textit{.env} para actualizar los siguientes valores:
+
+\begin{itemize}
+    \item \textbf{APP\_SECRET}: establece un token único.
+    \item \textbf{OPENAI\_AUTHENTICATION\_TOKEN}: genera un token válido a través de la plataforma de \textit{OpenAI}~
+    \cite{url_openai_platform}
+\end{itemize}
 
 
-El apéndice es toda la información adicional complementaria, necesaria para ilustrar mejor el cuerpo del trabajo.
+\section*{Ejecutar pruebas}\label{sec:ejecutar_pruebas}
 
-Los apéndices van numerados con una secuencia alfabética de letras mayúsculas (A, B, C, etc.). En caso de que se hayan
-producido diagramas de clases, diagramas de la base de datos, casos de usos u otra información gráfica y estos no hayan
-sido incluidos como parte del cuerpo del trabajo, deberán ser incluidos en la sección de apéndices.
+Una vez el proyecto está correctamente instalado, puedes ejecutar la batería de pruebas a través de la siguiente tarea.
 
-Apéndice A
-
-Ejemplos formatos
-El estilo del párrafo tiene que ser encuadrado (justificado).
-En caso de terminar con un apartado (nivel uno de título) aplicar un salto de página para comenzar siempre el siguiente
-apartado en una página nueva.
-
-Tablas
-
-Tanto las figuras como las tablas tienen que estar indicadas en el texto y referenciadas con la numeración que tiene
-asignada.
-La descripción debe ser clara y explicar lo que se quiere representar con independencia de la referencia del texto.
-
-Tanto las tablas como las figuras tendrán un estilo de párrafo centrado.
-La descripción se realizará desde “Insertar título”.
-
-
-Tabla 1. Operaciones matemáticas utilizadas en el estudio realizado. Elaboración propia.
-
-Figuras
-
-Las figuras deben estar mencionadas en el texto y ser referenciadas por su numeración Ejemplo: Se habilita un servidor
-con Jupyter como se puede ver en la Figura 1, en el cual se puede disponer de diferentes kernels de programación
-(Python, R, Julia…).
-
-Figura 1.
-Arquitectura Jupyter Cliente - Servidor.
-Fuente: https://www.paradigmadigital.com/dev/jupyter-data-science-aplicada/
-
-
-Viñetado
-
-Está permitido el uso de viñetado:
-
-Esta sería la forma
-Segundo
-En caso de tener un sub apartado
-Una numeración que se quiera hacer no debe influir en la numeración de los apartados generales:
-
-1. Item 1
-2. Item 2
+\begin{lstlisting}[language=bash]
+make tests
+\end{lstlisting}

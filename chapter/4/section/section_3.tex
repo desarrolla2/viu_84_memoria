@@ -1,7 +1,7 @@
 \section{Diseño del sistema}\label{sec:diseno_del_sistema}
 
 En la figura~\ref{fig:chapter_1.overview} vimos un esquema general del sistema, el cual recibe documentos en formato
-PDF y genera objetos que contienen la información más importante de los mismos.
+\textit{PDF} y genera objetos que contienen la información más importante de los mismos.
 Dependiendo del tipo de documento, la información contenida en estos objetos puede variar.
 En la figura~\ref{fig:chapter_1.specific_b} mostramos que se va a incluir también el desarrollo de dos interfaces, una
 web y una de línea de comandos.
@@ -76,7 +76,7 @@ de reconocimiento de caractéres u \textit{Optical character recognition} (OCR) 
 ~\cite{url_tesseract}.
 
 El \textbf{Requisito 1} definido en la sección~\ref{sec:objetives} Objetivos para este proyecto era
-``convertir documentos PDF en documentos de texto''.
+``convertir documentos \textit{PDF} en documentos de texto''.
 
 El procesador \textit{PDF To Text Processor} es el responsable de esta tarea mediante llamadas a una tecnología que se
 encuentra en la capa de infraestructura, en este caso
@@ -95,18 +95,27 @@ Los siguientes postprocesadores reciben como entrada la salida del postprocesado
 En esta implementación, se han desarrollado los siguientes postprocesadores:
 
 \begin{itemize}
-    \item \textbf{UTF8 PostProcessor}: Algunos documentos pueden contener caracteres no UTF8. Como este tipo de
-    caracteres pueden generar problemas, este procesador los reemplazará por caractéres equivalentes en UTF8.
-    \item \textbf{Character Replace PostProcessor}: Después de eliminar los caracterés no UTF8 se detectó que algunos
+    \item
+    \textbf{UTF8 PostProcessor}: Algunos documentos pueden contener caracteres no \textit{UTF8}.
+    Como este tipo de caracteres pueden generar problemas, este procesador los reemplazará por caractéres equivalentes
+    en UTF8.
+    \item
+    \textbf{Character Replace PostProcessor}: Después de eliminar los caracteres no \textit{UTF8} se detectó que algunos
     caracteres todavía podían resultar problemáticos, asi que se implementó un nuevo procesador capaz de reemplazar
     caracteres problemáticos, por otros equivalentes.
-    En este caso se cambió el carácter \textit{\textbackslash f}, salto de página, por el carácter
-    \textit{\textbackslash n} salto de línea.
-    \item \textbf{Word Limit PostProcessor}: Más adelante en la implementación del componente \textit{Reader}, y debido
-    al uso de las tecnologías implementadas en el mismo, se vio que documentos con textos demasiado largos podían
-    generar errores.
+    En este caso se intercambió el carácter salto de página \textit{\textbackslash f}, por el carácter
+    salto de línea \textit{\textbackslash n}.
+    \item
+    \textbf{Word Limit PostProcessor}: Más adelante en la implementación del componente \textit{Reader}, y debido al uso
+    de las tecnologías implementadas en el mismo, se vio que documentos con textos demasiado largos podían generar
+    errores.
     Es por esto que se decide implementar este procesador que trunca el texto después de las primeras N palábras.
 \end{itemize}
+
+En conjunto al ejecutarse los tres, primero se sustituyen los caracteres no \textit{UTF8}, por otros equivalentes, a
+continuación se sustituye el carácter salto de página, y finalmente, y dado que se determinó, para el conjunto de
+datos de prueba que la información relevante se encuentra siempre dentro de las primeras páginas, se limitó el
+tamaño del texto a mil palabras.
 
 \subsection*{Componente \textit{Reader}}\label{subsec:chapter_4.reader_component}
 El componente Reader es el responsable del proceso de interpretación y procesamiento del texto plano obtenido a
