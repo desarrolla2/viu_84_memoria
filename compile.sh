@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Nombre del archivo sin extensión
-TARGET=TFT
+TARGET=memoria
 
 xelatex ${TARGET}.tex
 
