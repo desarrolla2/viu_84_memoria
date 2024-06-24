@@ -132,6 +132,7 @@
 % Bibliography Configuration
 \usepackage[backend=biber, sorting=none]{biblatex}
 \usepackage{csquotes}
+\usepackage{tocbibind}
 \usepackage[utf8]{inputenc}
 \addbibresource{memoria.bib}
 
@@ -146,16 +147,14 @@
     % Dedication
     \input{./dedication/dedication}
 
-    % Table of contents
-    \tableofcontents
-    \addcontentsline{toc}{chapter}{\listfigurename}
-    \addcontentsline{toc}{chapter}{\listtablename}
-    \listoffigures
-    \listoftables
-
     % Abstract
     \input{./abstract/abstract_1}
     \input{./abstract/abstract_2}
+
+    % Table of contents
+    \tableofcontents
+    \listoffigures
+    \listoftables
 
     %% Chapters
     \include{chapter/1/chapter}
@@ -165,12 +164,11 @@
     \include{chapter/5/chapter}
     \include{chapter/6/chapter}
 
+    \printbibliography[heading=bibintoc]
 
     %% Appendix
     \appendix
     \include{./appendix/appendix_1}
     %\include{./appendix/appendix_2}
-
-    \printbibliography
 
 \end{document}
