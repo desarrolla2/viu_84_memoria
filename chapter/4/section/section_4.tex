@@ -125,11 +125,38 @@ A continuación una tabla calculada con el promedio de 100 peticiones para el do
 Un token en un modelo \textit{ChatGPT} es una unidad básica de texto que puede ser una palabra, parte de una palabra
 o un carácter de puntuación.
 
-Cabe mencionar que durante la fase de desarrollo de este proyecto se repitieron continuamente los mismos documentos,
-en un ciclo de prueba y error por lo que tanto para acelerar los tiempos de ejecución como para reducir los costes se
-hizo recomendable implementar un sistema de caché.
+Aunque los modelos \textit{ChatGPT} tienen limitaciones en cuanto al tamaño máximo del contexto, como se muestra en la
+tabla~\ref{tab:chat_gpt_limits}, estas limitaciones no afectan la ejecución de este procesador~\cite{url_openai_models}.
 
-El sistema de caché genera un hash para cada petición y guarda la respuesta, durante un tiempo definido.
+En el post procesador \textit{Word Limit Post Processor}, descrito en la sección \ref{sec:diseno_del_sistema} Diseño
+del sistema, se asume que la información relevante para este caso de uso se encuentra dentro de las primeras 1000
+palabras de cada documento, truncándose cualquier información que exceda este límite.
+
+Estimando un promedio de 1.3 tokens por palabra, esto se mantiene dentro de los límites permitidos por los modelos más
+recientes.
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.5}
+    \setlength{\tabcolsep}{10pt}
+    \begin{tabular}{p{0.70\textwidth} >{\raggedleft\arraybackslash}p{0.20\textwidth}}
+        \toprule
+        \textbf{Modelo} & \textbf{Tokens por contexto} \\
+        \midrule
+        GPT-4 turbo     & 128,000 tokens               \\
+        GPT-4           & 8,192 tokens                 \\
+        GPT-3.5 turbo   & 16,385 tokens                \\
+        \bottomrule
+    \end{tabular}
+    \caption{Límite de tokens por contexto para los modelos más recientes de \textit{ChatGPT}}
+    \label{tab:chat_gpt_limits}
+\end{table}
+
+Cabe mencionar que durante la fase de desarrollo de este proyecto se repitieron continuamente los mismos documentos,
+en un ciclo de prueba y error.
+Por lo que tanto para acelerar los tiempos de ejecución como para reducir los costes se hizo recomendable implementar un
+sistema de caché.
+
+El sistema de caché genera un hash para cada petición y guarda la respuesta, durante un tiempo limitado.
 Si se repite una misma petición recupera la respuesta de la caché, por lo que la respuesta es prácticamente
 instantánea y sin ningún coste adicional.
 

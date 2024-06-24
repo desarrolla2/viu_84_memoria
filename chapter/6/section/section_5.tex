@@ -42,6 +42,17 @@ Evaluar estos modelos en términos de precisión, eficiencia y costo ayudará a 
 diferentes casos de uso, asegurando que el sistema se mantenga a la vanguardia de la tecnología y sea capaz de ofrecer
 el mejor rendimiento posible.
 
+\subsection*{Coordinación en paralelo de los procesadores}
+
+En el sistema desarrollado, la coordinación entre los diferentes procesadores se realiza de forma secuencial en los
+componentes \textit{Generator} y \textit{Reader}.
+Este enfoque es adecuado siempre y cuando el número de procesadores se mantenga muy limitado.
+
+Sin embargo, si se añaden nuevos procesadores y el tiempo de ejecución se vuelve crítico, será necesario cambiar de un
+esquema de llamadas consecutivas a uno donde todas las llamadas se lancen en paralelo.
+Esto permitirá una mayor eficiencia y una reducción significativa en el tiempo total de procesamiento, mejorando así el
+rendimiento del sistema en escenarios de alta demanda.
+
 \subsection*{Utilizar otras técnicas para extraer la información}
 
 Aunque los modelos LLM ofrecen una solución óptima para documentos con formato desconocido, para otros documentos el

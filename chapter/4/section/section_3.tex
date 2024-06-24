@@ -96,19 +96,19 @@ En esta implementación, se han desarrollado los siguientes post procesador es:
 
 \begin{itemize}
     \item
-    \textbf{UTF8 PostProcessor}: Algunos documentos pueden contener caracteres no \textit{UTF8}.
+    \textbf{UTF8 Post Processor}: Algunos documentos pueden contener caracteres no \textit{UTF8}.
     Como este tipo de caracteres pueden generar problemas, este procesador los reemplazará por caracteres equivalentes
     en UTF8.
     \item
-    \textbf{Character Replace PostProcessor}: Después de eliminar los caracteres no \textit{UTF8} se detectó que algunos
-    caracteres todavía podrían resultar problemáticos, así que se implementó un nuevo procesador capaz de reemplazar
-    caracteres problemáticos, por otros equivalentes.
+    \textbf{Character Replace Post Processor}: Después de eliminar los caracteres no \textit{UTF8} se detectó que
+    algunos caracteres todavía podrían resultar problemáticos, así que se implementó un nuevo procesador capaz de
+    reemplazar caracteres problemáticos, por otros equivalentes.
     En este caso se intercambió el carácter salto de página \textit{\textbackslash f}, por el carácter
     salto de línea \textit{\textbackslash n}.
     \item
-    \textbf{Word Limit PostProcessor}: Más adelante en la implementación del componente \textit{Reader}, y debido al uso
-    de las tecnologías implementadas en el mismo, se vio que documentos con textos demasiado largos podrían generar
-    errores.
+    \textbf{Word Limit Post Processor}: Más adelante en la implementación del componente \textit{Reader}, y debido
+    al uso de las tecnologías implementadas en el mismo, se vio que documentos con textos demasiado largos podrían
+    generar errores.
     Es por esto que se decide implementar este procesador que trunca el texto después de las primeras N palabras.
 \end{itemize}
 
