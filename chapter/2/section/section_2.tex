@@ -3,12 +3,13 @@
 En el ámbito del desarrollo de software, la arquitectura de un sistema es crucial para determinar su escalabilidad y
 mantenibilidad a largo plazo.
 Una de las metodologías que ha cobrado relevancia en este contexto son las ``arquitecturas limpias'', un enfoque para el
-diseño de software promovido por Robert C. Martin en su libro Clean Architecture: A Craftsman`s Guide to Software
-Structure and Design~\cite{book_martin_2017}.
+diseño de software promovido por Robert C. Martin en el libro
+\textit{Clean Architecture: A Craftsman`s Guide to Software Structure and Design}~\cite{book_martin_2017}.
 
-La arquitectura limpia es un estilo de diseño que organiza el sistema de manera que sea independiente de los diferentes
-elementos externos a los que considera detalles de implementación y que son intercambiables unos por otros como por
-ejemplo: \textit{frameworks}, \textit{interfaces}, bases de datos o \textit{API} entre otros.
+La arquitectura limpia es un estilo de diseño que organiza el sistema de manera que sea independiente de los elementos
+externos a los que considera ``detalles de implementación'' y que son intercambiables unos por otros.
+Ejemplos de detalles de implementación son los \textit{frameworks}, las \textit{interfaces}, las bases de datos o las
+\textit{API} entre otros.
 
 La esencia de esta arquitectura radica en su diagrama de capas, donde cada capa tiene una responsabilidad claramente
 definida y depende solo de las capas más internas.
@@ -28,13 +29,12 @@ proyecto hemos decidido implementar la versión en tres capas que aparece en la 
 \end{figure}
 
 La capa más interior se denomina \textbf{capa de dominio} y es el corazón del proyecto, encapsula la lógica y las
-reglas.
+reglas de negocio.
 Esta capa es fundamentalmente agnóstica respecto a tecnologías externas y se centra exclusivamente en definir los
 conceptos fundamentales.
-Algunos de los elementos que contiene son: entidades, objetos de valor, servicios de dominio, abstracciones
+Algunos de los elementos que contiene son: entidades, objetos de valor, servicios de dominio, y abstracciones.
 
-Esta capa debe ser autocontenida y fácilmente testable, aislada de tecnologías externas como bases de datos o
-interfaces de usuario.
+Esta capa debe ser autocontenida, fácilmente testable y aislada de tecnologías externas.
 
 La capa que aparece a continuación es la \textbf{capa de aplicación}.
 La capa de aplicación actúa como un mediador entre la capa exterior y la capa de dominio, coordinando las operaciones

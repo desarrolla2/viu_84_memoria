@@ -1,6 +1,6 @@
-\section{Modelos de lenguaje de gran escala}
+\section{Modelos de lenguaje de gran escala}\label{sec:modelos_lenguaje_gran_escala}
 
-La historia de los Modelos de lenguaje de gran escala o \textit{Large Language Models} (LLMs) comienza con los
+La historia de los modelos de lenguaje de gran escala o \textit{large language models} (LLMs) comienza con los
 primeros modelos estadísticos de lenguaje en la década de 1980, que utilizaban métodos simples como los modelos de
 Markov y n-gramas para predecir la probabilidad de secuencias de palabras~\cite{article_jelinek_1997}.
 
@@ -15,25 +15,25 @@ y, más tarde, las redes neuronales de memoria a largo plazo o \textit{long-term
 los investigadores pudieron abordar el problema del ``desvanecimiento del gradiente'' y mejorar significativamente la
 capacidad de los modelos para aprender dependencias a largo plazo en el texto~\cite{article_hochreiter_1997}.
 
-El verdadero cambio paradigmático llegó en 2017 con el desarrollo de la arquitectura \textit{Transformer}
-~\cite{article_vaswani_2017}.
+El verdadero cambio paradigmático llegó en 2017 con el desarrollo de la arquitectura
+\textit{Transformer}~\cite{article_vaswani_2017}.
 Esta arquitectura introdujo el mecanismo de atención, que permite a los modelos ponderar diferentes partes de la entrada
 de texto de manera dinámica, mejorando la capacidad de los modelos para manejar secuencias de texto largas y complejas.
 
 En este proyecto se utilizaron modelos de lenguaje de gran escala como \textit{GPT}, para la extracción de información
-de documentos, tal y cómo veremos en la sección~\ref{sec:implemetacion_y_programacion} Implementación y programación.
+de documentos, tal y como veremos en la sección~\ref{sec:implemetacion_y_programacion} Implementación y programación.
 
 \subsection*{Principales modelos}
 
 \subsubsection*{GPT}
-GPT o \textit{Generative Pre-trained Transformer} es un avanzado modelo de lenguaje desarrollado por OpenAI
+GPT o \textit{Generative Pre-trained Transformer} es un avanzado modelo de lenguaje desarrollado por \textit{OpenAI}
 ~\cite{article_brown_2020}.
 Es uno de los modelos más reconocidos en la actualidad.
 Aunque es un modelo privado, \textit{OpenAI} ofrece acceso a través de una \textit{API} de pago que incluye una capa
 gratuita limitada.
-\textit{GPT} ofrece varios modelos, cada uno con un esquema de precios que varía según su complejidad.
-Una de las principales ventajas de este servicio es que proporciona una solución integral \textit{plug-and-play}, es
-decir, no requiere instalación ni configuración adicional por parte del usuario.
+\textit{OpenAI} ofrece varios modelos, cada uno con un esquema de precios que varía según su complejidad.
+Una de las principales ventajas de este servicio es que proporciona una solución \textit{plug-and-play}, es decir, no
+requiere instalación ni configuración adicional por parte del usuario.
 
 \subsubsection*{BERT}
 \textit{BERT}, desarrollado por \textit{Google}~\cite{article_devlin_2019}, es un modelo de lenguaje basado en la
@@ -45,11 +45,12 @@ que le permite entender el contexto de una palabra basada en todas sus aparicion
 \textit{Hugging Face's Transformers} es una biblioteca de NLP~\cite{article_wolf_2020} que simplifica el uso de modelos
 de aprendizaje profundo basados en la arquitectura \textit{Transformer}.
 
-Esta biblioteca ofrece una amplia variedad de modelos pre entrenados y libres desarrollados por la comunidad para fines
-específicos, además de la posibilidad de entrenar modelos personalizados.
+Esta biblioteca ofrece una amplia variedad de modelos pre entrenados y libres desarrollados por la comunidad para
+diversos fines.
+Además de la posibilidad de entrenar modelos personalizados.
 
 En contraposición, los modelos disponibles en \textit{Hugging Face}
-suelen ser menos potentes que los modelos más disponibles a través de plataformas como \textit{GPT} de
+suelen ser menos potentes que los modelos disponibles a través en plataformas como
 \textit{OpenAI}~\cite{url_chatgpt_vs_huggingchat}.
 
 \subsubsection*{Otros}
@@ -57,3 +58,8 @@ suelen ser menos potentes que los modelos más disponibles a través de platafor
 Además de los descritos existen muchas otras plataformas o proyectos como por ejemplo
 \textit{Eleuther AI}~\cite{url_eleutherai}, \textit{Fairseq}~\cite{url_fairseq} o \textit{GPT 2}~\cite{url_openai_gpt2}
 que ofrecen alternativas LLM para desarrolladores interesados en incorporar este tipo de capacidades a sus aplicaciones.
+
+En este proyecto se utilizarán las tecnologías introducidas en la sección~\ref{sec:procesamiento_lenguaje_natural}
+Procesamiento de lenguaje natural y sobre todo en esta sección~\ref{sec:modelos_lenguaje_gran_escala}
+Modelos de lenguaje de gran escala para entender y extraer la información relevante de los documentos que describimos
+en la sección~\ref{sec:objetives} Objetivos.
