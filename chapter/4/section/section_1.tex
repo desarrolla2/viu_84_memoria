@@ -1,28 +1,26 @@
 \section{Planificación}\label{sec:desarrollo_de_software}
 
 Este proyecto parte de una base realizada en la asignatura 47 GIIN Proyecto de ingeniería del
-software~\cite{url_viu_47_proyecto} de este mismo grado universitario.
+software de este mismo grado universitario~\cite{url_viu_47_proyecto}.
 
 \subsection*{Objetivos}
 
-A partir del trabajo realizado en esa asignatura se plantean los siguientes objetivos, que ya fueron recogidos en el
-anteproyecto.
+A partir del trabajo realizado en esa asignatura se plantean los siguientes objetivos:
 
 \begin{enumerate}
     \item \textbf{Definir un nuevo conjunto de datos de prueba},
-    ya que en el trabajo previo existía un conjunto de datos de prueba.
-    Sin embargo, para este TFG se quería definir un nuevo conjunto, utilizando si fuera posible algún conjunto de
-    datos de fuentes abiertas.
+    En el trabajo previo existía un conjunto de datos de prueba.
+    Sin embargo, para este TFG se quería definir un nuevo conjunto, utilizando si fuera posible algún conjunto existente
+    de datos de fuentes abiertas.
     \item \textbf{Evaluar la precisión del sistema},
     se quería evaluar cómo de preciso es el sistema a la hora de la extracción de información de los documentos.
     \item \textbf{Experimentar y seleccionar uno o más sistemas LLM}
     en el trabajo previo se había probado con los modelos \textit{ollama}~\cite{url_ollama} y
     \textit{gpt-3.5-turbo}~\cite{url_openai_gpt3_5}.
-    Para este proyecto se quería probar con nuevos modelos.
-    Finalmente, este trabajo implicó reescribir completamente los procesadores del componente \textit{Reader}.
+    Para este TFG se quería probar con nuevos modelos.
     \item \textbf{Mejora de las interfaces}
     se querían realizar mejoras en la capa de presentación de ambas interfaces, en el sentido de hacerlas más
-    visuales, concretamente en cuanto a la representación de los datos.
+    visuales, concretamente en lo relacionado con la representación de los datos.
     \item \textbf{Documentación formal},
     será necesaria la elaboración de la documentación requerida para completar satisfactoriamente este TFG.
 \end{enumerate}
@@ -53,7 +51,7 @@ Es por este motivo que se descartó utilizar uno de estos conjuntos de datos.
 
 \subsubsection*{Iteración 2: del 8 de abril al 21 de abril}
 
-En este sprint se determinó que el conjunto de datos de prueba debería realizarse manualmente.
+Al final de la iteración anterior se determinó que el conjunto de datos de prueba debería realizarse manualmente.
 Para ello se desarrolló un sistema que permitiría, escribir los contratos en formato \textit{Markdown} el cual es fácil
 de manipular y luego sería convertido a \textit{PDF} utilizando \textit{LaTeX} y diferentes plantillas para introducir
 variabilidad en los formatos de entrada.
@@ -73,7 +71,8 @@ se determinó que se realizaría una nueva implementación del proyecto, utiliza
 \subsubsection*{Iteración 4: del 6 de mayo al 19 de mayo}
 
 Este \textit{sprint} estuvo enfocado en realizar una reimplementación de los procesadores
-\textit{Residential Lease Agreement Processor} y \textit{Vehicle Sale And Purchase Agreement Processor} que introdujimos en la
+\textit{Residential Lease Agreement Processor} y \textit{Vehicle Sale And Purchase Agreement Processor}
+que introdujimos en la
 sección~\ref{sec:diseno_del_sistema}.
 
 \subsubsection*{Iteración 5: del 20 de mayo al 2 de junio}
