@@ -1,7 +1,7 @@
 \section{Objetivos}\label{sec:objetives}
 
-El propósito central de este trabajo es la creación de un sistema que permita la extracción automática de documentos
-de cualquier tipo y cualquier formato.
+Como hemos visto en las secciones anteriores el propósito general de este TFG es la creación de un sistema que permita
+la extracción automática de documentos de cualquier tipo y cualquier formato.
 
 \begin{figure}[ht]
     \begin{center}
@@ -12,16 +12,16 @@ de cualquier tipo y cualquier formato.
 \end{figure}
 
 Provisionalmente, hemos denominado al sistema \textit{DataMiner}.
-Por lo tanto, nos referiremos a él como sistema de Extracción de información de documentos, el sistema o
-\textit{DataMiner} indistintamente a lo largo de este trabajo.
+Por lo tanto, de aquí en adelante nos referiremos a él indistintamente como: ``sistema de extracción de información de
+documentos'', ``el sistema'' o ``\textit{DataMiner}''.
 
 Tal y como se puede ver en la figura~\ref{fig:chapter_1.overview} el funcionamiento es el siguiente:
 
 \begin{enumerate}
-    \item El sistema recibe un documento de cualquier tipo en cualquier formato.
     \item
-    Si el sistema puede procesar el documento, tanto por el formato, como por el tipo de documento, genera un objeto que
-    contiene la información relevante del documento recibido.
+    El sistema recibe un documento de cualquier tipo en cualquier formato.
+    \item
+    El sistema genera un objeto que contiene la información relevante del documento recibido.
 \end{enumerate}
 
 \subsection*{Objetivos específicos}
@@ -31,8 +31,8 @@ objetivos específicos que aparecen en la figura~\ref{fig:chapter_1.specific_a}.
 
 \begin{enumerate}
     \item
-    \textbf{Requisito 1} desarrollar un sistema capaz de convertir documentos \textit{PDF}~\cite{url_adobe_pdf}
-    en documentos de texto plano que puedan ser procesados\label{req:transform_pdf_to_text}.
+    \textbf{Requisito 1} desarrollar un sistema capaz de recibir documentos
+    \textit{PDF}~\cite{url_adobe_pdf}~\label{req:transform_pdf_to_text}.
     \item
     Implementar dos casos de uso dentro del sistema:
     \begin{enumerate}
@@ -58,8 +58,8 @@ completar este trabajo.
 
 \begin{enumerate}
     \item Desarrollar un conjunto de pruebas, que permita realizar las pruebas oportunas durante el desarrollo del
-    proyecto, y que en su conclusión nos permite evaluar cuán preciso es el sistema.
-    \item Desarrollar interfaces que permitan comunicarse con el sistema:
+    proyecto, y que en su conclusión nos permita evaluar cuán preciso es el sistema.
+    \item Desarrollar interfaces que permitan a un usuario comunicarse con el sistema:
     \begin{enumerate}
         \item  Una interfaz web
         \item  Una interfaz de línea de comandos
@@ -74,14 +74,14 @@ completar este trabajo.
     \end{center}
 \end{figure}
 
-Además, el sistema estará diseñado para introducir nuevas características de una forma sencilla.
+El sistema estará diseñado de tal forma que se puedan introducir nuevas características de una forma sencilla.
 Por ejemplo estas son algunas características que pueden ser añadidas fácilmente.
 
 \begin{enumerate}
     \item
-    Procesar nuevos tipos de documentos, como por ejemplo formatos de office como microsoft word o microsoft excel,
-    o formatos de video o audio, etc.
+    Procesar nuevos tipos de documentos, como por ejemplo formatos de office como microsoft
+    word~\cite{url_microsoft_word} o microsoft excel~\cite{url_microsoft_excel} o formatos de video o audio, etc.
     \item
     Procesar nuevos tipos de documentos, como documentos de identidad, acuerdos de confidencialidad, documentos
-    de impuestos, etc.
+    estatales de impuestos, etc.
 \end{enumerate}
