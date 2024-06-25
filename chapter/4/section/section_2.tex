@@ -10,18 +10,24 @@ organización.
 Habitualmente se ocupan de la lógica de negocio y la persistencia de datos.
 
 \begin{itemize}
-    \item \textbf{PHP} es un lenguaje de scripting de propósito general que está especialmente diseñado para el
-    desarrollo web ~\cite{url_php}.
-    \item \textbf{Symfony} es un \textit{framework} PHP ampliamente utilizado para desarrollar aplicaciones web.
+    \item
+    \textbf{PHP} es un lenguaje de scripting de propósito general que está especialmente diseñado para el desarrollo
+    web ~\cite{url_php}.
+
+    \item
+    \textbf{Symfony} es un \textit{framework} \textit{PHP} ampliamente utilizado para desarrollar aplicaciones web.
     Ofrece una arquitectura robusta y flexible, que facilita el desarrollo de aplicaciones mantenibles y escalables
     ~\cite{url_symfony}.
-    \item \textbf{Twig} es un motor de plantillas para PHP, utilizado principalmente en proyectos basados en
-    Symfony ~\cite{url_twig}.
+
+    \item
+    \textbf{Twig} es un motor de plantillas para \textit{PHP}, utilizado principalmente en proyectos basados en
+    \textit{Symfony}~\cite{url_twig}.
     Un sistema de plantillas permite separar la capa de presentación de la capa de negocio.
 \end{itemize}
 
-En este proyecto hemos utilizado \textit{PHP} como lenguaje principal para desarrollar nuestro sistema.
-Symfony se utiliza en la parte de infraestructura, incluida la interfaz web, para la que también hemos usado Twig.
+En este proyecto hemos utilizado \textit{PHP} como lenguaje principal para desarrollar nuestro sistema, mientras que
+\textit{Symfony} se utiliza en la parte de infraestructura, incluida la interfaz web, para la que también hemos usado
+\textit{Twig}.
 
 \subsection*{Cliente}
 
@@ -30,25 +36,35 @@ aplicación web.
 El \textit{frontend} se encarga de la presentación y la experiencia del usuario.
 
 \begin{itemize}
-    \item \textbf{HTML} es el lenguaje de marcado para crear páginas web.
-    HTML introduce nuevas funcionalidades como elementos semánticos y multimedia, mejorando la accesibilidad y la
-    interoperabilidad de las páginas web~\cite{url_html5}.
-    \item \textbf{CSS} es la tecnología de estilos para el diseño visual de páginas web.
-    CSS permite aplicar estilos complejos y responsivos a los elementos HTML, mejorando la presentación y la
-    experiencia del usuario~\cite{url_css3}.
-    \item \textbf{JavaScript} es el lenguaje de programación para la interactividad del lado del cliente.
-    JavaScript permite crear experiencias de usuario dinámicas, manejando eventos y actualizando el contenido de la
-    página sin recargar~\cite{url_javascript}.
-    \item \textbf{Bootstrap} es un framework de \textit{frontend} que facilita el diseño de sitios y aplicaciones web
+    \item
+    \textbf{HTML5} es el lenguaje de marcado para crear páginas web.
+    \textit{HTML5} introduce nuevas funcionalidades como elementos semánticos y multimedia, mejorando la
+    accesibilidad y la interoperabilidad de las páginas web~\cite{url_html5}.
+
+    \item
+    \textbf{CSS3} es la tecnología de estilos para el diseño visual de páginas web.
+    \textit{CSS3} permite aplicar estilos complejos y responsivos a los elementos \textbf{HTML}, mejorando la
+    presentación y la experiencia del usuario~\cite{url_css3}.
+
+    \item
+    \textbf{JavaScript} es el lenguaje de programación para la interactividad del lado del cliente.
+    \textit{JavaScript} permite crear experiencias de usuario dinámicas, manejando eventos y actualizando el
+    contenido de la página sin recargar~\cite{url_javascript}.
+
+    \item
+    \textbf{Bootstrap} es un framework de \textit{frontend} que facilita el diseño de sitios y aplicaciones web
     responsivas y móviles.
-    Bootstrap proporciona una colección de componentes CSS y JavaScript predefinidos que aceleran el desarrollo de
-    interfaces de usuario ~\cite{url_bootstrap}.
-    \item \textbf{Font Awesome} es una biblioteca de iconos vectoriales y herramientas que proporciona una amplia
-    gama de iconos escalables y personalizables para su uso en proyectos web.
-    Facilita la inclusión de iconos de alta calidad sin depender de imágenes ~\cite{url_fontawesome}.
+    \textit{Bootstrap} proporciona una colección de componentes \textit{CSS} y \textit{JavaScript}
+    predefinidos que aceleran el desarrollo de interfaces de usuario ~\cite{url_bootstrap}.
+
+    \item \textbf{Font Awesome}
+    es una biblioteca de iconos vectoriales que proporciona una amplia gama de iconos escalables y personalizables para
+    su uso en proyectos web.
+    Facilita la inclusión de iconos de alta calidad sin tener que depender de imágenes ~\cite{url_fontawesome}.
 \end{itemize}
 
-Hemos utilizado \textit{HTML}, \textit{CSS} y \textit{JavaScript} para el desarrollo de la interfaz web.
+En este proyecto hemos utilizado \textit{HTML5}, \textit{CSS3} y \textit{JavaScript} para el desarrollo de la interfaz
+web.
 Además, hemos usado \textit{Bootstrap} para realizar un prototipado rápido y finalmente hemos utilizado
 \textit{Font Awesome} para la representación de iconos y logos.
 
@@ -58,13 +74,13 @@ La gestión de dependencias es un aspecto crucial en el desarrollo de software.
 Se encarga de administrar las bibliotecas y paquetes que un proyecto necesita para funcionar correctamente.
 
 \begin{itemize}
-    \item \textbf{Composer}
-    es una herramienta de gestión de dependencias para PHP, que permite declarar en un fichero las bibliotecas de las
-    que depende el proyecto y asegura que las versiones correctas de las bibliotecas se instalen y mantengan
-    actualizadas ~\cite{url_composer}.
+    \item
+    \textbf{Composer} es una herramienta de gestión de dependencias para \textit{PHP}, que permite declarar en un
+    fichero las bibliotecas de las que depende el proyecto y asegura que las versiones correctas de las bibliotecas se
+    instalen y mantengan actualizadas ~\cite{url_composer}.
 \end{itemize}
 
-Hemos utilizado  \textit{Composer} para instalar todas las librerías  \textit{PHP} necesarias, principalmente
+Hemos utilizado  \textit{Composer} para instalar las librerías  \textit{PHP} necesarias, principalmente
 \textit{Symfony} y algunos de sus componentes.
 
 \subsection*{Control de versiones}
@@ -73,85 +89,93 @@ El control de versiones es una práctica en el desarrollo de software que permit
 realizados en el código fuente a lo largo del tiempo.
 
 \begin{itemize}
-    \item \textbf{Git}
-    es un sistema de control de versiones distribuido, diseñado para manejar desde proyectos pequeños hasta muy grandes
-    con rapidez y eficiencia.
-    Git permite a los desarrolladores colaborar de manera efectiva, rastreando cambios y gestionando ramas y fusiones
-    ~\cite{url_git}.
-    \item \textbf{GitHub} es una plataforma de hospedaje de repositorios Git.
+    \item
+    \textbf{Git} es un sistema de control de versiones distribuido, diseñado para manejar desde proyectos pequeños
+    hasta muy grandes con rapidez y eficiencia.
+    \textit{Git} permite a los desarrolladores colaborar de manera efectiva, rastreando cambios y gestionando ramas y
+    fusiones~\cite{url_git}.
+
+    \item
+    \textbf{GitHub} es una plataforma de hospedaje de repositorios \textit{Git}.
     Proporciona herramientas para la colaboración, la revisión de código y facilitando el trabajo en equipo
     ~\cite{url_github}.
 \end{itemize}
 
-Hemos utilizado \textit{Git} yh \textit{GitHub} para gestionar las versiones del código~\cite{url_viu_84_proyecto}.
-Se ha seguido el patrón de crear una nueva rama para cada nueva característica y fusionarla a la rama principal, cuando
-esta está completada.
-También hemos enlazado con el sistema de gestión de proyectos a través de los mensajes de cada commit.
+Hemos utilizado \textit{Git} y \textit{GitHub} para gestionar el código fuente de este
+proyecto~\cite{url_viu_84_proyecto}.
+
+Se ha seguido el patrón de crear una nueva rama para cada nueva característica y fusionarla con la rama principal una
+vez completada.
+Además, hemos vinculado el código con el sistema de gestión de proyectos mediante los mensajes de cada commit.
+
 
 \subsection*{Automatización}
 
 La automatización en el desarrollo de software se refiere al uso de herramientas y scripts para ejecutar tareas
-repetitivas de manera automática, sin intervención manual
+repetitivas de manera automática.
 
 \begin{itemize}
-    \item \textbf{Make}
-    es una herramienta de automatización de tareas que utiliza archivos Makefile para definir y ejecutar tareas de
-    construcción y gestión de proyectos.
-    Facilita la automatización de tareas repetitivas y la configuración del entorno de desarrollo
-    ~\cite{url_make}.
+    \item
+    \textbf{Make} es una herramienta de automatización de tareas muy popular que utiliza archivos \textit{Makefile} para
+    definir y ejecutar tareas de construcción y gestión de proyectos.
+    Facilita la automatización de tareas repetitivas y la configuración del entorno de desarrollo~\cite{url_make}.
 \end{itemize}
 
-Hemos usado \textit{Make} para automatizar las tareas más comunes como son la construcción o el inicio de los
+Hemos usado \textit{Make} para automatizar las tareas más comunes como son la construcción o la activación de los
 contenedores de docker, pero también para tener acceso directo a tareas que resultan repetitivas.
 
 \subsection*{Pruebas}
 
 Las pruebas en el desarrollo de software son un proceso fundamental para garantizar la calidad y funcionalidad de una
 aplicación.
-Consisten en la ejecución de diversos tipos de evaluaciones, como pruebas unitarias, de integración y de sistema, para
-identificar y corregir errores.
+Consisten en la ejecución de diversos tipos de evaluaciones, como pruebas unitarias, de integración y de sistema.
 
 \begin{itemize}
-    \item \textbf{PHPUnit} es un marco de pruebas unitarias para PHP. Permite a los desarrolladores escribir y
-    ejecutar pruebas automatizadas para asegurar que el código se comporta como se espera, facilitando el desarrollo de
-    software de alta calidad~\cite{url_phpunit}.
-    \item \textbf{GitHub Actions} es una plataforma de integración continua que permite automatizar flujos de
-    trabajo directamente desde \textit{GitHub}.
-    \textbf{GitHub Actions} facilita la configuración de pipelines de CI/CD, ejecutando pruebas y despliegues
-    automáticamente con cada cambio en el repositorio ~\cite{url_github_actions}.
+    \item
+    \textbf{PHPUnit} es un marco de pruebas unitarias para \textit{PHP}.
+    Permite a los desarrolladores escribir y ejecutar pruebas automatizadas para asegurar que el código se comporta como
+    se espera, facilitando el desarrollo de software de alta calidad~\cite{url_phpunit}.
+
+    \item
+    \textbf{GitHub Actions}
+    es una plataforma de integración continua que permite automatizar flujos de trabajo directamente desde
+    \textit{GitHub}.
+    \textit{GitHub Actions} facilita la configuración de flujos de trabajo de integración continua, ejecutando
+    pruebas y otras tareas automáticamente con cada cambio en el repositorio~\cite{url_github_actions}.
 \end{itemize}
 
 En la sección~\ref{sec:pruebas_y_evaluacion} Pruebas y evaluación, veremos que las pruebas son una parte fundamental
 de este TFG.
 
-Hemos utilizado \textit{PHPUnit} para la definición y ejecución de una batería de pruebas o \textit{test suite} que
-contiene pruebas unitarias, pruebas de integración y pruebas funcionales.
+Hemos utilizado \textit{PHPUnit} para la definición y ejecución de una batería de pruebas o \textit{test suite}.
 
-Hemos utilizado \textit{GitHub Actions} para que esta \textit{suite} se ejecutará automáticamente después de cada
+Hemos utilizado \textit{GitHub Actions} para que esta batería de pruebas se ejecutará automáticamente después de cada
 commit, en un proceso de integración continua.
 
 \subsection*{Contenerización}
 
-La contenerización es una técnica de virtualización del sistema operativo que permite empaquetar aplicaciones y
-sus dependencias en contenedores.
+La contenerización es una técnica de virtualización de sistemas operativos que permite empaquetar aplicaciones y
+sus dependencias en un contenedor.
 Estos contenedores aseguran que las aplicaciones se ejecuten de manera consistente en cualquier entorno,
-independientemente de las configuraciones del sistema subyacente.
+independientemente de la configuración del sistema subyacente.
 
 \begin{itemize}
-    \item \textbf{Docker} es una plataforma que permite desarrollar, enviar y ejecutar aplicaciones dentro de
-    contenedores.
-    Proporciona un entorno consistente para el desarrollo, pruebas y despliegue, asegurando que las aplicaciones
-    funcionen de manera idéntica en diferentes entornos ~\cite{url_docker}.
-    \item \textbf{Docker Compose} es una herramienta para definir y ejecutar aplicaciones Docker multi-contenedor.
-    Permite orquestar varios servicios que componen una aplicación, facilitando la configuración y gestión de entornos
-    de desarrollo complejos ~\cite{url_docker_compose}.
+    \item
+    \textbf{Docker} es una plataforma que permite desarrollar, enviar y ejecutar aplicaciones dentro de contenedores.
+    Proporciona un entorno consistente para el desarrollo, prueba y puesta en producción, asegurando que las
+    aplicaciones funcionen de manera idéntica en diferentes entornos~\cite{url_docker}.
+
+    \item
+    \textbf{Docker Compose} es una herramienta para definir y ejecutar aplicaciones \textit{Docker} multi-contenedor.
+    Permite orquestar varios contenedores docker que componen una aplicación, facilitando la configuración y gestión de
+    entornos de desarrollo más complejos ~\cite{url_docker_compose}.
 \end{itemize}
 
-Hemos utilizado \textit{Docker} para definir dos conjuntos de contenedores, uno básico y otro ampliado.
+Hemos utilizado \textit{Docker} para definir dos conjuntos de contenedores, uno básico y otro extendido.
 
 El conjunto básico contiene un único contenedor en el que se ejecuta la aplicación.
-El conjunto ampliado contiene servicios que son complementarios, en este caso el conjunto \textit{ELK} descrito en la
-siguiente subsección.
+El conjunto extendido contiene servicios que son complementarios, en este caso el conjunto \textit{ELK} descrito en la
+subsección \ref{subsec:chapter_4.logs} Registros.
 
 \subsection*{Registros}\label{subsec:chapter_4.logs}
 
@@ -161,34 +185,40 @@ Capturan información vital sobre el funcionamiento de aplicaciones, servidores 
 historial que pueda ser analizado.
 
 \begin{itemize}
-    \item \textbf{Monolog} es una biblioteca de \textit{logs} para PHP. Permite enviar registros a varios destinos, como
-    archivos, bases de datos y servicios de terceros, facilitando la monitorización y depuración de aplicaciones
-    ~\cite{url_monolog}.
-    \item \textbf{Elasticsearch} es un motor de búsqueda y análisis de texto completo basado en Lucene.
-    Permite almacenar, buscar y analizar grandes volúmenes de datos en tiempo real
-    ~\cite{url_elasticsearch}.
-    \item \textbf{Logstash} es una herramienta de procesamiento de datos que ingesta, transforma y envía datos a varios
-    destinos ~\cite{url_logstash}.
-    \item \textbf{Kibana} es una herramienta de visualización de datos que trabaja en conjunto con Elasticsearch.
-    Permite a los usuarios crear gráficos y dashboards interactivos para visualizar y analizar los datos de logs
-    almacenados en Elasticsearch ~\cite{url_kibana}.
+    \item
+    \textbf{Monolog} es una biblioteca de \textit{logs} para \textit{PHP}.
+    Permite enviar registros a varios destinos, como archivos, bases de datos y servicios de terceros, facilitando la
+    monitorización y depuración de aplicaciones~\cite{url_monolog}.
+
+    \item \textbf{Elasticsearch} es un motor de búsqueda y análisis de texto completo o \textit{full text search}.
+    Permite almacenar y analizar grandes volúmenes de datos en tiempo real~\cite{url_elasticsearch}.
+
+    \item \textbf{Logstash} es una herramienta de procesamiento de datos que procesa, transforma y envía datos a un
+    sistema de destino~\cite{url_logstash}.
+
+    \item \textbf{Kibana} es una herramienta de visualización de datos que trabaja en conjunto con
+    \textit{Elasticsearch}.
+    Permite a los usuarios crear gráficos y dashboards interactivos para visualizar y analizar los datos de
+    \textit{logs} almacenados en \textit{Elasticsearch}~\cite{url_kibana}.
 \end{itemize}
 
 Hemos utilizado \textit{Monolog} para configurar los \textit{logs} generados en la aplicación.
 El resto de elementos, \textit{Elasticsearch}, \textit{Logstash} y \textit{Kibana}, conocidos como \textit{ELK},
 permiten interpretar en tiempo real los registros de la aplicación.
 
-En la sección~\ref{sec:implemetacion_y_programacion} Implementación y programación, ampliamos los detalles.
+En la sección~\ref{sec:implemetacion_y_programacion} Implementación y programación, ampliamos los detalles de cómo
+hemos configurado este sistema.
 
 \subsection*{Componente \textit{Generator}}
 
-El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:chapter_4.generator_component} Componente
-\textit{Generator} de la sección anterior.
+El componente \textit{Generator} está descrito en la subsección~\ref{subsec:chapter_4.generator_component} Componente
+\textit{Generator}.
 
 \begin{itemize}
-    \item \textbf{Pdf to Text} es una herramienta que convierte documentos \textit{PDF} en texto plano.
+    \item
+    \textbf{Pdf to Text} es una herramienta que convierte documentos \textit{PDF} en texto plano.
     Permite extraer el contenido textual de archivos \textit{PDF}, lo cual es útil para la posterior manipulación y
-    análisis de datos ~\cite{url_pdftotextl}.
+    análisis~\cite{url_pdftotextl}.
 \end{itemize}
 
 Utilizamos esta tecnología dentro del procesador \textit{PDF To Text Processor} para la conversión de documentos
@@ -196,29 +226,31 @@ Utilizamos esta tecnología dentro del procesador \textit{PDF To Text Processor}
 
 \subsection*{Componente Reader}
 
-El componente \textit{Generator} fue descrito en la subsección~\ref{subsec:chapter_4.reader_component} Componente
-\textit{Reader} de la sección anterior.
+El componente \textit{Generator} está descrito en la subsección~\ref{subsec:chapter_4.reader_component} Componente
+\textit{Reader}.
 
 \begin{itemize}
     \item \textbf{ChatGPT API} proporciona acceso a modelos avanzados de procesamiento de lenguaje natural.
-    Permite integrar capacidades de IA en la aplicación, como la generación de texto y el análisis de datos, mejorando
-    las funcionalidades y experiencias del usuario ~\cite{url_openai_api_documentation}.
-    \item \textbf{Symfony HttpClient} es un cliente HTTP flexible y eficiente para PHP. Permite realizar solicitudes
-    HTTP a servicios externos, manejar respuestas y gestionar errores de manera sencilla y eficaz
-    ~\cite{url_symfony_http}.
-    \item \textbf{Symfony Cache} es un componente de Symfony que proporciona una implementación robusta y flexible
-    para el almacenamiento en caché ~\cite{url_symfony_cache}.
-    Permite mejorar el rendimiento de la aplicación mediante el almacenamiento temporal de datos, reduciendo la carga en
-    los recursos externos.
+    Permite integrar capacidades de \textit{IA} en una aplicación, como la generación de texto y el análisis de datos,
+    mejorando las funcionalidades y experiencias del usuario~\cite{url_openai_api_documentation}.
+
+    \item
+    \textbf{Symfony HttpClient} es un cliente \textit{HTTP} flexible y eficiente para \textit{PHP}.
+    Permite realizar solicitudes \textit{HTTP} a servicios externos, manejar respuestas y gestionar errores de
+    manera sencilla y eficaz~\cite{url_symfony_http}.
+
+    \item
+    \textbf{Symfony Cache} es un componente de \textit{Symfony} que proporciona una implementación robusta y flexible
+    para el almacenamiento en caché~\cite{url_symfony_cache}.
+    La chacé permite mejorar el rendimiento de la aplicación mediante el almacenamiento temporal de datos,
+    reduciendo la carga en los recursos externos.
 \end{itemize}
 
 Hemos utilizado la \textit{API} de \textit{ChatGPT}, para extraer la información de los documentos en los procesadores
 \textit{Residential Lease Agreement Processor} y \textit{Vehicle Sale And Purchase Agreement Processor}.
 
 Las llamadas \textit{HTTP} se realizaron mediante la librería \textit{Symfony HttpClient} y finalmente
-\textit{Symfony Cache} cachea las respuestas.
+\textit{Symfony Cache} almacena las respuestas.
+
 Veremos más en profundidad este proceso en la sección~\ref{sec:implemetacion_y_programacion} Implementación y
 programación.
-
-
-
