@@ -8,19 +8,19 @@ Para evaluar la calidad del código, tendremos en cuenta los siguientes apartado
 \subsection*{Estándares de codificación}
 
 En cuanto a los estándares de codificación, se han seguido los estándares definidos por el marco de trabajo de
-\textbf{Symfony}~\cite{url_symfony_code_standards}.
+\textit{Symfony}~\cite{url_symfony_code_standards}.
 Estos estándares aseguran que el código sea consistente a lo largo del tiempo.
 
-Para verificar el cumplimiento de los estándares mencionados, se ha utilizado la herramienta \textbf{PHP Code Sniffer}.
+Para verificar el cumplimiento de los estándares mencionados, se ha utilizado la herramienta \textit{PHP Code Sniffer}.
 Esta herramienta analiza el código fuente y verifica que no exista ningún incumplimiento de los estándares definidos.
 
 \subsection*{Cobertura de Pruebas}
 
-Para la ejecución de la batería de pruebas automáticas, hemos utilizado \textbf{PHPUnit}.
+Para la ejecución de la batería de pruebas automáticas, hemos utilizado \textit{PHPUnit}.
 En total se han programado 36 pruebas, que realizan a su vez 109 comprobaciones diferentes.
-La batería de pruebas se ejecuta en apenas 200 milisegundos en una instalación local.
+La batería de pruebas se ejecuta en el orden de 200 milisegundos en una instalación local.
 
-\textbf{PHPUnit} permite generar un reporte detallado de la cobertura de código, indicando qué partes del código han
+\textit{PHPUnit} permite generar un reporte detallado de la cobertura de código, indicando qué partes del código han
 sido probadas y cuáles no.
 
 En la tabla~\ref{tab:phpunit_report}, se muestra la cobertura de código obtenida para diferentes capas del sistema.
@@ -43,38 +43,37 @@ En la tabla~\ref{tab:phpunit_report}, se muestra la cobertura de código obtenid
 Como puede verse, la capa de dominio tiene una cobertura del 72.41\% lo que se considera bastante buena.
 La capa de dominio contiene la lógica central de negocio del sistema y es crucial que esté bien probada para asegurar
 que el comportamiento del sistema sea correcto.
+Una cobertura alta no garantiza que tengamos una buena batería de pruebas, pero si es un buen indicador.
 
-En cambio, una cobertura del 42.86\% en la capa de infraestructura y aplicación se considera moderada a baja.
+En cambio, una cobertura del 42.86\% en la capa de infraestructura y aplicación se considera una cobertura moderada.
 Esta capa incluye componentes que interactúan con sistemas externos, bases de datos, \textit{API}, y otras
-infraestructuras de soporte.
-Esto se debe a que en ocasiones son capas más complicadas de testear, además de que hay situaciones que no merece la
-pena incluir en la batería de pruebas debido a su complejidad o rareza.
-
-Se recomienda mantener y mejorar la cobertura de código en ambas capas.
+herramientas de la capa de infraestructura.
+Esta cobertura más modesta se debe a que en ocasiones la capa de aplicación es más complicada de testear, además de
+que se dan situaciones que no merece la pena incluir en la batería de pruebas debido a su complejidad o rareza.
 
 \subsection*{Análisis estático}
 
 El análisis estático es el proceso de examinar el código fuente de un programa sin ejecutarlo para identificar posibles
 errores, malas prácticas y problemas de seguridad.
 
-Para este análisis, hemos utilizado la herramienta \textbf{Scrutinizer-CI}, la cual nos ha calificado con una puntuación
-de diez sobre diez~\cite{url_scrutinizer_viu_84_proyecto}.
-
+Para este análisis, hemos utilizado la herramienta \textbf{Scrutinizer-CI}.
 Esta herramienta analiza el código en busca de posibles problemas proporcionando un informe detallado así
 sugerencias de mejora.
+Finalmente, nos ha calificado con una puntuación de diez sobre diez lo que indica que la herramienta no ha podido
+detectar errores ni advertencias que deban ser revisadas ~\cite{url_scrutinizer_viu_84_proyecto}.
 
 \subsection*{Complejidad del código}
 
 Para evaluar la complejidad del código, hemos utilizado la herramienta \textbf{phploc} (\textit{PHP Lines of Code}), la
 cual reporta varias métricas importantes.
-A continuación, se presentan algunos de los resultados obtenidos, que aparecen en la tabla~\ref{tab:phploc_report}.
+En la tabla~\ref{tab:phploc_report} que aparece a continuación, se presentan algunos de los resultados obtenidos.
+
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
     \setlength{\tabcolsep}{10pt}
     \begin{tabular}{p{0.60\textwidth} >{\raggedleft\arraybackslash}p{0.15\textwidth}
             >{\raggedleft\arraybackslash}p{0.15\textwidth}}
-
         \toprule
         \textbf{Nombre}                         & \textbf{Valor} & \textbf{Porcentaje} \\
         \midrule
@@ -91,8 +90,6 @@ A continuación, se presentan algunos de los resultados obtenidos, que aparecen 
 
 La métrica \textit{Total Non-Comment Lines of Code (NCLOC)} indica el número total de líneas de código que no son
 comentarios.
-Un mayor número de \textit{NCLOC} puede indicar un código más complejo o extenso, aunque no necesariamente más difícil
-de mantener.
 
 La métrica \textit{Total Logical Lines of Code (LLOC)} mide el número de líneas lógicas de código, excluyendo las
 líneas vacías y los comentarios.

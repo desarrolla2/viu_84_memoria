@@ -39,13 +39,13 @@ con el objetivo de establecer una referencia, tal y como se aprecia en la tabla~
     \label{tab:execution_performance}
 \end{table}
 
-Como puede verse, el consumo de memoria es realmente bajo, además esta se libera en el momento de completarse cada
-ejecución.
-Los tiempos de respuesta son muy bajos para \textit{PDF To Text}, que se ejecuta en local, mientras que son bastante
-más elevados para los que dependen del consumo de la \textit{API} remota de \textit{ChatGPT}.
+Como puede verse, el consumo de memoria son relativamente bajos, además la memoria se libera en el momento de
+completarse cada ejecución.
+Los tiempos de respuesta son muy bajos para \textit{PDF To Text}, que se ejecuta en local, mientras que son en el
+orden de cien veces más elevados para los que dependen del consumo de la \textit{API} remota de \textit{ChatGPT}.
 
 Aun así, los tiempos de respuesta para la extracción de la información son realmente buenos si los comparamos con el
-tiempo que sería necesario para la extracción por parte de un usuario.
+tiempo que sería necesario para la extracción manual por parte de un usuario.
 
 Posiblemente, estos tiempos de respuesta requieran en la mayoría de los casos una ejecución asíncrona, donde el usuario
 sube un paquete de documentación y esta se marca con el estado \textit{``PROCESANDO''} mientras que una tarea es
