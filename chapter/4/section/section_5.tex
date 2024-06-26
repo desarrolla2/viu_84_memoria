@@ -9,15 +9,20 @@ En una primera aproximación se realizó una investigación sobre distintas base
 conjuntos de datos abiertos, aquí una lista de algunas de las que investigamos:
 
 \begin{itemize}
-    \item \textbf{Data.gov}: Portal de datos abiertos del gobierno de Estados Unidos~\cite{url_us_open_data}.
-    \item \textbf{European Union Open Data Portal}: Portal de datos abiertos de la Unión
-    Europea~\cite{url_eu_open_data}.
-    \item \textbf{Kaggle Datasets}: Conjuntos de datos para competencias y proyectos de análisis de
-    datos~\cite{url_kaggle}.
-    \item \textbf{Google Dataset Search}: Motor de búsqueda de conjuntos de
-    datos~\cite{url_google_open_data}.
-    \item \textbf{Amazon Web Services (AWS) Public Datasets}: Conjuntos de datos públicos de
-    AWS~\cite{url_aws_open_data}.
+    \item
+    \textbf{Data.gov}: Portal de datos abiertos del gobierno de Estados Unidos~\cite{url_us_open_data}.
+
+    \item
+    \textbf{European Union Open Data Portal}: Portal de datos abiertos de la Unión Europea~\cite{url_eu_open_data}.
+
+    \item
+    \textbf{Kaggle Datasets}: Conjuntos de datos para competencias y proyectos de análisis de datos~\cite{url_kaggle}.
+
+    \item
+    \textbf{Google Dataset Search}: Motor de búsqueda de conjuntos de datos~\cite{url_google_open_data}.
+
+    \item
+    \textbf{Amazon Web Services (AWS) Public Datasets}: Conjuntos de datos públicos de AWS~\cite{url_aws_open_data}.
 \end{itemize}
 
 Sin embargo, no fue posible encontrar un conjunto adecuado.
@@ -30,12 +35,12 @@ internet.
 
 También se determinó que los conjuntos de datos deberían ser lo suficientemente grandes como para realizar pruebas que
 permitieran alcanzar conclusiones relevantes en términos de precisión del sistema, pero lo suficientemente pequeños
-como para que la ejecución completa de la batería no fuera excesivamente cara.
+como para que la ejecución completa de la batería no fuera excesivamente lenta ni cara.
 
 Dado que en la sección~\ref{sec:implemetacion_y_programacion} Implementación y programación, se había estipulado
-que el coste de la ejecución de un documento eran aproximadamente siete céntimos, se consideró que de nueve documentos
-para los conjuntos de datos de prueba y de tres elementos para los conjuntos de datos de contraste, ofrecía un
-balance adecuado.
+que el coste de la ejecución de un documento eran aproximadamente siete céntimos de euro, se consideró que de nueve
+documentos para los conjuntos de datos de prueba y de tres elementos para los conjuntos de datos de contraste, ofrecía
+un balance adecuado.
 
 En la tabla~\ref{tab:data_sets} pueden verse los conjuntos de datos de prueba desarrollados.
 
@@ -55,14 +60,16 @@ En la tabla~\ref{tab:data_sets} pueden verse los conjuntos de datos de prueba de
     \label{tab:data_sets}
 \end{table}
 
-El conjunto de datos \textbf{000} contiene ruido o contraste es decir documentos que no corresponden a ninguno de los
-otros conjuntos.
+El primer conjunto de datos \textbf{000} contiene ruido o documentos de contraste es decir documentos que no
+corresponden a ninguno de los otros conjuntos.
 
 El conjunto de datos \textbf{001} contiene modelos descargados de diferentes fuentes de internet.
-Se modificaron los documentos con datos generados aleatoriamente para indicar nombres, apellidos, direcciones, etc.
+Se modificaron estos documentos con datos generados aleatoriamente para indicar nombres, apellidos, direcciones,
+etc., que no se correspondan con datos reales de personas físicas.
 Finalmente, el conjunto de datos \textbf{002} se generó de la misma forma que el anterior.
 
-Este proceso aseguró la privacidad y el cumplimiento de la normativa de protección de datos.
+Este proceso manual aseguró tanto un conjunto de datos adecuando como el cumplimiento de la normativa de protección de
+datos.
 
 \subsubsection*{Construcción del conjunto de datos de prueba}
 
@@ -89,11 +96,16 @@ En este proyecto, se han implementado varios tipos de pruebas automáticas, cada
 todas las facetas del desarrollo y la implementación del software.
 
 \begin{enumerate}
-    \item Las \textbf{pruebas unitarias} verifican el funcionamiento de componentes individuales del sistema, como
-    funciones o métodos.
-    \item Las \textbf{pruebas integración} comprueban el correcto funcionamiento de diferentes componentes
-    interactuando coordinadamente.
-    \item Las \textbf{pruebas funcionales} evalúan el sistema desde el punto de vista del usuario final.
+    \item
+    Las \textbf{pruebas unitarias} verifican el funcionamiento de componentes individuales del sistema, como funciones
+    o métodos.
+
+    \item
+    Las \textbf{pruebas integración} comprueban el correcto funcionamiento de diferentes componentes interactuando
+    \item coordinadamente.
+
+    \item
+    Las \textbf{pruebas funcionales} evalúan el sistema desde el punto de vista del usuario final.
 \end{enumerate}
 
 En la figura~\ref{fig:chapter_4.5.test_suite_execution} puede verse el resultado de la ejecución de la batería de
@@ -108,6 +120,7 @@ pruebas~\cite{url_viu_84_proyecto_continous_integration}.
 \end{figure}
 
 \subsection*{Integración continua}
+
 La integración continua es una práctica esencial en el desarrollo de software moderno, que implica la integración
 frecuente y la ejecución automática de los test.
 Normalmente programado para ejecutarse cada vez que se añade un cambio al repositorio.
@@ -122,8 +135,8 @@ Normalmente programado para ejecutarse cada vez que se añade un cambio al repos
 \end{figure}
 
 En este proyecto, hemos implementado la integración continúa utilizando \textit{GitHub Actions}, un servicio de
-automatización que permite crear flujos de trabajo personalizados para compilar, probar y desplegar código directamente
-desde \textit{GitHub}.
+automatización que permite crear flujos de trabajo personalizados para compilar, probar y poner en producción código
+directamente desde \textit{GitHub}.
 
 En la figura~\ref{fig:chapter_4.5.github_actions_execution} puede verse el resultado de la ejecución de la batería de
 pruebas en el entorno de integración continua.
