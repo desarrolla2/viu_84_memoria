@@ -1,15 +1,17 @@
 \section{Descripción detallada de la solución informática desarrollada}
 
-Se ha desarrollado un sistema capaz de extraer información de documentos.
-Concretamente, el sistema tiene soporte para documentos en formato \textit{PDF} y para dos tipos de contrato, los
-contratos de alquiler de vivienda entre particulares y los contratos de compraventa de vehículo entre particulares.
+Se ha desarrollado un sistema capaz de extraer información de documentos de cualquier tipo y formato.
+Concretamente, tal y como se describe en la sección~\ref{sec:objetives} Objetivos el sistema tiene soporte para
+documentos en formato\textit{PDF} y para dos tipos de contrato, los contratos de alquiler de vivienda entre particulares
+y los contratos de compraventa de vehículo entre particulares.
 
-Para el desarrollo, se ha seguido un conjunto de buenas prácticas como el uso código limpio y de arquitecturas limpias,
-lo que facilita que la solución pueda ser extendida para diferentes casos de uso.
+Para el desarrollo, se ha seguido un conjunto de buenas prácticas como el uso código limpio y de una arquitectura
+limpia, descritas en las secciones~\ref{sec:clean_code} y \ref{sec:clean_architecture} facilitan que la solución
+pueda ser extendida para implementar nuevos casos de uso.
 
-El sistema tiene un primer componente, el componente \textit{Generator}, con capacidad para convertir documentos
-\textit{PDF} en texto, tal y como se define en el \textbf{Requisito 1} que se definió en la sección~
-\ref{sec:objetives} Objetivos.
+El sistema está dividido en dos componentes, el primer componente, el componente \textit{Generator}, tiene la capacidad
+para convertir documentos\textit{PDF} en texto, tal y como se define en el \textbf{Requisito 1} que se definió en la
+sección~\ref{sec:objetives} Objetivos.
 
 Aunque en esta implementación se ha utilizado un sistema concreto para la conversión de documentos \textit{PDF}
 en texto, el sistema permite incorporar otras implementaciones que realicen la conversión de otros formatos utilizando
@@ -23,13 +25,13 @@ particulares (\textbf{Requisito 2}) y contratos de compraventa de vehículos ent
 Aunque el sistema está diseñado para usarse en modo librería, integrado dentro de otros sistemas, se desarrollaron dos
 interfaces.
 
-La interfaz web está desarrollada con un diseño responsivo, lo que significa que se adapta automáticamente al tamaño de
-la pantalla del dispositivo en el que se visualiza.
+La interfaz web fue desarrollada con un diseño adaptativo o \textit{responsive}, lo que significa que se adapta al
+tamaño de la pantalla del dispositivo en el que se visualiza, como un ordenador de escritorio o un teléfono móvil.
 
-Al arrastrar y soltar un documento sobre el cuadro de diálogo, la web mostrará un mensaje con los datos del documento en
-formato \textit{JSON}.
-En la figura~\ref{fig:chapter_5.1.web_interface} se puede ver el resultado de ejecutar un contrato de arrendamiento
-de vivienda entre particulares.
+En esta interfaz, al arrastrar y soltar un documento sobre el cuadro de diálogo, la web lo procesará y mostrará un
+mensaje con el resultado, que puede ser un error o los datos de un documento soportado en formato \textit{JSON}.
+En la figura~\ref{fig:chapter_5.1.web_interface} se puede ver el resultado de arrastrar y soltar un contrato de
+arrendamiento de vivienda entre particulares.
 
 \begin{figure}[ht]
     \begin{center}
