@@ -3,26 +3,25 @@
 A medida que la tecnología y las necesidades del mercado evolucionan, siempre existen oportunidades para mejorar y
 extender el trabajo realizado.
 
-En este contexto, se presentan algunas sugerencias y recomendaciones para futuros trabajos en el ámbito de este proyecto
-de extracción de información de documentos.
+En este contexto, se presentan algunas sugerencias y recomendaciones para futuros trabajos en el ámbito de este
+proyecto.
 
-\subsection*{Aumentar el conjunto de datos de prueba}
+\subsection*{Mejorar el conjunto de datos de prueba}
 
 Si bien el conjunto de datos de prueba es adecuado para el alcance de este TFG, es necesario ampliarlo para obtener
-conclusiones más relevantes sobre la precisión de la respuesta.
+conclusiones más relevantes sobre la precisión del sistema.
 Utilizar un conjunto de datos más grande y diverso permitirá evaluar mejor la robustez del sistema y su capacidad para
 manejar diferentes tipos de documentos y situaciones.
-
-Esto ayudará a asegurar que el sistema sea confiable y efectivo en un rango más amplio de aplicaciones.
+Esto ayudará a asegurar que el sistema sea confiable y efectivo.
 
 Otra mejora en este aspecto es designar un equipo externo que se ocupe de la evaluación de las pruebas para evitar que
 se produzca el sesgo del creador, un sesgo que se produce cuando la misma persona que desarrolla el código también lo
 prueba, lo que puede resultar en la falta de detección de errores~\cite{url_test_io_bias_software_testing}.
 
-\subsection*{Aumentar el soporte a otros formatos}
+\subsection*{Añadir soporte a otros formatos de documentos}
 
-Aunque una gran parte de la documentación gestionada está en formato \textit{PDF}, es conveniente incrementar el soporte
-para otros formatos igualmente comunes.
+Aunque una gran parte de la documentación gestionada por las organizaciones está en formato \textit{PDF}, es
+conveniente incrementar el soporte para otros formatos igualmente comunes.
 
 Por ejemplo se podría utilizar \textit{LibreOffice}~\cite{url_libreoffice} para convertir documentos en formato
 \textit{word}~\cite{url_microsoft_word} o en formato \textit{excel}~\cite{url_microsoft_excel} a texto.
@@ -31,7 +30,7 @@ Además, se podría emplear \textit{Tesseract OCR}~\cite{url_tesseract}, una her
 imágenes en texto, utilizando una tecnología de reconocimiento óptico de caracteres u
 \textit{optical character recognition} (OCR) para convertir documentos escaneados o fotografías a texto.
 
-\subsection*{Probar con otros modelos}
+\subsection*{Utilizar otros modelos}
 
 La rápida evolución de los modelos de lenguaje natural ofrece continuas oportunidades para mejorar la precisión, los
 tiempos de respuesta y el costo por documento procesado.
@@ -39,21 +38,21 @@ Aunque en este trabajo se ha utilizado \textit{ChatGPT 4}, es importante seguir 
 desarrollan.
 
 Evaluar estos modelos en términos de precisión, eficiencia y costo ayudará a identificar cuál es el más adecuado para
-diferentes casos de uso, asegurando que el sistema se mantenga a la vanguardia de la tecnología y sea capaz de ofrecer
-el mejor rendimiento posible.
+cada caso de uso, asegurando que el sistema se mantenga a la vanguardia de la tecnología y sea capaz de ofrecer los
+mejores resultados posibles.
 
-\subsection*{Coordinación en paralelo de los procesadores}
+\subsection*{Paralelización de procesos}
 
-En el sistema desarrollado, la coordinación entre los diferentes procesadores se realiza de forma secuencial en los
+En el sistema desarrollado, la coordinación entre los diferentes procesadores se realiza de forma secuencial en ambos
 componentes \textit{Generator} y \textit{Reader}.
 Este enfoque es adecuado siempre y cuando el número de procesadores se mantenga muy limitado.
 
-Sin embargo, si se añaden nuevos procesadores y el tiempo de ejecución se vuelve crítico, será necesario cambiar de un
-esquema de llamadas consecutivas a uno donde todas las llamadas se lancen en paralelo.
+Sin embargo, si se añaden nuevos procesadores y el tiempo de ejecución se vuelve importante, será necesario cambiar
+de un esquema de llamadas consecutivas a uno donde todas las llamadas se ejecuten en paralelo.
 Esto permitirá una mayor eficiencia y una reducción significativa en el tiempo total de procesamiento, mejorando así el
 rendimiento del sistema en escenarios de alta demanda.
 
-\subsection*{Utilizar otras técnicas para extraer la información}
+\subsection*{Añadir otras técnicas para extraer la información}
 
 Aunque los modelos LLM ofrecen una solución óptima para documentos con formato desconocido, para otros documentos el
 formato será conocido y tendrá pocas variaciones, como por ejemplo una declaración de la renta, facturas comerciales o
@@ -62,7 +61,7 @@ los recibos de servicios públicos.
 En estos casos, es más eficiente y económico extraer la información mediante técnicas más rudimentarias, como por
 ejemplo las expresiones regulares.
 Estas técnicas permiten identificar y extraer datos específicos de manera rápida y con un menor costo, aprovechando la
-estructura predecible de los documentos.
+estructura predecible de estos documentos.
 
 \subsection*{Incrementar la seguridad de los datos}
 
@@ -76,7 +75,6 @@ adecuado.
 
 Estas medidas no solo protegen la información personal durante el procesamiento y almacenamiento, sino que también
 aseguran el cumplimiento de normativas de protección de datos.
-
 
 \subsection*{Liberar el proyecto}
 
@@ -92,12 +90,12 @@ Además, será necesario seleccionar una licencia adecuada para el proyecto que 
 responsabilidades de los usuarios y contribuyentes.
 Licencias como MIT, Apache 2.0 o GNU GPL son opciones comunes que pueden ser consideradas.
 
-\subsection*{Desplegar en producción}
+\subsection*{Poner en producción}
 
 Desplegar el sistema en un entorno de producción es un paso vital que pone a prueba la capacidad del proyecto para
-operar bajo condiciones reales y cumplir con las expectativas del usuario final.
-Esto permite identificar y resolver problemas que pueden no haber sido evidentes en un entorno de desarrollo o
-pruebas controladas.
+operar bajo condiciones reales y cumplir con las expectativas.
+Esta prueba de fuego permite identificar y resolver problemas que pueden no haber sido evidentes en un entorno de
+desarrollo o pruebas en entornos controlados.
 
-Este proceso no solo válida la funcionalidad y la eficiencia del sistema, sino que también proporciona oportunidades
+Este paso final no solo válida la funcionalidad y la eficiencia del sistema, sino que también proporciona oportunidades
 para optimizar, asegurar y mejorar continuamente el sistema.
