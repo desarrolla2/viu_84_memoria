@@ -1,18 +1,17 @@
 \section{Implementación y programación}\label{sec:implemetacion_y_programacion}
 
-En esta sección vamos a explicar algunos de los detalles de implementación de aquellos componentes que creemos que es
-interesante que sean introducidos.
+En esta sección vamos a explicar los detalles de implementación más importantes de aquellos componentes que creemos
+que es interesante que sean introducidos.
 
 \subsection*{Componente \textit{Generator}}
 
-\subsubsection*{PDF To Text Processor}
-
-Cómo introducimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
-convertir un fichero \textit{PDF} en un fragmento de texto plano.
+Cómo introducimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, el elemento clave de este
+componente es el \textit{PDF To Text Processor}.
+Este procesador es responsable de convertir un fichero \textit{PDF} en su representación en texto plano.
 
 Tal y como puede verse en el extracto de código de la figura~\ref{fig:chapter_4.4.pdf_to_text_processor}, el procesador
-\textit{PDF To Text Processor} es simplemente un envoltorio para la herramienta de línea de comandos
-\textit{Pdf To Text}.
+\textit{PDF To Text Processor} es simplemente un envoltorio o \textit{wrapper} que utiliza el componente
+\textit{Command Runner} para realizar llamadas a \textit{Pdf To Text} en la línea de comandos.
 
 \begin{figure}[ht]
     \begin{center}
@@ -23,9 +22,10 @@ Tal y como puede verse en el extracto de código de la figura~\ref{fig:chapter_4
 \end{figure}
 
 En la figura~\ref{fig:chapter_4.4.generator_component_pdf_to_text_processor} puede verse un esquema de este
-comportamiento: el motor envía el documento \textit{PDF} al procesador, este a su vez lo envía a \textit{PDF To Text}
-el cual genera un fichero de texto plano.
-Finalmente, el procesador extrae el contenido de ese fichero y lo envía de vuelta al motor, donde comenzó todo.
+comportamiento: el motor envía el documento \textit{PDF} al \textit{PDF To Text Processor}, este a su vez lo envía a
+\textit{PDF To Text} el cual genera un fichero de texto plano.
+Finalmente, el \textit{PDF To Text Processor} extrae el contenido de ese fichero y lo envía de vuelta al motor, donde
+comenzó todo.
 
 \begin{figure}[ht]
     \begin{center}
@@ -37,15 +37,13 @@ Finalmente, el procesador extrae el contenido de ese fichero y lo envía de vuel
 
 \subsection*{Componente \textit{Reader}}
 
-De este componente queremos destacar los siguientes elementos, el \textit{Residential Lease Agreement Processor} y el
+De este componente queremos destacar dos elementos: el \textit{Residential Lease Agreement Processor} y el
 \textit{Vehicle Sale And Purchase Agreement Processor} responsables de extraer la información de los contratos de
 alquiler de vivienda entre particulares y la compraventa de vehículos entre particulares respectivamente.
 
-\subsubsection*{Residential Lease Agreement Processor}
-
-Cómo introducimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, este procesador es responsable de
-transformar el texto de un contrato de arrendamiento de vivienda entre particulares en un objeto con sus datos
-fundamentales.
+Cómo introducimos en la sección~\ref{sec:diseno_del_sistema} Diseño del sistema, el procesador
+\textit{Residential Lease Agreement Processor} es responsable de transformar el texto de un contrato de
+arrendamiento de vivienda entre particulares en un objeto con la información fundamental.
 
 La implementación de este procesador es muy similar a la que hemos visto en el \textit{PDF To Text Processor}, por lo
 que no vamos a incluir ni el código ni el esquema con la comunicación.
@@ -62,19 +60,22 @@ Para encontrar una entrada suficientemente precisa, utilizamos dos técnicas:
 
 La primera \textit{Few-shot Prompting}~\cite{article_few_shot_prompting} es una técnica en la cual se proporcionan
 al modelo ejemplos de entrada y salida para que aprenda el patrón específico.
-Por ejemplo para una persona se indica: \textit{\{"name": "John", "surname": "Doe", "number": "12345678 A"\}}.
 
 La segunda técnica es el \textit{Format-based Prompting}~\cite{article_format_based_prompting}, una técnica en la
 cual se estructura el prompt para guiar al modelo a generar respuestas en un formato específico, como \textit{JSON},
 listas o tablas, las cuales pueden ser luego fácilmente parseadas.
+Por ejemplo para una persona se podría indicar que la respuesta debería ser similar a esto:
+\textit{\{"name": "John", "surname": "Doe", "number": "12345678 A"\}}.
 
-El primer intento de implementación se trató que el modelo respondiera con un \textit{XML}.
+El primer intento de implementación se trató que el modelo respondiera con un \textit{XML}, utilizando ejemplos en
+formato \textit{XSD}.
 Sin embargo, \textit{ChatGPT 4} tiene limitaciones para trabajar con documentos \textit{XML}, por lo que la
 implementación final se realizó utilizando modelos \textit{JSON}.
 
 Todo esto puede verse en el ejemplo de código que aparece en la
 figura~\ref{fig:chapter_4.4.residential_lease_agreement_processor}, donde se muestra el código del método que define el
-\textit{prompt}.
+\textit{prompt}, donde puede apreciarse que la construcción correcta del \textit{prompt} es importante para obtener
+una respuesta adecuada.
 
 \begin{figure}[ht]
     \begin{center}
@@ -84,25 +85,20 @@ figura~\ref{fig:chapter_4.4.residential_lease_agreement_processor}, donde se mue
     \end{center}
 \end{figure}
 
-Una vez que se obtiene la respuesta en formato \textit{JSON}, tan solo es necesario des-serializar para convertirlo
-en un objeto del tipo indicado, en este caso un \textit{Residential Lease Agreement} que como puede verse en la
-figura~\ref{fig:chapter_4.4.residential_agreement} que aparece contiene los tipos de datos esperados para un contrato de
-arrendamiento de vivienda entre particulares.
+Una vez que se obtiene la respuesta en formato \textit{JSON}, tan solo es necesario des serializar el mismo para
+convertirlo en un objeto del tipo indicado, en este caso un \textit{Residential Lease Agreement} que contiene los tipos
+de datos esperados para un contrato de arrendamiento de vivienda entre particulares: nombres, apellidos y
+documentos de identidad de los arrendatarios y los arrendadores, la dirección del inmueble, la renta mensual y la fecha
+del contrato.
 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=\textwidth]{./chapter/4/images/chapter_4.4.residential_lease_agreement}
-        \caption{Captura del código fuente de la entidad \textit{Residential Lease Agreement}}
-        \label{fig:chapter_4.4.residential_agreement}
-    \end{center}
-\end{figure}
-
-La \textit{API} de \textit{ChatGPT 4} presenta dos problemas: es lenta y cuesta dinero.
+Sin embargo, llegados a este punto comprobamos que la \textit{API} de \textit{ChatGPT 4} presenta dos limitaciones
+que deben ser tenidas en cuenta: las peticiones son lentas y cuestan dinero.
 Los tiempos de respuesta pueden variar dependiendo del tipo de documento y del estado de la api.
 Los costes también pueden variar dependiendo del tipo de documento y del precio de la api en ese
 momento~\cite{url_openai_api_pricing}.
 
-A continuación una tabla calculada con el promedio de 100 peticiones para el documento \textit{001/001.pdf}.
+A continuación una tabla obtenida con el promedio de realizar 100 peticiones de procesamiento para el documento
+\textit{001/001.pdf}.
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
@@ -128,12 +124,10 @@ o un carácter de puntuación.
 Aunque los modelos \textit{ChatGPT} tienen limitaciones en cuanto al tamaño máximo del contexto, como se muestra en la
 tabla~\ref{tab:chat_gpt_limits}, estas limitaciones no afectan la ejecución de este procesador~\cite{url_openai_models}.
 
-En el post procesador \textit{Word Limit Post Processor}, descrito en la sección \ref{sec:diseno_del_sistema} Diseño
-del sistema, se asume que la información relevante para este caso de uso se encuentra dentro de las primeras 1000
-palabras de cada documento, truncándose cualquier información que exceda este límite.
-
-Estimando un promedio de 1.3 tokens por palabra, esto se mantiene dentro de los límites permitidos por los modelos más
-recientes.
+Como ya dijimos, el post procesador \textit{Word Limit Post Processor}, descrito en la
+sección~\ref{sec:diseno_del_sistema} Diseño del sistema, asume que la información relevante para este caso de uso se
+encuentra dentro de las primeras 1000 palabras de cada documento, truncándose cualquier información que exceda este
+límite.
 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.5}
@@ -156,9 +150,9 @@ en un ciclo de prueba y error.
 Por lo que tanto para acelerar los tiempos de ejecución como para reducir los costes se hizo recomendable implementar un
 sistema de caché.
 
-El sistema de caché genera un hash para cada petición y guarda la respuesta, durante un tiempo limitado.
-Si se repite una misma petición recupera la respuesta de la caché, por lo que la respuesta es prácticamente
-instantánea y sin ningún coste adicional.
+El sistema de caché genera un hash para cada petición y guarda la respuesta.
+Si se repite una misma petición recupera la respuesta de la caché, por lo que la petición se resuelve de forma
+prácticamente instantánea y sin ningún coste adicional.
 
 \subsubsection*{Vehicle Sale And Purchase Agreement Processor}
 
